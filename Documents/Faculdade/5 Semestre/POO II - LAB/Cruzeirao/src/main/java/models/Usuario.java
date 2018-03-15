@@ -1,4 +1,4 @@
-package model;
+package models;
 
 import java.util.Date;
 import java.util.List;
@@ -111,6 +111,5 @@ public class Usuario {
 	}
 	public void setFoto(String foto) {
 		this.foto = foto;
-	}
-	
+	}	
 }

@@ -4,22 +4,11 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 	<h:form>
-		<p:panelMenu>
-		    <p:submenu label="#{msg['pages.comuns.menuLateral.inicio']}" >
-			   <p:menuitem value="#{msg['pages.inicio.menu']}" url="inicio.xhtml" />
-			</p:submenu>
-		
-			<p:submenu label="#{msg['pages.comuns.menuLateral.gerencial']}">
-				<p:menuitem value="#{msg['pages.cadastroAluno.menu']}" url="cadastroAluno.xhtml" />
-				<p:menuitem value="#{msg['pages.cadastroProfessor.menu']}" url="cadastroProfessor.xhtml" />
-				<p:menuitem value="#{msg['pages.tela2.menu']}" url="tela2.xhtml" />
+		<p:panelMenu>		
+			<p:submenu label="Cadastros">
+				<p:menuitem value="Categoria" url="categoria.xhtml" />
 				<p:menuitem value="Usuario" url="usuario.xhtml" />
-	       </p:submenu>
-					
-			<p:submenu label="#{msg['pages.comuns.menuLateral.options']}">
-				<p:menuitem value="#{msg['pages.linguagem.menu']}" url="linguagem.xhtml" />
-	       </p:submenu>
-		
+	       </p:submenu>		
 		</p:panelMenu>
 	</h:form>
 </ui:composition>
