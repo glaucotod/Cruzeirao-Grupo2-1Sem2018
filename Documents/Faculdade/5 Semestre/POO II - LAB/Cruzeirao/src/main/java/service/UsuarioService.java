@@ -1,0 +1,30 @@
+package service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import model.Usuario;
+
+public class UsuarioService {
+private ArrayList <Usuario> Usuarios = new ArrayList<Usuario>();
+	
+	public UsuarioService()
+	{
+
+	}
+	
+	public void salvar(Usuario Usuario)
+	{
+		Usuarios.add(Usuario);
+	}
+
+	public void remove(Usuario Usuario)
+	{
+		Usuarios.remove(Usuario);
+	}
+
+	public List <Usuario> getUsuarios()
+	{
+		return Usuarios;
+	}
+}
