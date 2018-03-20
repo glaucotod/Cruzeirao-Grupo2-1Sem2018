@@ -8,12 +8,13 @@ import models.Usuario;
 import services.UsuarioService;
 
 
-@ManagedBean
+@ManagedBean(name = "usuarioManagedBean")
 @SessionScoped
-public class UsuarioManaged
+public class UsuarioManagedBean
 {
 	private Usuario usuario = new Usuario();
 	private UsuarioService service = new UsuarioService();	
+	
 	
 	public void salvar()
 	{

@@ -1,0 +1,98 @@
+<ui:composition template="templateMenu.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+>
+	
+	<ui:define name="title">
+		<h:outputText value="Usuario" />
+	</ui:define>
+	
+
+	<ui:define name="principal">
+	  
+	  <h1><p:outputLabel value="Cadastro"/></h1>
+	  
+	  <h:form id="formUsuario">	
+		  <p:panelGrid columns="4">	 
+ 
+			  <p:outputLabel value="Nome:" />
+		      <p:inputText value="#{usuarioManagedBean.usuario.nome}"/>
+		      
+		      <p:outputLabel value="Email:" />
+		      <p:inputText value="#{usuarioManagedBean.usuario.email}"/>
+		      
+		      <p:outputLabel value="Data de nascimento:" />
+	          <p:calendar value="#{usuarioManagedBean.usuario.dataNascimento}" pattern="dd-MM-yyyy" mask="true" />
+	          
+	          <p:outputLabel value="Endereço:" />
+		      <p:inputText value="#{usuarioManagedBean.usuario.endereco}"/>
+		      
+		      <!-- 
+		      <p:outputLabel value="Tipo:" />		
+		        <p:selectOneMenu value="#{usuarioManagedBean.usuario.tipo}" style="width:125px">
+	            	<f:selectItem itemLabel="JOGADOR" itemValue="tipo1" />
+	            	<f:selectItem itemLabel="TECNICO" itemValue="tipo2" />
+	            	<f:selectItem itemLabel="MASSAGISTA" itemValue="tipo3" />
+	            	<f:selectItem itemLabel="AUXILIAR" itemValue="tipo3" />
+	            	<f:selectItem itemLabel="PREPARADOR FISICO" itemValue="tipo3" />
+	          	</p:selectOneMenu>
+		       -->
+		      <p:outputLabel value="Telefone fixo:" />  
+	          <p:inputMask value="#{usuarioManagedBean.usuario.telefoneFixo}" mask="(99) 9999-9999"/>
+		      
+		      <p:outputLabel value="Telefone celular:" />
+		      <p:inputMask value="#{usuarioManagedBean.usuario.telefoneMovel}" mask="(99) 9-9999-9999"/>
+		      
+		      <p:outputLabel value="RG:" />
+		      <p:inputMask value="#{usuarioManagedBean.usuario.rg}"/>
+		      
+		      <p:outputLabel value="CPF:" />
+		      <p:inputMask value="#{usuarioManagedBean.usuario.cpf}" mask="999.999.999-99"/>
+		      
+		      <p:outputLabel value="Sexo:" />	
+		       <p:selectOneMenu value="#{usuarioManagedBean.usuario.sexo}" style="width:125px">
+		        	<f:selectItem itemLabel="" itemValue="" />
+	            	<f:selectItem itemLabel="Feminino" itemValue="sex1" />
+	            	<f:selectItem itemLabel="Masculino" itemValue="sex2" />
+	          	</p:selectOneMenu>
+		      
+		      <p:outputLabel value="Numero de registro CREF:" />
+		      <p:inputText value="#{usuarioManagedBean.usuario.cref}"/>
+		      
+		      <!--  <p:outputLabel value="Foto:" />	         
+		      <p:fileUpload fileUploadListener="#{fileUploadView.handleFileUpload}" mode="advanced" dragDropSupport="true"
+	           update="messages" sizeLimit="10000000" fileLimit="1" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+	          <p:growl id="messages" showDetail="true" />-->      			
+	      
+		  </p:panelGrid>
+	  <p:commandButton value="Salvar" 
+	                 action="#{usuarioManagedBean.salvar}"
+	                 update=":formUsuario, :tabelaUsuario"
+	                 />
+       </h:form>
+       
+
+   <p:dataTable value="#{usuarioManagedBean.usuarios}"
+                var="aux"
+                id="tabelaUsuario"
+   >
+   			<!-- 
+      <p:column headerText="#{msg['pages.cadastroUsuario.id']}">
+        <p:outputLabel value="#{aux.id}" />
+      </p:column>
+       -->
+      <p:column headerText="#{msg['pages.cadastroUsuario.nome']}">
+        <p:outputLabel value="#{aux.nome}" />
+      </p:column>
+      <p:column headerText="#{msg['pages.cadastroUsuario.endereco']}">
+        <p:outputLabel value="#{aux.endereco}" />
+      </p:column>
+      
+   </p:dataTable>	
+	   
+	</ui:define>
+</ui:composition>
