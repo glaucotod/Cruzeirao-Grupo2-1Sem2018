@@ -8,13 +8,12 @@
 >
 	
 	<ui:define name="title">
-		<h:outputText value="Usuario" />
+		<h:outputText value="Cadastro de pessoal" />
 	</ui:define>
-	
 
 	<ui:define name="principal">
 	  
-	  <h1><p:outputLabel value="Cadastro"/></h1>
+	  <h1><p:outputLabel value="Cadastro de Pessoal"/></h1>
 	  
 	  <h:form id="formUsuario">	
 		  <p:panelGrid columns="4">	 
@@ -31,16 +30,14 @@
 	          <p:outputLabel value="Endereço:" />
 		      <p:inputText value="#{usuarioManagedBean.usuario.endereco}"/>
 		      
-		      <!-- 
+		      
 		      <p:outputLabel value="Tipo:" />		
 		        <p:selectOneMenu value="#{usuarioManagedBean.usuario.tipo}" style="width:125px">
-	            	<f:selectItem itemLabel="JOGADOR" itemValue="tipo1" />
-	            	<f:selectItem itemLabel="TECNICO" itemValue="tipo2" />
-	            	<f:selectItem itemLabel="MASSAGISTA" itemValue="tipo3" />
-	            	<f:selectItem itemLabel="AUXILIAR" itemValue="tipo3" />
-	            	<f:selectItem itemLabel="PREPARADOR FISICO" itemValue="tipo3" />
+	            	<!-- <f:selectItem itemLabel="Selecione o tipo do usuário" itemValue="" />  -->
+            		<f:selectItems value="#{usuarioManagedBean.tiposUsuarios}" />
+            		<p:ajax update="teste"/>
 	          	</p:selectOneMenu>
-		       -->
+		       
 		      <p:outputLabel value="Telefone fixo:" />  
 	          <p:inputMask value="#{usuarioManagedBean.usuario.telefoneFixo}" mask="(99) 9999-9999"/>
 		      
@@ -55,13 +52,12 @@
 		      
 		      <p:outputLabel value="Sexo:" />	
 		       <p:selectOneMenu value="#{usuarioManagedBean.usuario.sexo}" style="width:125px">
-		        	<f:selectItem itemLabel="" itemValue="" />
-	            	<f:selectItem itemLabel="Feminino" itemValue="sex1" />
-	            	<f:selectItem itemLabel="Masculino" itemValue="sex2" />
+		        	<!-- <f:selectItem itemLabel="Selecione o sexo" itemValue="" /> -->
+	            	<f:selectItems value="#{usuarioManagedBean.sexos}"/>
 	          	</p:selectOneMenu>
 		      
 		      <p:outputLabel value="Numero de registro CREF:" />
-		      <p:inputText value="#{usuarioManagedBean.usuario.cref}"/>
+		      <p:inputText id="teste" disabled="#{usuarioManagedBean.tiposUsuarios == 'AUXILIAR'}" value="#{usuarioManagedBean.usuario.cref}"/>
 		      
 		      <!--  <p:outputLabel value="Foto:" />	         
 		      <p:fileUpload fileUploadListener="#{fileUploadView.handleFileUpload}" mode="advanced" dragDropSupport="true"
@@ -69,27 +65,20 @@
 	          <p:growl id="messages" showDetail="true" />-->      			
 	      
 		  </p:panelGrid>
-	  <p:commandButton value="Salvar" 
-	                 action="#{usuarioManagedBean.salvar}"
-	                 update=":formUsuario, :tabelaUsuario"
-	                 />
+	  			<p:commandButton value="Salvar" action="#{usuarioManagedBean.salvar}" update=":formUsuario, :tabelaUsuario" />
        </h:form>
        
 
-   <p:dataTable value="#{usuarioManagedBean.usuarios}"
-                var="aux"
-                id="tabelaUsuario"
-   >
-   			<!-- 
-      <p:column headerText="#{msg['pages.cadastroUsuario.id']}">
-        <p:outputLabel value="#{aux.id}" />
-      </p:column>
-       -->
+   <p:dataTable value="#{usuarioManagedBean.usuarios}" var="aux" id="tabelaUsuario" >
+   	
       <p:column headerText="#{msg['pages.cadastroUsuario.nome']}">
         <p:outputLabel value="#{aux.nome}" />
       </p:column>
       <p:column headerText="#{msg['pages.cadastroUsuario.endereco']}">
         <p:outputLabel value="#{aux.endereco}" />
+      </p:column>
+      <p:column headerText="#{msg['pages.cadastroUsuario.endereco']}">
+        <p:outputLabel value="#{aux.sexo}" />
       </p:column>
       
    </p:dataTable>	

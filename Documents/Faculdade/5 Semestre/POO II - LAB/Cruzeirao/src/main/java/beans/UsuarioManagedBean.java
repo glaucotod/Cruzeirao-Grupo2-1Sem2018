@@ -1,9 +1,12 @@
 package beans;
 
 import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import models.Sexo;
+import models.Tipo;
 import models.Usuario;
 import services.UsuarioService;
 
@@ -14,7 +17,6 @@ public class UsuarioManagedBean
 {
 	private Usuario usuario = new Usuario();
 	private UsuarioService service = new UsuarioService();	
-	
 	
 	public void salvar()
 	{
@@ -32,5 +34,13 @@ public class UsuarioManagedBean
 
 	public List<Usuario> getUsuarios() {
 		return service.getUsuarios();
+	}
+	
+	public List<Tipo> getTiposUsuarios(){
+		return Tipo.getTipos();
+	}
+	
+	public List<Sexo> getSexos(){
+		return Sexo.getSexos();
 	}
 }

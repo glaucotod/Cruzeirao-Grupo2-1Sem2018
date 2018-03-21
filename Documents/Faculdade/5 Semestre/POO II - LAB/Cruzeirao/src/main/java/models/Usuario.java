@@ -5,23 +5,22 @@ import java.util.List;
 
 public class Usuario {
 	
-	
 	private String email;
 	private String nome;
 	private Date dataNascimento;
 	private List<Equipe> equipes;
 	private List<Inscrito> inscricoes;
 	private List<Campeonato> campeonatos;
-	private Enum tipo;
+	private Tipo tipo;
 	private String telefoneFixo;
 	private String telefoneMovel;
 	private String endereco;
 	private String rg;
 	private String cpf;
 	private String cref;
-	private Enum sexo;
+	private Sexo sexo;
 	private String foto;
-	
+
 	public String getEmail() {
 		return email;
 	}
@@ -58,10 +57,10 @@ public class Usuario {
 	public void setCampeonatos(List<Campeonato> campeonatos) {
 		this.campeonatos = campeonatos;
 	}
-	public Enum getTipo() {
+	public Tipo getTipo() {
 		return tipo;
 	}
-	public void setTipo(Enum tipo) {
+	public void setTipo(Tipo tipo) {
 		this.tipo = tipo;
 	}
 	public String getTelefoneFixo() {
@@ -100,10 +99,10 @@ public class Usuario {
 	public void setCref(String cref) {
 		this.cref = cref;
 	}
-	public Enum getSexo() {
+	public Sexo getSexo() {
 		return sexo;
 	}
-	public void setSexo(Enum sexo) {
+	public void setSexo(Sexo sexo) {
 		this.sexo = sexo;
 	}
 	public String getFoto() {

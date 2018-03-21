@@ -45,13 +45,13 @@
 	      
 		  </p:panelGrid>
 	  <p:commandButton value="Salvar" 
-	                 action="#{CategoriaManagedBean.salvar}"
+	                 action="#{categoriaManagedBean.salvar}"
 	                 update=":formCategoria, :tabelaCategoria"
 	                 />
        </h:form>
        
 	<!-- Relatorio -->
-	<p:dataTable value="#{usuarioManagedBean.usuarios}"
+	<p:dataTable value="#{}"
                 var="aux"
                 id="tabelaCategoria"
    >

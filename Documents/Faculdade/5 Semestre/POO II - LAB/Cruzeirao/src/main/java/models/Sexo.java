@@ -3,22 +3,19 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
-public enum Tipo {
+public enum Sexo {
 	
-	JOGADOR ("JOGADOR","Jogador"), 
-	TECNICO ("TECNICO","Técnico"),
-	MASSAGISTA ("MASSAGISTA", "Massagista"), 
-	AUXILIAR ("AUXILIAR", "Auxiliar"),
-	PREPARADOR_FISICO ("PREPARADOR_FISICO", "Preparador Físico");
+	MASCULINO("MASCULINO","Masculino"),
+	FEMININO("FEMININO", "Feminino");
 	
 	private String nome;
 	private String valor;
 	
-	private Tipo() {
+	private Sexo() {
 		
 	}
-	
-	private Tipo(String nome, String valor) {
+
+	private Sexo(String nome, String valor) {
 		this.nome = nome;
 		this.valor = valor;
 	}
@@ -44,13 +41,12 @@ public enum Tipo {
 		return valor;
 	}
 	
-	public static List<Tipo> getTipos(){
+	public static List<Sexo> getSexos(){
+		List<Sexo> sexos = new ArrayList<Sexo>();
 		
-		List<Tipo> tipos = new ArrayList<Tipo>();
-		
-		for(Tipo tipo : Tipo.values())
-			tipos.add(tipo);
-		
-		return tipos;
+		for(Sexo sexo : Sexo.values())
+			sexos.add(sexo);
+		return sexos;
 	}
+
 }
