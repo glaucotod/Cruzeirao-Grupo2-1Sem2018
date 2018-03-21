@@ -8,7 +8,7 @@ import javax.faces.bean.SessionScoped;
 import models.Sexo;
 import models.Tipo;
 import models.Usuario;
-import services.UsuarioService;
+import service.UsuarioService;
 
 
 @ManagedBean(name = "usuarioManagedBean")

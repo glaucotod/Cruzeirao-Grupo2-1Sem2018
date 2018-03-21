@@ -7,7 +7,7 @@ import javax.faces.bean.SessionScoped;
 
 import models.Categoria;
 import models.Sexo;
-import services.CategoriaService;
+import service.CategoriaService;
 
 @ManagedBean(name = "categoriaManagedBean")
 @SessionScoped
