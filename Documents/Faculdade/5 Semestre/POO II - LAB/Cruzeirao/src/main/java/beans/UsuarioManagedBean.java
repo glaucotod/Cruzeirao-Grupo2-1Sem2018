@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.model.SelectItem;
 
 import models.Sexo;
 import models.Tipo;
@@ -17,6 +18,7 @@ public class UsuarioManagedBean
 {
 	private Usuario usuario = new Usuario();
 	private UsuarioService service = new UsuarioService();	
+	private List<SelectItem> sexo;
 	
 	public void salvar()
 	{
