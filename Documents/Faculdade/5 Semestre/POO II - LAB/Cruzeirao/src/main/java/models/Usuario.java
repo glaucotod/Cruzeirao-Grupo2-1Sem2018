@@ -7,6 +7,7 @@ public class Usuario {
 	
 	private String email;
 	private String nome;
+	private String senha;
 	private Date dataNascimento;
 	private List<Equipe> equipes;
 	private List<Inscrito> inscricoes;
@@ -110,5 +111,11 @@ public class Usuario {
 	}
 	public void setFoto(String foto) {
 		this.foto = foto;
+	}
+	public String getSenha() {
+		return senha;
+	}
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}	
 }

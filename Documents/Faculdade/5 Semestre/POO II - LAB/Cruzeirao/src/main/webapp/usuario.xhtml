@@ -25,6 +25,9 @@
 		      <p:outputLabel value="Email:" />
 		      <p:inputText value="#{usuarioManagedBean.usuario.email}"/>
 		      
+		      <p:outputLabel value="Senha:" />
+		      <p:inputText value="#{usuarioManagedBean.usuario.senha}"/>
+		      
 		      <p:outputLabel value="Data de nascimento:" />
 	          <p:calendar value="#{usuarioManagedBean.usuario.dataNascimento}" effect="fold" />
 	          
@@ -53,9 +56,8 @@
 		      
 		      <p:outputLabel value="Sexo:" />	
 		       <p:selectOneMenu value="#{usuarioManagedBean.usuario.sexo}" style="width:125px">
-		        	<f:selectItem itemLabel="" itemValue="" />
-	            	<f:selectItem itemLabel="Feminino" itemValue="sex1" />
-	            	<f:selectItem itemLabel="Masculino" itemValue="sex2" />
+	            	<f:selectItem itemLabel="Feminino" itemValue="Feminino" />
+	            	<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
 	          	</p:selectOneMenu>
 		      
 		      <p:outputLabel value="Numero de registro CREF:" />
