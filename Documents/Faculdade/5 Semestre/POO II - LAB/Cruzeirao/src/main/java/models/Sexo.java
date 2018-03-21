@@ -5,8 +5,8 @@ import java.util.List;
 
 public enum Sexo {
 	
-	MASCULINO("MASCULINO","Masculino"),
-	FEMININO("FEMININO", "Feminino");
+	MASCULINO("Masculino","Masculino"),
+	FEMININO("Feminino", "Feminino");
 	
 	private String nome;
 	private String valor;

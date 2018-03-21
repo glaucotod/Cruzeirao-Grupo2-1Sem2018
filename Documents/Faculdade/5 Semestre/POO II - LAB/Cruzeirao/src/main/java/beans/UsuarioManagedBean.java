@@ -18,14 +18,33 @@ public class UsuarioManagedBean
 {
 	private Usuario usuario = new Usuario();
 	private UsuarioService service = new UsuarioService();	
-	private List<SelectItem> sexo;
 	
 	public void salvar()
 	{
 		service.salvar(usuario);
 		usuario = new Usuario();		
 	}
+	
+	public SelectItem[] getTiposSexo()
+	{
+		SelectItem[] sexos = new SelectItem[Sexo.values().length];
+		int i = 0;
+		for(Sexo s: Sexo.values()) {
+			sexos[i++] = new SelectItem(s, s.getNome());
+		}
+		return sexos;
+	}
 
+	public SelectItem[] getTiposCadastro()
+	{
+		SelectItem[] tipos = new SelectItem[Tipo.values().length];
+		int i = 0;
+		for(Tipo t: Tipo.values()) {
+			tipos[i++] = new SelectItem(t, t.getNome());
+		}
+		return tipos;
+	}
+	
 	public Usuario getUsuario() {
 		return usuario;
 	}

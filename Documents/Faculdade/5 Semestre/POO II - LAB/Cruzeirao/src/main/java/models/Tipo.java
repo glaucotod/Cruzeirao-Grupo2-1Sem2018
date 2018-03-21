@@ -5,11 +5,11 @@ import java.util.List;
 
 public enum Tipo {
 	
-	JOGADOR ("JOGADOR","Jogador"), 
-	TECNICO ("TECNICO","Técnico"),
-	MASSAGISTA ("MASSAGISTA", "Massagista"), 
-	AUXILIAR ("AUXILIAR", "Auxiliar"),
-	PREPARADOR_FISICO ("PREPARADOR_FISICO", "Preparador Físico");
+	JOGADOR ("Jogador","Jogador"), 
+	TECNICO ("Técnico","Tecnico"),
+	MASSAGISTA ("Massagista", "Massagista"), 
+	AUXILIAR ("Auxiliar", "Auxiliar"),
+	PREPARADOR_FISICO ("Preparador Físico", "Preparador_Fisico");
 	
 	private String nome;
 	private String valor;
