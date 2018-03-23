@@ -64,4 +64,9 @@ public class UsuarioManagedBean
 	public List<Sexo> getSexos(){
 		return Sexo.getSexos();
 	}
+	
+	public boolean isPreparadorFisico()
+	{
+		return false;
+	}
 }

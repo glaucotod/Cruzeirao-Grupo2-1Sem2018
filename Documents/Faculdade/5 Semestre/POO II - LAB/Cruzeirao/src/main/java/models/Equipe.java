@@ -3,6 +3,11 @@ package models;
 import java.util.Date;
 import java.util.List;
 
+import org.primefaces.event.DragDropEvent;
+
+//import beans.LocalManagedBean;
+import beans.UsuarioManagedBean;
+
 public class Equipe {
 
 	private String nome;
@@ -34,4 +39,7 @@ public class Equipe {
 	public void setDiretores(List<Usuario> diretores) {
 		this.diretores = diretores;
 	}
+	
+
+	
 }
