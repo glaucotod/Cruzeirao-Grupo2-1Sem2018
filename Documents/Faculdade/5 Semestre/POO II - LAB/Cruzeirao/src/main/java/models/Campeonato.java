@@ -14,7 +14,7 @@ public class Campeonato {
 	private Date dataInicioCampeonato;
 	private Date dataFimCampeonato;
 	private double valorTaxa;
-	
+	private int ano;
 	
 	public String getNome() {
 		return nome;
@@ -70,5 +70,10 @@ public class Campeonato {
 	public void setValorTaxa(double valorTaxa) {
 		this.valorTaxa = valorTaxa;
 	}
-	
+	public int getAno() {
+		return ano;
+	}
+	public void setAno(int ano) {
+		this.ano = ano;
+	}
 }
