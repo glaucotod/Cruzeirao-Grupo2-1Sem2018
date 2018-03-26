@@ -38,25 +38,25 @@
 	  	<p:calendar value="#{CampeonatoManagedBean.campeonato.dataFimCampeonato}"  />
 	  	
 	  	 <p:outputLabel value="Selecionar juízes" />
-       	 <p:selectCheckboxMenu id="multipleJuiz" value="#{CampeonatoManagedBean.campeonato.juizes}" label="Juízes" multiple="true"
+       	 <p:selectCheckboxMenu id="multipleJuiz" value="#{JuizManagedBean.juiz}" label="Juízes" multiple="true"
                               filter="true" filterMatchMode="startsWith">
                               
          </p:selectCheckboxMenu>
          
          <p:outputLabel value="Selecionar locais" />
-       	 <p:selectCheckboxMenu id="multipleLocal" value="#{CampeonatoManagedBean.campeonato.locais}" label="Locais" multiple="true"
+       	 <p:selectCheckboxMenu id="multipleLocal" value="#{LocalManagedBean.local}" label="Locais" multiple="true"
                               filter="true" filterMatchMode="startsWith">
          </p:selectCheckboxMenu>
          
          <p:outputLabel value="Selecionar categorias" />
-       	 <p:selectCheckboxMenu id="multipleCategoria" value="#{CampeonatoManagedBean.campeonato.categorias}" label="Categorias" multiple="true"
+       	 <p:selectCheckboxMenu id="multipleCategoria" value="#{categoriaManagedBean.categorias}" label="Categorias" multiple="true"
                               filter="true" filterMatchMode="startsWith">
          </p:selectCheckboxMenu>
 	  </p:panelGrid>
 	  
 	
 	<p:commandButton value="Salvar" 
-	                 action="#{CampeonatoManagedBean.salvar}"
+	                 action="#{CampeonatoManagedBean.salvar()}"
 	                 update=":formCampeonato, :tabelaCampeonato"
 	                 />
        </h:form>
