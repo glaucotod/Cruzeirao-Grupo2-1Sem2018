@@ -8,7 +8,7 @@ import models.Campeonato;
 
 public class CampeonatoService {
 
-private ArrayList <Campeonato> campeonatos = new ArrayList<Campeonato>();
+	private ArrayList <Campeonato> campeonatos = new ArrayList<Campeonato>();
 	
 	public CampeonatoService()
 	{

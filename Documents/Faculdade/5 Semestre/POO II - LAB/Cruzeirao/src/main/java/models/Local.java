@@ -2,13 +2,51 @@ package models;
 
 public class Local {
 
-	private String endereco;
-
-	public String getEndereco() {
-		return endereco;
+	private String nome, logradouro, bairro, UF, municipio;
+	private int numeroLocal, CEP;
+	
+	public String getNome() {
+		return nome;
 	}
-
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
+	public String getLogradouro() {
+		return logradouro;
+	}
+	public void setLogradouro(String logradouro) {
+		this.logradouro = logradouro;
+	}
+	public String getBairro() {
+		return bairro;
+	}
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+	public String getUF() {
+		return UF;
+	}
+	public void setUF(String uF) {
+		UF = uF;
+	}
+	public String getMunicipio() {
+		return municipio;
+	}
+	public void setMunicipio(String municipio) {
+		this.municipio = municipio;
+	}
+	public int getNumeroLocal() {
+		return numeroLocal;
+	}
+	public void setNumeroLocal(int numeroLocal) {
+		this.numeroLocal = numeroLocal;
+	}
+	public int getCEP() {
+		return CEP;
+	}
+	public void setCEP(int cEP) {
+		CEP = cEP;
+	}
+	
+	
 }

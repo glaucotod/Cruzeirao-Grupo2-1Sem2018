@@ -24,43 +24,45 @@
       	<p:inputText value="#{campeonatoManagedBean.campeonato.ano}"/>
 	  	
 	  	<p:outputLabel value="Data de ínicio das inscrições:" />
-	  	<p:calendar value="#{CampeonatoManagedBean.campeonato.dataInicioInscricao}"/>
+	  	<p:calendar value="#{campeonatoManagedBean.campeonato.dataInicioInscricao}"/>
 	  	
 	  	
 	  	<p:outputLabel value="Data do fim das inscrições:" />
-	  	<p:calendar value="#{CampeonatoManagedBean.campeonato.dataFimInscricao}"/>
+	  	<p:calendar value="#{campeonatoManagedBean.campeonato.dataFimInscricao}"/>
 	  	
 	  	
 	  	<p:outputLabel value="Data de início do campeonato:" />
-	  	<p:calendar value="#{CampeonatoManagedBean.campeonato.dataInicioCampeonato}" />
+	  	<p:calendar value="#{campeonatoManagedBean.campeonato.dataInicioCampeonato}" />
 	  	
 	  	<p:outputLabel value="Data de fim do campeonato:" />
-	  	<p:calendar value="#{CampeonatoManagedBean.campeonato.dataFimCampeonato}"  />
+	  	<p:calendar value="#{campeonatoManagedBean.campeonato.dataFimCampeonato}"  />
 	  	
 	  	 <p:outputLabel value="Selecionar juízes" />
-       	 <p:selectCheckboxMenu id="multipleJuiz" value="#{JuizManagedBean.juiz}" label="Juízes" multiple="true"
+       	 <p:selectCheckboxMenu id="multipleJuiz" value="#{campeonatoManagedBean.campeonato.juizes}" label="Juízes" multiple="true"
                               filter="true" filterMatchMode="startsWith">
-                              
+			<f:selectItems value="#{juizManagedBean.juizes}" />               
          </p:selectCheckboxMenu>
          
          <p:outputLabel value="Selecionar locais" />
-       	 <p:selectCheckboxMenu id="multipleLocal" value="#{LocalManagedBean.local}" label="Locais" multiple="true"
+       	 <p:selectCheckboxMenu id="multipleLocal" value="#{campeonatoManagedBean.campeonato.locais}" label="Locais" multiple="true"
                               filter="true" filterMatchMode="startsWith">
+                              <f:selectItems value="#{localManagedBean.locais}" />  
          </p:selectCheckboxMenu>
          
          <p:outputLabel value="Selecionar categorias" />
-       	 <p:selectCheckboxMenu id="multipleCategoria" value="#{categoriaManagedBean.categorias}" label="Categorias" multiple="true"
+       	 <p:selectCheckboxMenu id="multipleCategoria" value="#{campeonatoManagedBean.campeonato.categorias}" label="Categorias" multiple="true"
                               filter="true" filterMatchMode="startsWith">
+                              <f:selectItems value="#{categoriaManagedBean.categorias}" />  
          </p:selectCheckboxMenu>
 	  </p:panelGrid>
 	  
 	
 	<p:commandButton value="Salvar" 
-	                 action="#{CampeonatoManagedBean.salvar()}"
+	                 action="#{campeonatoManagedBean.salvar}"
 	                 update=":formCampeonato, :tabelaCampeonato"
 	                 />
        </h:form>
-   <p:dataTable value="#{CampeonatoManagedBean.Campeonato}"
+   <p:dataTable value="#{campeonatoManagedBean.campeonatos}"
                 var="aux"
                 id="tabelaCampeonato"
    >

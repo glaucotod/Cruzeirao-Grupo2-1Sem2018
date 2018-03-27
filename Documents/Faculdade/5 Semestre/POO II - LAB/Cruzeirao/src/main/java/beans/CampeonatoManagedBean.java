@@ -3,19 +3,15 @@ package beans;
 
 import java.util.List;
 
-import javax.faces.bean.ApplicationScoped;
+//import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-
-import org.primefaces.event.DragDropEvent;
+import javax.faces.bean.SessionScoped;
 
 import models.Campeonato;
-import models.Juiz;
-import models.Local;
 import service.CampeonatoService;
 
-@ManagedBean(eager=true)
-@ApplicationScoped
-
+@ManagedBean(eager=true, name = "campeonatoManagedBean")
+@SessionScoped
 public class CampeonatoManagedBean {
 
 	private CampeonatoService service = new CampeonatoService();
@@ -40,19 +36,6 @@ public class CampeonatoManagedBean {
 	public List<Campeonato> getCampeonatos() {
 		return service.getCampeonatos();
 	}
-
-	//Precisa arrumar
-	/*public void onJuizDrop(DragDropEvent ddEvent, JuizManagedBean juizes) {
-        Juiz juiz = ((Juiz) ddEvent.getData());
-        campeonato.getJuizes().add(juiz);
-        juizes.remover(juiz);
-    }
-	
-	public void onLocalDrop(DragDropEvent ddEvent, LocalManagedBean locais) {
-        Local local = ((Local) ddEvent.getData());
-        campeonato.getLocais().add(local);
-        locais.remover(local);
-    }*/
 	
 	
 }
