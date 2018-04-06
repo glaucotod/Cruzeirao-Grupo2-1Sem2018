@@ -1,0 +1,77 @@
+<ui:composition template="templateMenu.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+>
+	
+	<ui:define name="title">
+		<h:outputText value="#{msg['pages.cadastroLocal.title']}" />
+	</ui:define>
+
+	<ui:define name="principal">
+	  
+	  <h1><p:outputLabel value="#{msg['pages.cadastroLocal.menu']}"/></h1>
+	  
+	  <h:form id="formLocal">	
+	  <p:panelGrid columns="2">
+	  	<p:outputLabel value="Nome:" />
+      	<p:inputText value="#{localManagedBean.local.nome}" required = "true"/>
+      	
+      	<p:outputLabel value="Logradouro:" />
+      	<p:inputText value="#{localManagedBean.local.logradouro}"/>
+	  	
+	  	<p:outputLabel value="Número:" />
+	  	<p:inputText value="#{localManagedBean.local.numeroLocal}"/>
+	  	
+	  	<p:outputLabel value="Bairro:" />
+	  	<p:inputText value="#{localManagedBean.local.bairro}"/>
+	  	
+	  	<p:outputLabel value="UF:" />
+	  	<p:inputText value="#{localManagedBean.local.UF}"/>
+	  	
+	  	<p:outputLabel value="Município:" />
+	  	<p:inputText value="#{localManagedBean.local.municipio}"/>
+	  	
+	  	<p:outputLabel value="CEP:" />
+	  	<p:inputMask value="#{localManagedBean.local.CEP}" mask = "99999-999"/>
+	  	
+	  </p:panelGrid>
+	  
+	
+	<p:commandButton value="Salvar" 
+	                 action="#{localManagedBean.salvar}"
+	                 update=":formLocal, :tabelaLocal"
+	                 />
+       </h:form>
+   <p:dataTable value="#{localManagedBean.locais}"
+                var="aux"
+                id="tabelaLocal"
+   >
+      <p:column headerText="Nome">
+        <p:outputLabel value="#{aux.nome}" />
+      </p:column>
+      <p:column headerText="Logradouro">
+        <p:outputLabel value="#{aux.logradouro}" />
+      </p:column>
+      <p:column headerText="Número">
+        <p:outputLabel value="#{aux.numeroLocal}" />
+      </p:column>
+      <p:column headerText="Bairro">
+        <p:outputLabel value="#{aux.bairro}" />
+      </p:column>
+      <p:column headerText="UF">
+        <p:outputLabel value="#{aux.UF}" />
+      </p:column>
+      <p:column headerText="Município">
+        <p:outputLabel value="#{aux.municipio}" />
+      </p:column>
+      
+      
+      
+   </p:dataTable>	
+	   
+	</ui:define>
+</ui:composition>
