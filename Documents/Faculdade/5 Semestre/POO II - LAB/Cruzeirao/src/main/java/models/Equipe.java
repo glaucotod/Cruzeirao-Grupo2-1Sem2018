@@ -3,17 +3,20 @@ package models;
 import java.util.Date;
 import java.util.List;
 
+import javax.faces.model.SelectItem;
+
 import org.primefaces.event.DragDropEvent;
 
 //import beans.LocalManagedBean;
 import beans.UsuarioManagedBean;
+import service.UsuarioService;
 
 public class Equipe {
 
 	private String nome;
 	private Date dataFundacao;
 	private String cidade;
-	private List<Usuario> diretores;
+	private Usuario diretor;
 	
 	public String getNome() {
 		return nome;
@@ -33,13 +36,13 @@ public class Equipe {
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
 	}
-	public List<Usuario> getDiretores() {
-		return diretores;
+	public Usuario getDiretor() {
+		return diretor;
 	}
-	public void setDiretores(List<Usuario> diretores) {
-		this.diretores = diretores;
+	public void setDiretor(Usuario diretor) {
+		this.diretor = diretor;
 	}
-	
+
 
 	
 }
