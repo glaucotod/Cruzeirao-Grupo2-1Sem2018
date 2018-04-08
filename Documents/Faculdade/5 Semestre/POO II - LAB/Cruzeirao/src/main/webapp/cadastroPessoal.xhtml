@@ -57,10 +57,10 @@
 		      <p:outputLabel value="Numero de registro CREF:" enable="#{usuarioManagedBean.isPreparadorFisico}" />
 		      <p:inputText value="#{usuarioManagedBean.usuario.cref}" enable="#{usuarioManagedBean.tiposUsuarios == 'Preparador_Fisico'}" />
 		      
-		      <!--  <p:outputLabel value="Foto:" />	         
+		      <p:outputLabel value="Foto:"/>	         
 		      <p:fileUpload fileUploadListener="#{fileUploadView.handleFileUpload}" mode="advanced" dragDropSupport="true"
 	           update="messages" sizeLimit="10000000" fileLimit="1" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
-	          <p:growl id="messages" showDetail="true" />-->      			
+	          <p:growl id="messages" showDetail="true" />     			
 	      
 		  </p:panelGrid>
 	  <p:commandButton value="Salvar" 

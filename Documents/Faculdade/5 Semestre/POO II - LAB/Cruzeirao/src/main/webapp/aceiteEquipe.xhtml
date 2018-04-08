@@ -1,0 +1,68 @@
+<ui:composition template="templateMenu.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+>
+	
+	<ui:define name="title">
+		<h:outputText value="Aceite de Equipes" />
+	</ui:define>
+
+	<ui:define name="principal">
+	  
+    	<h1><p:outputLabel value="Aceite de Equipes"/></h1>	  
+		<h:form id="formAceiteEquipe">	
+			<p:panelGrid columns="4">		       			
+		      	<p:dataTable var="equipe" value="#{equipeManagedBean.equipes}">
+	            	<f:facet name="header">
+	            		Equipes não confirmadas
+	        		</f:facet>
+	        		<p:column headerText="Nome">
+	            		<h:outputText value="#{equipe.Nome}" />
+	        		</p:column>
+	        		<p:column headerText="Data de fundação">
+	            		<h:outputText value="#{equipe.dataFundacao}" />
+	        		</p:column>
+	        		<p:column headerText="Cidade">
+	            		<h:outputText value="#{equipe.cidade}" />
+	        		</p:column>
+	        		<p:column headerText="Diretor">
+	            		<h:outputText value="#{equipe.diretor}" />
+	        		</p:column>
+	        		<p:column style="width:32px;text-align: center">
+	             	<p:commandButton update=":form:equipeDetail" oncomplete="PF('equipeDialog').show()" icon="ui-icon-search" title="View">
+	                	<f:setPropertyActionListener value="#{equipe}" target="#{equipeManagedBean.selectedEquipe}" />
+	            	</p:commandButton>
+	        		</p:column>
+	    		</p:dataTable>
+			</p:panelGrid>
+	  
+        </h:form>
+        
+        <p:dialog header="Informações da equipe" widgetVar="equipeDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+        <p:outputPanel id="equipeDetail" style="text-align:center;">
+            <p:panelGrid  columns="2" rendered="#{not empty equipeManagedBean.selectedEquipe}" columnClasses="label,value">
+                <f:facet name="header">
+                    <p:graphicImage name="demo/images/car/#{dtSelectionView.selectedCar.brand}-big.gif"/> 
+                </f:facet>
+ 
+                <h:outputText value="Nome:" />
+                <h:outputText value="#{equipeManagedBean.selectedEquipe.usuarios.nome}" />
+ 
+                <h:outputText value="Data de nascimento:" />
+                <h:outputText value="#{equipeManagedBean.selectedEquipe.usuarios.dataNascimento}" />
+ 
+                <h:outputText value="Tipo:" />
+                <h:outputText value="#{equipeManagedBean.selectedEquipe.usuarios.tipo}"/>
+ 
+                <h:outputText value="Sexo:" />
+                <h:outputText value="#{equipeManagedBean.selectedEquipe.usuarios.sexo}" />
+            </p:panelGrid>
+        </p:outputPanel>
+    </p:dialog>
+
+	</ui:define>
+</ui:composition>
