@@ -42,7 +42,9 @@ public class Equipe {
 	public void setDiretor(Usuario diretor) {
 		this.diretor = diretor;
 	}
-
+	public String nomeDiretor() {
+		return diretor.getNome();
+	}
 
 	
 }

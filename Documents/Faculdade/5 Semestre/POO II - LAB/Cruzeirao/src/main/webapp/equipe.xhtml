@@ -29,24 +29,25 @@
 		      <p:outputLabel value="Cidade: " />
 	          <p:inputText value="#{equipeMB.equipe.cidade}"/>
 	          
-	          <p:outputLabel value="Responsável:" />
-		      <p:selectOneMenu value="#{equipeMB.equipe.diretor}" style="width:125px" required="true">
-		       <f:selectItems value="#{equipeMB.usuariosDiretor}" var="t" 
-				itemLabel="#{t.nome}" itemValue="#{t}"/>
-	          </p:selectOneMenu>
-		      	
-		
+		<p:outputLabel value="Responsável:" />
+		<p:selectOneMenu 
+				value="#{equipeMB.usuario.email}">
+				<f:selectItem itemLabel="Selecione um Usuario" />
+				<f:selectItems value="#{equipeMB.listarUsuarios()}" var="usr"
+					itemValue="#{usr.email}" itemLabel="#{usr.nome}" />
+		</p:selectOneMenu>
+			
 		  </p:panelGrid>
 		  
 		  
 	  <p:commandButton value="Salvar" 
-	                 action="#{CategoriaManagedBean.salvar}"
+	                 action="#{equipeMB.salvar}"
 	                 update=":formEquipe, :tabelaEquipe"
 	                 />
        </h:form>
        
 	<!-- Relatorio -->
-	<p:dataTable value="#{equipeManagedBean.equipes}"
+	<p:dataTable value="#{equipeMB.equipes}"
                 var="aux"
                 id="tabelaEquipe"
    >
@@ -58,6 +59,9 @@
       </p:column>
       <p:column headerText="Cidade">
         <p:outputLabel value="#{aux.cidade}" />
+      </p:column>
+        <p:column headerText="Diretor">
+        <p:outputLabel value="#{aux.diretor.getNome()}" />
       </p:column>
    </p:dataTable>		  
 	   
