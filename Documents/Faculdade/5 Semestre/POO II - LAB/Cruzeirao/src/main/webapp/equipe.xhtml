@@ -1,0 +1,69 @@
+
+<ui:composition template="templateMenu.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+>
+	
+	<ui:define name="title">
+		<h:outputText value="Cadastro de Equipe" />
+	</ui:define>
+	
+
+	<ui:define name="principal">
+	  
+	  <h1><p:outputLabel value="Cadastro de Equipe"/></h1>
+	  
+	  <h:form id="formEquipe">	
+		  <p:panelGrid columns="4">	 
+ 
+			  <p:outputLabel value="Nome:" />
+		      <p:inputText value="#{equipeMB.equipe.nome}"/>
+		      
+		      <p:outputLabel value="Data da fundação:" />
+		     <p:calendar value="#{equipeMB.equipe.dataFundacao}" effect="fold" required="true" requiredMessage="Campo obrigatório"  />
+	          
+		      <p:outputLabel value="Cidade: " />
+	          <p:inputText value="#{equipeMB.equipe.cidade}"/>
+	          
+		<p:outputLabel value="Responsável:" />
+		<p:selectOneMenu 
+				value="#{equipeMB.usuario.email}">
+				<f:selectItem itemLabel="Selecione um Usuario" />
+				<f:selectItems value="#{equipeMB.listarUsuarios()}" var="usr"
+					itemValue="#{usr.email}" itemLabel="#{usr.nome}" />
+		</p:selectOneMenu>
+			
+		  </p:panelGrid>
+		  
+		  
+	  <p:commandButton value="Salvar" 
+	                 action="#{equipeMB.salvar}"
+	                 update=":formEquipe, :tabelaEquipe"
+	                 />
+       </h:form>
+       
+	<!-- Relatorio -->
+	<p:dataTable value="#{equipeMB.equipes}"
+                var="aux"
+                id="tabelaEquipe"
+   >
+      <p:column headerText="Nome">
+        <p:outputLabel value="#{aux.nome}" />
+      </p:column>   
+      <p:column headerText="Data Fundacao">
+        <p:outputLabel value="#{aux.dataFundacao}" />
+      </p:column>
+      <p:column headerText="Cidade">
+        <p:outputLabel value="#{aux.cidade}" />
+      </p:column>
+        <p:column headerText="Diretor">
+        <p:outputLabel value="#{aux.diretor.getNome()}" />
+      </p:column>
+   </p:dataTable>		  
+	   
+	</ui:define>
+</ui:composition>

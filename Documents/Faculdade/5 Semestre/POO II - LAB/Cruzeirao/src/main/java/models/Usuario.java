@@ -125,4 +125,7 @@ public class Usuario {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+	public String toString() {
+		return this.nome;
+	}
 }

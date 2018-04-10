@@ -24,5 +24,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="lib/journaldev.jar"/>
+	<classpathentry kind="lib" path="src/images/header.png"/>
+	<classpathentry kind="lib" path="src/main/webapp/resources/images/header.png"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
