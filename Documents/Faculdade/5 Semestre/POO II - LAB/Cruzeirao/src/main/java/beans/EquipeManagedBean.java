@@ -1,7 +1,6 @@
 package beans;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
