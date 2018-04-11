@@ -63,12 +63,13 @@
 	          <p:growl id="messages" showDetail="true" />   -->  			
 	      
 		  </p:panelGrid>
+<br/>
 	  <p:commandButton value="Salvar" 
 	                 action="#{usuarioManagedBean.salvar}"
 	                 update=":formUsuario, :tabelaUsuario"
 	                 />
        </h:form>       
-
+ <br/>
    <p:dataTable value="#{usuarioManagedBean.usuarios}"
                 var="aux"
                 id="tabelaUsuario"

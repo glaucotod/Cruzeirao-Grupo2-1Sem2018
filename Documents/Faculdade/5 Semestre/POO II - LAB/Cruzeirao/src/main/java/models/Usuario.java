@@ -7,7 +7,7 @@ public class Usuario {
 	
 	private String email;
 	private String nome;
-	private String userName;
+	private String userName="";
 	private String senha;
 	private Date dataNascimento;
 	private List<Equipe> equipes;

@@ -6,10 +6,12 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui2="http://java.sun.com/jsf/facelets"
 >
+	
 	<ui:define name="title">
 		<h:outputText value="Usuario" />
 	</ui:define>
 	
+
 	<ui:define name="principal">
 	  
 	  <h1><p:outputLabel value="Cadastro de usuarios	"/></h1>
@@ -18,31 +20,27 @@
 		  <p:panelGrid columns="2">	 
  
 			  <p:outputLabel value="Nome:"/>
-		      <p:inputText value="#{usuarioManagedBean.usuario.userName}" required="true" requiredMessage="Campo obrigatório" />        
+		      <p:inputText value="#{usuarioManagedBean.usuario.userName}" required="true" requiredMessage="Campo obrigatório" />
 		      <p:outputLabel value="Senha:" />	
 	      	  <p:password id="pwd1" value="#{usuarioManagedBean.usuario.senha}" feedback="true" inline="true" required="true" match="pwd2" />
 	      	  <p:outputLabel value="Confirme a senha:" />	
 	      	  <p:password id="pwd2" value="#{usuarioManagedBean.usuario.senha}" feedback="true" inline="true" required="true"/>
 	      	  
 		  </p:panelGrid>
-	  <p:commandButton value="Confirmar cadastro" 
-	                 action="#{usuarioManagedBean.salvar}" 
-	                 update=":formUsuario, :tabelaUsuario"	                 
+	  <p:commandButton value="Salvar" 
+	                 action="#{usuarioManagedBean.salvar}"
+	                 update=":formUsuario, :tabelaUsuario"
 	                 />
-	   <p:commandButton value="Continuar" 
-	                 ajax="false"
-					 action="cadastroPessoal.xhmtl?faces-redirect=true"
-					 />	                 	                          
        </h:form>       
-
+<br/>
    <p:dataTable value="#{usuarioManagedBean.usuarios}"
                 var="aux"
                 id="tabelaUsuario"
    >      
-	 
+	 <br/>
       <p:column headerText="Nome">
         <p:outputLabel value="#{aux.userName}" />
-      </p:column>      
+      </p:column>  
       <p:column headerText="Senha">
         <p:outputLabel value="#{aux.senha}" />
       </p:column>

@@ -39,13 +39,14 @@
 	  	<p:inputMask value="#{localManagedBean.local.CEP}" mask = "99999-999"/>
 	  	
 	  </p:panelGrid>
-	  
+	  <br/>
 	
 	<p:commandButton value="Salvar" 
 	                 action="#{localManagedBean.salvar}"
 	                 update=":formLocal, :tabelaLocal"
 	                 />
        </h:form>
+       <br/>
    <p:dataTable value="#{localManagedBean.locais}"
                 var="aux"
                 id="tabelaLocal"

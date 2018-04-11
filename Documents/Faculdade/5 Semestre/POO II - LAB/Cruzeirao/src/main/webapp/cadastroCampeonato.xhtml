@@ -61,11 +61,13 @@
 
 			</p:panelGrid>
 
-
+<br/>
 			<p:commandButton value="Salvar"
 				action="#{campeonatoManagedBean.salvar}"
 				update=":formCampeonato, :tabelaCampeonato" />
+				
 		</h:form>
+		<br/>
 		<p:dataTable value="#{campeonatoManagedBean.campeonatos}" var="aux"
 			id="tabelaCampeonato">
 			<p:column headerText="Nome">
