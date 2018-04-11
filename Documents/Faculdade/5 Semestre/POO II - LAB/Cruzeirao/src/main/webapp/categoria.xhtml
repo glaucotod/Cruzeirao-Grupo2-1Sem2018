@@ -5,57 +5,62 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:ui2="http://java.sun.com/jsf/facelets"
->
-	
+	xmlns:ui2="http://java.sun.com/jsf/facelets">
+	<f:metadata>
+		<f:viewParam name="Campeonato" value="#{categoriaManagedBean.categoria.campeonato}" />
+	</f:metadata>
+		
+	<p:outputLabel value="#{categoriaManagedBean.categoria.campeonato}" />
 	<ui:define name="title">
 		<h:outputText value="Categoria" />
 	</ui:define>
-	
+
 
 	<ui:define name="principal">
-	  
-	  <h1><p:outputLabel value="Cadastro de categorias"/></h1>
-	  
-	  <h:form id="formCategoria">	
-		  <p:panelGrid columns="4">	 
- 
-			  <p:outputLabel value="Nome:" />
-		      <p:inputText value="#{categoriaManagedBean.categoria.nome}"/>
-		      
-		      <p:outputLabel value="Nascidos a partir de:" />
-		      <p:calendar value="#{categoriaManagedBean.categoria.nascidosApartirDe}" effect="folder" />
-		      
-		      <p:outputLabel value="Min. jogadores: " />
-	          <p:inputText value="#{categoriaManagedBean.categoria.minJogadores}"/>
-	          
-	          <p:outputLabel value="Max. jogadores:" />
-		      <p:inputText value="#{categoriaManagedBean.categoria.maxJogadores}"/>
-		      
-		      <p:outputLabel value="Sexo:" />		
-		        <p:selectOneMenu value="#{categoriaManagedBean.categoria.sexo}" style="width:100px">
-		        	<f:selectItem itemLabel="" itemValue="" />
-	            	<f:selectItem itemLabel="Feminino" itemValue="tipo1" />
-	            	<f:selectItem itemLabel="Masculino" itemValue="tipo2" />
-	          	</p:selectOneMenu>
-		    	  			
-	      
-		  </p:panelGrid>
-	  <p:commandButton value="Salvar" 
-	                 action="#{categoriaManagedBean.salvar}"
-	                 update=":formCategoria, :tabelaCategoria"
-	                 />
-       </h:form>
-       
-	<!-- Relatorio -->
-	<p:dataTable value="#{usuarioManagedBean.usuarios}"
-                var="aux"
-                id="tabelaCategoria"
-   >
-      <p:column headerText="Nome">
-        <p:outputLabel value="#{aux.nome}" />
-      </p:column>   
-   </p:dataTable>		  
-	   
+
+		<h1>
+			<p:outputLabel value="Cadastro de categorias" />
+		</h1>
+
+		<h:form id="formCategoria">
+			<p:panelGrid columns="4">
+
+				<p:outputLabel value="Nome:" />
+				<p:inputText value="#{categoriaManagedBean.categoria.nome}" />
+
+				<p:outputLabel value="Nascidos a partir de:" />
+				<p:calendar
+					value="#{categoriaManagedBean.categoria.nascidosApartirDe}"
+					effect="folder" />
+
+				<p:outputLabel value="Min. jogadores: " />
+				<p:inputText value="#{categoriaManagedBean.categoria.minJogadores}" />
+
+				<p:outputLabel value="Max. jogadores:" />
+				<p:inputText value="#{categoriaManagedBean.categoria.maxJogadores}" />
+
+				<p:outputLabel value="Sexo:" />
+				<p:selectOneMenu value="#{categoriaManagedBean.categoria.sexo}"
+					style="width:100px">
+					<f:selectItem itemLabel="" itemValue="" />
+					<f:selectItem itemLabel="Feminino" itemValue="tipo1" />
+					<f:selectItem itemLabel="Masculino" itemValue="tipo2" />
+				</p:selectOneMenu>
+
+
+			</p:panelGrid>
+			<p:commandButton value="Salvar"
+				action="#{categoriaManagedBean.salvar}"
+				update=":formCategoria, :tabelaCategoria" />
+		</h:form>
+
+		<!-- Relatorio -->
+		<p:dataTable value="#{usuarioManagedBean.usuarios}" var="aux"
+			id="tabelaCategoria">
+			<p:column headerText="Nome">
+				<p:outputLabel value="#{aux.nome}" />
+			</p:column>
+		</p:dataTable>
+
 	</ui:define>
 </ui:composition>
