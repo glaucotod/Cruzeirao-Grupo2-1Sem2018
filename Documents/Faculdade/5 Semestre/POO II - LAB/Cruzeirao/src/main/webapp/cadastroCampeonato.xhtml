@@ -50,24 +50,12 @@
 					<f:selectItems value="#{juizManagedBean.juizes}" />
 				</p:selectCheckboxMenu>
 
-				<p:outputLabel value="Selecionar locais" />
-				<p:selectCheckboxMenu id="multipleLocal"
-					value="#{campeonatoManagedBean.campeonato.locais}" label="Locais"
-					multiple="true" filter="true" filterMatchMode="startsWith">
-					<f:selectItems value="#{localManagedBean.locais}" />
-				</p:selectCheckboxMenu>
-
-
-
 			</p:panelGrid>
 
-<br/>
 			<p:commandButton value="Salvar"
 				action="#{campeonatoManagedBean.salvar}"
 				update=":formCampeonato, :tabelaCampeonato" />
-				
 		</h:form>
-		<br/>
 		<p:dataTable value="#{campeonatoManagedBean.campeonatos}" var="aux"
 			id="tabelaCampeonato">
 			<p:column headerText="Nome">
@@ -88,7 +76,15 @@
 
 			<p:column headerText="Categorias">
 				<p:button outcome="categoria" value="Cadastrar categoria">
+				
+					<f:param name="Campeonato" value="aux" />
 
+				</p:button>
+			</p:column>
+			
+			<p:column headerText="Locais">
+				<p:button outcome="cadastroLocal" value="Cadastrar local">
+				
 					<f:param name="Campeonato" value="aux" />
 
 				</p:button>

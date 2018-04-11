@@ -38,15 +38,14 @@
 		</p:selectOneMenu>
 			
 		  </p:panelGrid>
-		  
+		  <br/>
 		  
 	  <p:commandButton value="Salvar" 
 	                 action="#{equipeMB.salvar}"
 	                 update=":formEquipe, :tabelaEquipe"
 	                 />
        </h:form>
-       
-	<!-- Relatorio -->
+       <br/>
 	<p:dataTable value="#{equipeMB.equipes}"
                 var="aux"
                 id="tabelaEquipe"

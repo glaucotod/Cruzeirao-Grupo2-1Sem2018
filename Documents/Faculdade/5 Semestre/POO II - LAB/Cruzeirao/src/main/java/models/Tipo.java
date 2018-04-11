@@ -9,7 +9,8 @@ public enum Tipo {
 	TECNICO ("Técnico","Tecnico"),
 	MASSAGISTA ("Massagista", "Massagista"), 
 	AUXILIAR ("Auxiliar", "Auxiliar"),
-	PREPARADOR_FISICO ("Preparador Físico", "Preparador_Fisico");
+	PREPARADOR_FISICO ("Preparador Físico", "Preparador_Fisico"),
+	JUIZ ("Juíz", "Juiz");
 	
 	private String nome;
 	private String valor;
