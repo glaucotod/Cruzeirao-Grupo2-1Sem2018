@@ -18,10 +18,10 @@
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>*.xhtml</url-pattern>
 	</servlet-mapping>
-	<context-param>
+	<!--  <context-param>
 		<param-name>primefaces.THEME</param-name>
 		<param-value>journaldev</param-value>
-	</context-param>
+	</context-param>-->
 	<listener>
 		<listener-class>com.sun.faces.config.ConfigureListener</listener-class>
 	</listener>
