@@ -1,0 +1,32 @@
+<ui:composition template="templateIndex.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets">
+	
+	<ui:define name="topo">
+	
+		<h:form>  
+			<p:growl id="messages"/>
+				 
+				<p:menubar>
+					<p:menuitem value="Entrar" url="usuario.xhtml" icon="ui-icon-extlink" />
+				</p:menubar>
+			</h:form>
+	</ui:define>
+
+	<ui:define name="principal">
+		<div class="ui-g" style="margin-left: -10px; margin-right: -10px; margin-top: 10px">
+                <div class="ui-g-12 ui-md-12"><p:graphicImage value="imgs/LOGO.jpg" style="height:100%; width:100%"/></div>      
+		</div>
+		
+		<div class="main">
+		
+		
+		
+		</div>
+	
+	</ui:define>
+</ui:composition>

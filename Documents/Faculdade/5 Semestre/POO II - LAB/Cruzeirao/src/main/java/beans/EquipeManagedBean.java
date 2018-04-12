@@ -53,7 +53,7 @@ public class EquipeManagedBean {
 		}			
 		
 		service.conf(equipe);
-		equipe = new Equipe();
+		
 	}
 	
 	public Equipe getEquipe() {

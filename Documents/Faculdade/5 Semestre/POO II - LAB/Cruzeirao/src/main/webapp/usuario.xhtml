@@ -44,7 +44,11 @@
       <p:column headerText="Senha">
         <p:outputLabel value="#{aux.senha}" />
       </p:column>
-      
+      <p:column headerText="Informações do cadastro">
+	  	<p:button outcome="cadastroPessoal" value="Continuar">				
+			<f:param name="Pessoal" value="aux" />
+		</p:button>
+	  </p:column>
    </p:dataTable>	
 	   
 	</ui:define>
