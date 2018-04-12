@@ -2,8 +2,8 @@ package models;
 
 public class Local {
 
-	private String nome, logradouro, bairro, UF, municipio;
-	private int numeroLocal, CEP;
+	private String nome, logradouro, bairro, UF, municipio, CEP;
+	private int numeroLocal;
 	
 	public String getNome() {
 		return nome;
@@ -41,10 +41,10 @@ public class Local {
 	public void setNumeroLocal(int numeroLocal) {
 		this.numeroLocal = numeroLocal;
 	}
-	public int getCEP() {
+	public String getCEP() {
 		return CEP;
 	}
-	public void setCEP(int cEP) {
+	public void setCEP(String cEP) {
 		CEP = cEP;
 	}
 	

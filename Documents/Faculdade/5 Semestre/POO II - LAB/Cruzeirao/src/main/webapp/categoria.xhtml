@@ -40,12 +40,10 @@
 				<p:inputText value="#{categoriaManagedBean.categoria.maxJogadores}" />
 
 				<p:outputLabel value="Sexo:" />
-				<p:selectOneMenu value="#{categoriaManagedBean.categoria.sexo}"
-					style="width:100px">
-					<f:selectItem itemLabel="" itemValue="" />
-					<f:selectItem itemLabel="Feminino" itemValue="tipo1" />
-					<f:selectItem itemLabel="Masculino" itemValue="tipo2" />
-				</p:selectOneMenu>
+				<p:selectOneMenu value="#{categoriaManagedBean.categoria.sexo}" style="width:125px" required="true">
+	            	<f:selectItems value="#{categoriaManagedBean.tiposSexo}" var="t" itemLabel="#{t.nome}" itemValue="#{t}"/>
+	          	</p:selectOneMenu>
+				
 
 
 			</p:panelGrid>
@@ -55,11 +53,21 @@
 		</h:form>
 
 		<!-- Relatorio -->
-		<p:dataTable value="#{usuarioManagedBean.usuarios}" var="aux"
+		<p:dataTable value="#{categoriaManagedBean.categorias}" var="aux"
 			id="tabelaCategoria">
 			<p:column headerText="Nome">
 				<p:outputLabel value="#{aux.nome}" />
 			</p:column>
+			<p:column headerText="Nascidos a partir de">
+				<p:outputLabel value="#{aux.nascidosApartirDe}" />
+			</p:column>
+			<p:column headerText="Minimo de jogadores">
+				<p:outputLabel value="#{aux.minJogadores}" />
+			</p:column>
+			<p:column headerText="Nome">
+				<p:outputLabel value="#{aux.maxJogadores}" />
+			</p:column>
+			
 		</p:dataTable>
 
 	</ui:define>

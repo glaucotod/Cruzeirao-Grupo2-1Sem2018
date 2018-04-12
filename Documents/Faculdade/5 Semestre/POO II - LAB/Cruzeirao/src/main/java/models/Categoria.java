@@ -1,18 +1,22 @@
 package models;
 
+import java.util.Date;
 import java.util.List;
 
 public class Categoria {
 
 	private String nome;
-	private int nascidosApartirDe;
+	private Date nascidosApartirDe;
 	private List<Inscricao> inscricoes;
 	private Campeonato campeonato;
 	private List<Fase> fases;
 	private int minJogadores;
 	private int maxJogadores;
 	private Sexo sexo;
-	private int attribute74;
+	
+	public Categoria() {
+		this.sexo = Sexo.MASCULINO;
+	}
 	
 	public String getNome() {
 		return nome;
@@ -20,10 +24,10 @@ public class Categoria {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public int getNascidosApartirDe() {
+	public Date getNascidosApartirDe() {
 		return nascidosApartirDe;
 	}
-	public void setNascidosApartirDe(int nascidosApartirDe) {
+	public void setNascidosApartirDe(Date nascidosApartirDe) {
 		this.nascidosApartirDe = nascidosApartirDe;
 	}
 	public List<Inscricao> getInscricoes() {
@@ -61,11 +65,5 @@ public class Categoria {
 	}
 	public void setSexo(Sexo sexo) {
 		this.sexo = sexo;
-	}
-	public int getAttribute74() {
-		return attribute74;
-	}
-	public void setAttribute74(int attribute74) {
-		this.attribute74 = attribute74;
 	}
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.model.SelectItem;
 
 import models.Categoria;
 import models.Sexo;
@@ -28,6 +29,16 @@ public class CategoriaManagedBean {
 	
 	public List<Sexo> getSexos(){
 		return Sexo.getSexos();
+	}
+	
+	public SelectItem[] getTiposSexo()
+	{
+		SelectItem[] sexos = new SelectItem[Sexo.values().length];
+		int i = 0;
+		for(Sexo s: Sexo.values()) {
+			sexos[i++] = new SelectItem(s, s.getNome());
+		}
+		return sexos;
 	}
 	
 	public void setCategoria(Categoria categoria) {
