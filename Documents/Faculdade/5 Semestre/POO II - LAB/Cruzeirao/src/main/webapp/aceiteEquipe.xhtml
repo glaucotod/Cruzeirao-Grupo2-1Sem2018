@@ -14,55 +14,89 @@
 	<ui:define name="principal">
 	  
     	<h1><p:outputLabel value="Aceite de Equipes"/></h1>	  
-		<h:form id="formAceiteEquipe">	
-			<p:panelGrid columns="4">		       			
-		      	<p:dataTable var="equipe" value="#{equipeManagedBean.equipes}">
-	            	<f:facet name="header">
-	            		Equipes não confirmadas
-	        		</f:facet>
-	        		<p:column headerText="Nome">
-	            		<h:outputText value="#{equipe.Nome}" />
-	        		</p:column>
-	        		<p:column headerText="Data de fundação">
-	            		<h:outputText value="#{equipe.dataFundacao}" />
-	        		</p:column>
-	        		<p:column headerText="Cidade">
-	            		<h:outputText value="#{equipe.cidade}" />
-	        		</p:column>
-	        		<p:column headerText="Diretor">
-	            		<h:outputText value="#{equipe.diretor}" />
-	        		</p:column>
-	        		<p:column style="width:32px;text-align: center">
-	             	<p:commandButton update=":form:equipeDetail" oncomplete="PF('equipeDialog').show()" icon="ui-icon-search" title="View">
-	                	<f:setPropertyActionListener value="#{equipe}" target="#{equipeManagedBean.selectedEquipe}" />
-	            	</p:commandButton>
-	        		</p:column>
-	    		</p:dataTable>
-			</p:panelGrid>
-	  
-        </h:form>
-        
-        <p:dialog header="Informações da equipe" widgetVar="equipeDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
-        <p:outputPanel id="equipeDetail" style="text-align:center;">
-            <p:panelGrid  columns="2" rendered="#{not empty equipeManagedBean.selectedEquipe}" columnClasses="label,value">
-                <f:facet name="header">
-                    <p:graphicImage name="demo/images/car/#{dtSelectionView.selectedCar.brand}-big.gif"/> 
-                </f:facet>
- 
-                <h:outputText value="Nome:" />
-                <h:outputText value="#{equipeManagedBean.selectedEquipe.usuarios.nome}" />
- 
-                <h:outputText value="Data de nascimento:" />
-                <h:outputText value="#{equipeManagedBean.selectedEquipe.usuarios.dataNascimento}" />
- 
-                <h:outputText value="Tipo:" />
-                <h:outputText value="#{equipeManagedBean.selectedEquipe.usuarios.tipo}"/>
- 
-                <h:outputText value="Sexo:" />
-                <h:outputText value="#{equipeManagedBean.selectedEquipe.usuarios.sexo}" />
-            </p:panelGrid>
+			<h:form id="formAceiteEquipe">	
+				<p:panelGrid columns="4">		       			
+			      	<p:dataTable id="tabelaEquipes" var="eqp" value="#{equipeMB.listarEquipes()}">
+		            	<f:facet name="header">
+		            		Equipes não confirmadas
+		        		</f:facet>
+		        		<p:column headerText="Nome da equipe">
+		            		<h:outputText value="#{eqp.nome}" />
+		        		</p:column>
+		        		<p:column headerText="Data de fundação">
+		            		<h:outputText value="#{eqp.dataFundacao}" />
+		        		</p:column>
+		        		<p:column headerText="Cidade">
+		            		<h:outputText value="#{eqp.cidade}" />
+		        		</p:column>
+		        		<p:column headerText="Diretor">
+		            		<h:outputText value="#{eqp.diretor}" />
+		        		</p:column>
+		        		<p:column style="width:32px;text-align: center">
+		             	<p:commandButton update=":formEquipeSelect" oncomplete="PF('equipeDialog').show()" icon="ui-icon-search" title="View">
+		                	<f:setPropertyActionListener value="#{equipeMB.listarEquipes()}" target="#{equipeManagedBean.selectedEquipe}" />
+		            	</p:commandButton>
+		        		</p:column>
+		    		</p:dataTable>
+				</p:panelGrid>	  
+	        </h:form>
+	        
+	         <br/>
+	         
+	        <h:form id="formAceiteEquipeConf">	
+				<p:panelGrid columns="4">		       			
+			      	<p:dataTable id="tabelaConfirmados" var="eqp" value="#{equipeMB.listarEquipesConf()}">
+		            	<f:facet name="header">
+		            		Equipes confirmadas
+		        		</f:facet>
+		        		<p:column headerText="Nome da equipe">
+		            		<h:outputText value="#{eqp.nome}" />
+		        		</p:column>
+		        		<p:column headerText="Data de fundação">
+		            		<h:outputText value="#{eqp.dataFundacao}" />
+		        		</p:column>
+		        		<p:column headerText="Cidade">
+		            		<h:outputText value="#{eqp.cidade}" />
+		        		</p:column>
+		        		<p:column headerText="Diretor">
+		            		<h:outputText value="#{eqp.diretor}" />
+		        		</p:column>
+		    		</p:dataTable>
+				</p:panelGrid>	  
+	        </h:form>
+         
+        <p:dialog header="Informações da equipe" widgetVar="equipeDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="true" styleClass="ui-widget">
+       		<p:outputPanel id="equipeDetail" style="text-align:center;">
+            		
+				<h:form id="formEquipeSelect">	
+					<p:panelGrid columns="4">		       			
+				      	<p:dataTable var="usu" value="#{equipeMB.listarUsuarios()}">
+			            	<f:facet name="header">
+			            		Usuarios da equipe
+			        		</f:facet>
+			        		<p:column headerText="Nome">
+			            		<h:outputText value="#{usu.nome}" />
+			        		</p:column>
+			        		<p:column headerText="Data de nascimento">
+			            		<h:outputText value="#{usu.dataNascimento}" />
+			        		</p:column>
+			        		<p:column headerText="Tipo">
+			            		<h:outputText value="#{usu.tipo}" />
+			        		</p:column>
+			        		<p:column headerText="Sexo">
+			            		<h:outputText value="#{usu.sexo}" />
+			        		</p:column>
+			    		</p:dataTable>
+			    	</p:panelGrid>	
+	        	</h:form>
+	        					
         </p:outputPanel>
+        <p:commandButton value="Confirmar equipe" 
+	                 action="#{equipeMB.conf}"
+	                 update=":formAceiteEquipe"
+	                 />	
     </p:dialog>
+     
 
 	</ui:define>
 </ui:composition>

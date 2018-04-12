@@ -18,6 +18,7 @@ public class EquipeManagedBean {
 	private EquipeService service = new EquipeService();
 	private Equipe equipe = new Equipe();
 	private Usuario usuario = new Usuario();
+	private Equipe selectedEquipe = new Equipe();
 	
 	public Usuario getUsuario() {
 		return usuario;
@@ -40,6 +41,19 @@ public class EquipeManagedBean {
 		service.salvar(equipe);
 		equipe = new Equipe();
 		usuario = new Usuario();
+	}
+	
+	public void conf()
+	{
+		for (Equipe i : EquipeService.equipes) {
+			if (i.getNome().equals(equipe.getNome())) {
+				equipe = i;
+				break;
+			}
+		}			
+		
+		service.conf(equipe);
+		equipe = new Equipe();
 	}
 	
 	public Equipe getEquipe() {
@@ -70,5 +84,18 @@ public class EquipeManagedBean {
 	{
 		return UsuarioService.usuarioslist;
 	}
-	
+	public List<Equipe> listarEquipes()
+	{
+		return EquipeService.equipes;
+	}
+	public List<Equipe> listarEquipesConf()
+	{
+		return EquipeService.equipesConf;
+	}
+	public Equipe getSelectedEquipe() {
+		return selectedEquipe;
+	}
+	public void setSelectedEquipe(Equipe selectedEquipe) {
+		this.selectedEquipe = selectedEquipe;
+	}
 }

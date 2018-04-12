@@ -56,7 +56,7 @@
 		<!-- Primefaces Theme Library -->
 		<dependency>
 			<groupId>org.primefaces.themes</groupId>
-			<artifactId>blitzer</artifactId>
+			<artifactId>vader</artifactId>
 			<version>1.0.10</version>
 		</dependency>
 	</dependencies>

@@ -27,6 +27,7 @@
 	      	  <p:password id="pwd2" value="#{usuarioManagedBean.usuario.senha}" feedback="true" inline="true" required="true"/>
 	      	  
 		  </p:panelGrid>
+		  <br/>
 	  <p:commandButton value="Salvar" 
 	                 action="#{usuarioManagedBean.salvar}"
 	                 update=":formUsuario, :tabelaUsuario"
@@ -37,7 +38,6 @@
                 var="aux"
                 id="tabelaUsuario"
    >      
-	 <br/>
       <p:column headerText="Nome">
         <p:outputLabel value="#{aux.userName}" />
       </p:column>  
