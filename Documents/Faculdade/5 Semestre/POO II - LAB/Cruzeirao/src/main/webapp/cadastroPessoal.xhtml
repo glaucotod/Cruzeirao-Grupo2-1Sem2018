@@ -43,7 +43,7 @@
 	          	</p:selectOneMenu>
 		      
 		      <p:outputLabel value="Telefone fixo:" />  
-	          <p:inputMask value="#{usuarioManagedBean.usuario.telefoneFixo}" mask="(99) 99999-9999"/>
+	          <p:inputMask value="#{usuarioManagedBean.usuario.telefoneFixo}" mask="(99) 9999-9999"/>
 		      
 		      <p:outputLabel value="Telefone celular:" />
 		      <p:inputMask value="#{usuarioManagedBean.usuario.telefoneMovel}" mask="(99) 99999-9999"/>
@@ -57,22 +57,22 @@
 		      <p:outputLabel value="Numero de registro CREF:" enable="#{usuarioManagedBean.isPreparadorFisico}" />
 		      <p:inputText value="#{usuarioManagedBean.usuario.cref}" enable="#{usuarioManagedBean.tiposUsuarios == 'Preparador_Fisico'}" />
 		      
-		      <p:outputLabel value="Foto:"/>	         
+		      <!--<p:outputLabel value="Foto:"/>	         
 		      <p:fileUpload fileUploadListener="#{fileUploadView.handleFileUpload}" mode="advanced" dragDropSupport="true"
 	           update="messages" sizeLimit="10000000" fileLimit="1" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
-	          <p:growl id="messages" showDetail="true" />     			
+	          <p:growl id="messages" showDetail="true" />   -->  			
 	      
 		  </p:panelGrid>
+<br/>
 	  <p:commandButton value="Salvar" 
 	                 action="#{usuarioManagedBean.salvar}"
 	                 update=":formUsuario, :tabelaUsuario"
 	                 />
        </h:form>       
-
+ <br/>
    <p:dataTable value="#{usuarioManagedBean.usuarios}"
                 var="aux"
                 id="tabelaUsuario"
-
    >      
 	 
       <p:column headerText="Nome">

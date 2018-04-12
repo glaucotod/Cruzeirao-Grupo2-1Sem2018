@@ -4,26 +4,56 @@ import java.util.List;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-
-import org.primefaces.event.DragDropEvent;
-
+import javax.faces.model.SelectItem;
 import models.Equipe;
-import models.Local;
 import models.Usuario;
 import service.EquipeService;
+import service.UsuarioService;
 
-@ManagedBean(eager=true)
+@ManagedBean(name = "equipeMB")
 @ApplicationScoped
 
 public class EquipeManagedBean {
 	
 	private EquipeService service = new EquipeService();
 	private Equipe equipe = new Equipe();
+	private Usuario usuario = new Usuario();
+	private Equipe selectedEquipe = new Equipe();
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 
 	public void salvar()
 	{
+		for (Usuario i : UsuarioService.usuarioslist) {
+			if (i.getEmail().equals(usuario.getEmail())) {
+				usuario = i;
+				break;
+			}
+		}
+		equipe.setDiretor(usuario);
+			
 		service.salvar(equipe);
 		equipe = new Equipe();
+		usuario = new Usuario();
+	}
+	
+	public void conf()
+	{
+		for (Equipe i : EquipeService.equipes) {
+			if (i.getNome().equals(equipe.getNome())) {
+				equipe = i;
+				break;
+			}
+		}			
+		
+		service.conf(equipe);
+		
 	}
 	
 	public Equipe getEquipe() {
@@ -41,11 +71,31 @@ public class EquipeManagedBean {
 		return service.getEquipes();
 	}
 	
-	/*public void onDiretoresDrop(DragDropEvent ddEvent, UsuarioManagedBean users) {
-        Usuario user = ((Usuario) ddEvent.getData());
-        equipe.getDiretores().add(user);
-        users.remover(user);
-    }*/
-	
-	
+	public SelectItem[] getUsuariosDiretor()
+	{
+		SelectItem[] users = new SelectItem[UsuarioService.usuarioslist.size()];
+		int i = 0;
+		for(Usuario t: UsuarioService.usuarioslist) {
+			users[i++] = new SelectItem(t, t.getNome());
+		}
+		return users;
+	}
+	public List<Usuario> listarUsuarios()
+	{
+		return UsuarioService.usuarioslist;
+	}
+	public List<Equipe> listarEquipes()
+	{
+		return EquipeService.equipes;
+	}
+	public List<Equipe> listarEquipesConf()
+	{
+		return EquipeService.equipesConf;
+	}
+	public Equipe getSelectedEquipe() {
+		return selectedEquipe;
+	}
+	public void setSelectedEquipe(Equipe selectedEquipe) {
+		this.selectedEquipe = selectedEquipe;
+	}
 }

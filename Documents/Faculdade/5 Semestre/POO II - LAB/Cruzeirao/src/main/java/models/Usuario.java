@@ -7,6 +7,7 @@ public class Usuario {
 	
 	private String email;
 	private String nome;
+	private String userName="";
 	private String senha;
 	private Date dataNascimento;
 	private List<Equipe> equipes;
@@ -117,5 +118,14 @@ public class Usuario {
 	}
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public String toString() {
+		return this.nome;
 	}
 }

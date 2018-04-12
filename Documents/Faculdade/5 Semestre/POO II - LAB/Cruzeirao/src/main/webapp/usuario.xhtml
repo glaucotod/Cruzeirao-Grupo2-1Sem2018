@@ -20,40 +20,35 @@
 		  <p:panelGrid columns="2">	 
  
 			  <p:outputLabel value="Nome:"/>
-		      <p:inputText value="#{usuarioManagedBean.usuario.nome}" required="true" requiredMessage="Campo obrigatório" />
-		      
-		      <p:outputLabel value="Email:" />
-		      <p:inputText value="#{usuarioManagedBean.usuario.email}" required="true" requiredMessage="Campo obrigatório" />
-		      
+		      <p:inputText value="#{usuarioManagedBean.usuario.userName}" required="true" requiredMessage="Campo obrigatório" />
 		      <p:outputLabel value="Senha:" />	
 	      	  <p:password id="pwd1" value="#{usuarioManagedBean.usuario.senha}" feedback="true" inline="true" required="true" match="pwd2" />
 	      	  <p:outputLabel value="Confirme a senha:" />	
 	      	  <p:password id="pwd2" value="#{usuarioManagedBean.usuario.senha}" feedback="true" inline="true" required="true"/>
 	      	  
 		  </p:panelGrid>
+		  <br/>
 	  <p:commandButton value="Salvar" 
 	                 action="#{usuarioManagedBean.salvar}"
 	                 update=":formUsuario, :tabelaUsuario"
 	                 />
        </h:form>       
-
+<br/>
    <p:dataTable value="#{usuarioManagedBean.usuarios}"
                 var="aux"
                 id="tabelaUsuario"
    >      
-	 
       <p:column headerText="Nome">
-        <p:outputLabel value="#{aux.nome}" />
-      </p:column>
-      
-  	  <p:column headerText="Email">
-        <p:outputLabel value="#{aux.email}" />
-      </p:column>
-      
+        <p:outputLabel value="#{aux.userName}" />
+      </p:column>  
       <p:column headerText="Senha">
         <p:outputLabel value="#{aux.senha}" />
       </p:column>
-      
+      <p:column headerText="Informações do cadastro">
+	  	<p:button outcome="cadastroPessoal" value="Continuar">				
+			<f:param name="Pessoal" value="aux" />
+		</p:button>
+	  </p:column>
    </p:dataTable>	
 	   
 	</ui:define>

@@ -6,8 +6,8 @@ import java.util.List;
 import models.Equipe;
 
 public class EquipeService {
-private ArrayList <Equipe> equipes = new ArrayList<Equipe>();
-	
+public static ArrayList <Equipe> equipes = new ArrayList<Equipe>();
+public static ArrayList <Equipe> equipesConf = new ArrayList<Equipe>();	
 	public EquipeService()
 	{
 
@@ -17,7 +17,13 @@ private ArrayList <Equipe> equipes = new ArrayList<Equipe>();
 	{
 		equipes.add(equipe);
 	}
-
+	
+	public void conf(Equipe equipe)
+	{
+		equipesConf.add(equipe);
+		equipes.remove(equipe);
+	}
+	
 	public void remove(Equipe equipe)
 	{
 		equipes.remove(equipe);
