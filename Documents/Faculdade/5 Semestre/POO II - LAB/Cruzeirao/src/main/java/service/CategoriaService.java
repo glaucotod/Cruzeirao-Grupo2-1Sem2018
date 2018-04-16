@@ -1,16 +1,17 @@
 package service;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import dados.Dados;
 import models.Categoria;
 
 public class CategoriaService {
 
-	private List <Categoria> categorias = new ArrayList<Categoria>();	
+	//private List <Categoria> categorias = new ArrayList<Categoria>();	
+	private List<Categoria> categorias = Dados.categorias;
 	
-	public CategoriaService()
-	{
+	
+	public CategoriaService(){
 
 	}
 	
@@ -19,8 +20,7 @@ public class CategoriaService {
 	    categorias.add(categoria);
 	}	
 
-	public List <Categoria> getCategorias()
-	{		
+	public List <Categoria> getCategorias(){		
 		return categorias;		
 	}
 }

@@ -18,7 +18,7 @@
 	  <h1><p:outputLabel value="Cadastro de Equipe"/></h1>
 	  
 	  <h:form id="formEquipe">	
-		  <p:panelGrid columns="4">	 
+		  <p:panelGrid columns="2">	 
  
 			  <p:outputLabel value="Nome:" />
 		      <p:inputText value="#{equipeMB.equipe.nome}"/>
@@ -30,34 +30,46 @@
 	          <p:inputText value="#{equipeMB.equipe.cidade}"/>
 	          
 		<p:outputLabel value="Responsável:" />
-		<p:selectOneMenu 
+		<p:selectOneMenu
 				value="#{equipeMB.usuario.email}">
 				<f:selectItem itemLabel="Selecione um Usuario" />
 				<f:selectItems value="#{equipeMB.listarUsuarios()}" var="usr"
 					itemValue="#{usr.email}" itemLabel="#{usr.nome}" />
 		</p:selectOneMenu>		
 		
-			
+		<p:outputLabel value="Categoria:" />
+		<p:selectOneMenu
+				value="#{equipeMB.categoria}">
+				<f:selectItem itemLabel="Selecione uma categoria" />
+				<f:selectItems value="#{equipeMB.categorias}" var="cat"
+					itemValue="#{usr.nome}" itemLabel="#{cat.nome}" />
+		</p:selectOneMenu>	
+		 
 		  </p:panelGrid>
 		  <br/>
 		  
-	  <p:commandButton value="Salvar" 
-	                 action="#{equipeMB.salvar}"
-	                 update=":formEquipe, :tabelaEquipe"
-	                 />
-       </h:form>
-       <br/>
+	  
 	
 	<p:pickList iconOnly="true" id="usuario" converter="UsuarioConverterPickList"
 					  	 addAllLabel="Adicionar todos Usu&#225;rios" 
 						 addLabel="Adionar Selecionado" removeLabel="Remover Usu&#225;rio" 
 						 removeAllLabel="Remover todos Usu&#225;rios"  
-						 value="#{equipeMB.usuarioModel}" var="sistema" 
-						 itemLabel="#{sistema.nome}" itemValue="#{equipe}">  
-							 <f:facet name="sourceCaption">Usu&#225;rio(s)</f:facet>  
-		        			 <f:facet name="targetCaption">Vinculado(s) ao sistema</f:facet>  
+						 value="#{equipeMB.usuarioModel}" var="usr" 
+						 itemLabel="#{usr.nome}" itemValue="#{equipe}">  
+							 <f:facet name="sourceCaption">Disponivel</f:facet>  
+		        			 <f:facet name="targetCaption">Selecionados</f:facet>  
 					  </p:pickList>
-	
+					  
+					  <br/>
+					  
+	<p:commandButton value="Salvar" 
+	                 action="#{equipeMB.salvar}"
+	                 update=":formEquipe, :tabelaEquipe"
+	                 />
+       
+       <br/>
+       </h:form>
+       <br/>
 	
 	<p:dataTable value="#{equipeMB.equipes}"
                 var="aux"
