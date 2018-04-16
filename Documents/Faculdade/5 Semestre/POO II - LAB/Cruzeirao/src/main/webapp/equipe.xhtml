@@ -35,7 +35,8 @@
 				<f:selectItem itemLabel="Selecione um Usuario" />
 				<f:selectItems value="#{equipeMB.listarUsuarios()}" var="usr"
 					itemValue="#{usr.email}" itemLabel="#{usr.nome}" />
-		</p:selectOneMenu>
+		</p:selectOneMenu>		
+		
 			
 		  </p:panelGrid>
 		  <br/>
@@ -46,6 +47,18 @@
 	                 />
        </h:form>
        <br/>
+	
+	<p:pickList iconOnly="true" id="usuario" converter="UsuarioConverterPickList"
+					  	 addAllLabel="Adicionar todos Usu&#225;rios" 
+						 addLabel="Adionar Selecionado" removeLabel="Remover Usu&#225;rio" 
+						 removeAllLabel="Remover todos Usu&#225;rios"  
+						 value="#{equipeMB.usuarioModel}" var="sistema" 
+						 itemLabel="#{sistema.nome}" itemValue="#{equipe}">  
+							 <f:facet name="sourceCaption">Usu&#225;rio(s)</f:facet>  
+		        			 <f:facet name="targetCaption">Vinculado(s) ao sistema</f:facet>  
+					  </p:pickList>
+	
+	
 	<p:dataTable value="#{equipeMB.equipes}"
                 var="aux"
                 id="tabelaEquipe"

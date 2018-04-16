@@ -12,6 +12,20 @@ public class Inscricao {
 	private List<Partida> partidas;
 	private Equipe equipe;
 	
+	public Inscricao() {
+		
+	}
+	
+	public Inscricao(long numero, boolean pagamento, boolean validada, List<Inscrito> inscritos, Categoria categoria,
+			List<Partida> partidas, Equipe equipe) {
+		this.numero = numero;
+		this.pagamento = pagamento;
+		this.validada = validada;
+		this.inscritos = inscritos;
+		this.categoria = categoria;
+		this.partidas = partidas;
+		this.equipe = equipe;
+	}
 	public long getNumero() {
 		return numero;
 	}
@@ -33,6 +47,11 @@ public class Inscricao {
 	public List<Inscrito> getInscritos() {
 		return inscritos;
 	}
+	public void addInscrito(Inscrito inscrito){
+		if(inscrito != null)
+			this.inscritos.add(inscrito);
+	}
+	
 	public void setInscritos(List<Inscrito> inscritos) {
 		this.inscritos = inscritos;
 	}

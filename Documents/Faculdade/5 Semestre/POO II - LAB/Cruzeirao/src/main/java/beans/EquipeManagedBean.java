@@ -1,24 +1,42 @@
 package beans;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.model.SelectItem;
+
+import org.primefaces.model.DualListModel;
+
 import models.Equipe;
+import models.Inscricao;
+import models.Inscrito;
 import models.Usuario;
 import service.EquipeService;
 import service.UsuarioService;
 
 @ManagedBean(name = "equipeMB")
-@ApplicationScoped
-
+@SessionScoped
 public class EquipeManagedBean {
 	
 	private EquipeService service = new EquipeService();
 	private Equipe equipe = new Equipe();
 	private Usuario usuario = new Usuario();
 	private Equipe selectedEquipe = new Equipe();
+	private DualListModel<Usuario> usuarioModel;
+	private Inscricao inscricao;
+	
+	public EquipeManagedBean() {
+		inscricao = new Inscricao();
+	}
+	
+	public DualListModel<Usuario> getUsuarioModel(){
+		 if(this.usuarioModel==null){ 
+			 this.usuarioModel = new DualListModel<Usuario>(UsuarioService.usuarioslist, new ArrayList<Usuario>());
+		 }
+		 return this.usuarioModel;
+	}
 	
 	public Usuario getUsuario() {
 		return usuario;
@@ -30,6 +48,12 @@ public class EquipeManagedBean {
 
 	public void salvar()
 	{
+		List<Usuario> usuariosSelecionados = usuarioModel.getTarget();
+		
+		for(Usuario u : usuariosSelecionados) {
+			inscreveJogador(u);
+		}
+		
 		for (Usuario i : UsuarioService.usuarioslist) {
 			if (i.getEmail().equals(usuario.getEmail())) {
 				usuario = i;
@@ -37,10 +61,23 @@ public class EquipeManagedBean {
 			}
 		}
 		equipe.setDiretor(usuario);
-			
+		
+		inscricao.setEquipe(equipe);
+		//TODO CATEGORIA NA EQUIPE
+		//inscricao.setCategoria(categoria);
+		inscricao.setPagamento(false);
+		inscricao.setPartidas(null);
+		inscricao.setValidada(false);
+		
 		service.salvar(equipe);
+		
 		equipe = new Equipe();
 		usuario = new Usuario();
+	}
+	
+	private void inscreveJogador(Usuario u) {
+		Inscrito inscrito = new Inscrito(u.getTipo(),u, this.inscricao, false, false, false);
+		inscricao.addInscrito(inscrito);
 	}
 	
 	public void conf()
@@ -98,4 +135,18 @@ public class EquipeManagedBean {
 	public void setSelectedEquipe(Equipe selectedEquipe) {
 		this.selectedEquipe = selectedEquipe;
 	}
+
+	public Inscricao getInscricao() {
+		return inscricao;
+	}
+
+	public void setInscricao(Inscricao inscricao) {
+		this.inscricao = inscricao;
+	}
+
+	public void setUsuarioModel(DualListModel<Usuario> usuarioModel) {
+		this.usuarioModel = usuarioModel;
+	}
+	
+	
 }
