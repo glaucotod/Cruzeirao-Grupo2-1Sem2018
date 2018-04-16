@@ -16,50 +16,35 @@
     	<h1><p:outputLabel value="Aceite de Equipes"/></h1>	  
 			<h:form id="formAceiteEquipe">	
 				<p:panelGrid columns="4">		       			
-			      	<p:dataTable id="tabelaEquipes" var="eqp" value="#{equipeMB.listarEquipes()}">
+			      	<p:dataTable id="tabelaEquipes" var="insc" value="#{inscricoesMB.inscricoes}">
 		            	<f:facet name="header">
-		            		Equipes não confirmadas
+		            		Inscrições
 		        		</f:facet>
-		        		<p:column headerText="Nome da equipe">
-		            		<h:outputText value="#{eqp.nome}" />
+		        		<p:column headerText="Numero da inscricao">
+		            		<h:outputText value="#{insc.numero}" />
 		        		</p:column>
-		        		<p:column headerText="Data de fundação">
-		            		<h:outputText value="#{eqp.dataFundacao}" />
+		        		<p:column headerText="Nome">
+		            		<h:outputText value="#{insc.equipe.nome}" />
 		        		</p:column>
-		        		<p:column headerText="Cidade">
-		            		<h:outputText value="#{eqp.cidade}" />
+		        		<p:column headerText="Validada">
+		            		<h:outputText value="#{insc.validada}" />
 		        		</p:column>
 		        		<p:column headerText="Diretor">
-		            		<h:outputText value="#{eqp.diretor}" />
+		            		<h:outputText value="#{insc.equipe.diretor}" />
 		        		</p:column>
-		        		<p:column style="width:32px;text-align: center">
+		        		<p:column headerText="Categoria" filterBy="#{insc.categoria}" filterMatchMode="in">
+		        			<f:facet name="filter">
+				                <p:selectCheckboxMenu label="Categoria" onchange="PF('carsTable').filter()" panelStyle="width:125px" scrollHeight="150">
+				                    <f:selectItems value="#{inscricoesMB.categorias}" />
+				                </p:selectCheckboxMenu>
+				            </f:facet>
+		            		<h:outputText value="#{insc.categoria}" />
+		        		</p:column>
+		        		
+		        		<p:column style="width:33px;text-align: center">
 		             	<p:commandButton update=":formEquipeSelect" oncomplete="PF('equipeDialog').show()" icon="ui-icon-search" title="View">
-		                	<f:setPropertyActionListener value="#{equipeMB.listarEquipes()}" target="#{equipeManagedBean.selectedEquipe}" />
+		                	<f:setPropertyActionListener value="#{insc}" target="#{inscricoesMB.selectecInscricao}" />
 		            	</p:commandButton>
-		        		</p:column>
-		    		</p:dataTable>
-				</p:panelGrid>	  
-	        </h:form>
-	        
-	         <br/>
-	         
-	        <h:form id="formAceiteEquipeConf">	
-				<p:panelGrid columns="4">		       			
-			      	<p:dataTable id="tabelaConfirmados" var="eqp" value="#{equipeMB.listarEquipesConf()}">
-		            	<f:facet name="header">
-		            		Equipes confirmadas
-		        		</f:facet>
-		        		<p:column headerText="Nome da equipe">
-		            		<h:outputText value="#{eqp.nome}" />
-		        		</p:column>
-		        		<p:column headerText="Data de fundação">
-		            		<h:outputText value="#{eqp.dataFundacao}" />
-		        		</p:column>
-		        		<p:column headerText="Cidade">
-		            		<h:outputText value="#{eqp.cidade}" />
-		        		</p:column>
-		        		<p:column headerText="Diretor">
-		            		<h:outputText value="#{eqp.diretor}" />
 		        		</p:column>
 		    		</p:dataTable>
 				</p:panelGrid>	  
@@ -70,29 +55,20 @@
             		
 				<h:form id="formEquipeSelect">	
 					<p:panelGrid columns="4">		       			
-				      	<p:dataTable var="usu" value="#{equipeMB.listarUsuarios()}">
+				      	<p:dataTable var="ins" value="#{inscricoesMB.selectecInscricao.inscritos}">
 			            	<f:facet name="header">
-			            		Usuarios da equipe
+			            		Inscritos na equipe
 			        		</f:facet>
 			        		<p:column headerText="Nome">
-			            		<h:outputText value="#{usu.nome}" />
-			        		</p:column>
-			        		<p:column headerText="Data de nascimento">
-			            		<h:outputText value="#{usu.dataNascimento}" />
-			        		</p:column>
-			        		<p:column headerText="Tipo">
-			            		<h:outputText value="#{usu.tipo}" />
-			        		</p:column>
-			        		<p:column headerText="Sexo">
-			            		<h:outputText value="#{usu.sexo}" />
+			            		<h:outputText value="#{ins.usuario.nome}" />
 			        		</p:column>
 			    		</p:dataTable>
 			    	</p:panelGrid>	
 	        	</h:form>
 	        					
         </p:outputPanel>
-        <p:commandButton value="Confirmar equipe" 
-	                 action="#{equipeMB.conf}"
+        <p:commandButton value="Confirmar Inscricao" 
+	                 action="#{inscricoesMB.confirmarInscricao()}"
 	                 update=":formAceiteEquipe"
 	                 />	
     </p:dialog>

@@ -1,15 +1,6 @@
 package models;
 
 import java.util.Date;
-import java.util.List;
-
-import javax.faces.model.SelectItem;
-
-import org.primefaces.event.DragDropEvent;
-
-//import beans.LocalManagedBean;
-import beans.UsuarioManagedBean;
-import service.UsuarioService;
 
 public class Equipe {
 

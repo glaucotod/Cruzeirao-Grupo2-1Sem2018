@@ -2,17 +2,31 @@ package models;
 
 public class Inscrito {
 
-	private Enum tipo;
+	private Tipo tipo;
 	private Usuario usuario;
 	private Inscricao inscricao;
 	private boolean aceiteUsuario; 
 	private boolean jogoSuspenso;
 	private boolean inscricaoValidada;
 	
-	public Enum getTipo() {
+	public Inscrito() {
+		
+	}
+	
+	public Inscrito(Tipo tipo, Usuario usuario, Inscricao inscricao, boolean aceiteUsuario, boolean jogoSuspenso,
+			boolean inscricaoValidada) {
+		this.tipo = tipo;
+		this.usuario = usuario;
+		this.inscricao = inscricao;
+		this.aceiteUsuario = aceiteUsuario;
+		this.jogoSuspenso = jogoSuspenso;
+		this.inscricaoValidada = inscricaoValidada;
+	}
+	
+	public Tipo getTipo() {
 		return tipo;
 	}
-	public void setTipo(Enum tipo) {
+	public void setTipo(Tipo tipo) {
 		this.tipo = tipo;
 	}
 	public Usuario getUsuario() {
