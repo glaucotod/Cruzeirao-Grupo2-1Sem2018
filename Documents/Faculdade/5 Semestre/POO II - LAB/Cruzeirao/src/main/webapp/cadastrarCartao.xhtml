@@ -1,0 +1,53 @@
+<ui:composition template="templateMenu.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets">
+
+	<ui:define name="title">
+		<h:outputText value="#{msg['pages.cadastrarCartao.title']}" />
+	</ui:define>
+
+	<ui:define name="principal">
+
+		<h1>
+			<p:outputLabel value="#{msg['pages.cadastrarCartao.menu']}" />
+		</h1>
+
+		<h:form id="formCartao">
+			<p:panelGrid columns="2">
+				
+				<p:outputLabel value="Time:" />
+				<p:selectOneMenu value="#{cartaoManagedBean.cartao.inscrito}">
+					<f:selectItem itemLabel="Selecione um time" />
+					<f:selectItems value="#{golManagedBean.times}" />
+				</p:selectOneMenu>
+					
+				<p:outputLabel value="Tipo" />
+					<p:selectOneMenu value="#{cartaoManagedBean.cartao.tipo}">
+						<f:selectItem itemLabel="Penalty" />
+						<f:selectItems value="#{cartaoManagedBean.tipo}" />
+				</p:selectOneMenu>
+			</p:panelGrid>
+
+			<p:commandButton value="Salvar"
+				action="#{cartaoManagedBean.salvar}"
+				update=":formCartao, :tabelaCartao" />
+		</h:form>
+		<p:dataTable value="#{cartaoManagedBean.cartoes}" var="aux"
+			id="tabelaCartao">
+			<p:column headerText="Time">
+				<p:outputLabel value="#{aux.inscrito}" />
+			</p:column>
+			<p:column headerText="Tempo">
+				<p:outputLabel value="#{aux.tempo}" />
+			</p:column>
+			<p:column headerText="Tipo">
+				<p:outputLabel value="#{aux.tipo}" />
+			</p:column>
+	
+		</p:dataTable>
+	</ui:define>
+</ui:composition>

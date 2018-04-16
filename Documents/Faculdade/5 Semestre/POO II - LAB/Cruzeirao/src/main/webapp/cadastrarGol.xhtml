@@ -1,0 +1,58 @@
+<ui:composition template="templateMenu.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets">
+
+	<ui:define name="title">
+		<h:outputText value="#{msg['pages.cadastrarGol.title']}" />
+	</ui:define>
+
+	<ui:define name="principal">
+
+		<h1>
+			<p:outputLabel value="#{msg['pages.cadastrarGol.menu']}" />
+		</h1>
+
+		<h:form id="formGol">
+			<p:panelGrid columns="2">
+				
+				<p:outputLabel value="Time:" />
+				<p:selectOneMenu value="#{golManagedBean.gol.inscrito}">
+					<f:selectItem itemLabel="Selecione um time" />
+					<f:selectItems value="#{golManagedBean.times}" />
+				</p:selectOneMenu>
+				
+				<p:outputLabel value="Tempo:" />
+				<p:inputText value="#{golManagedBean.gol.tempo}"
+					required="true" />
+
+					
+				<p:outputLabel value="Penalty" />
+					<p:selectOneMenu value="#{golManagedBean.gol.penalty}">
+						<f:selectItem itemLabel="Penalty" />
+						<f:selectItems value="#{golManagedBean.penalties}" />
+				</p:selectOneMenu>
+			</p:panelGrid>
+
+			<p:commandButton value="Salvar"
+				action="#{golManagedBean.salvar}"
+				update=":formGol, :tabelaGol" />
+		</h:form>
+		<p:dataTable value="#{golManagedBean.gols}" var="aux"
+			id="tabelaPartida">
+			<p:column headerText="Time">
+				<p:outputLabel value="#{aux.inscrito}" />
+			</p:column>
+			<p:column headerText="Tempo">
+				<p:outputLabel value="#{aux.tempo}" />
+			</p:column>
+			<p:column headerText="Penalty">
+				<p:outputLabel value="#{aux.penalty}" />
+			</p:column>
+	
+		</p:dataTable>
+	</ui:define>
+</ui:composition>
