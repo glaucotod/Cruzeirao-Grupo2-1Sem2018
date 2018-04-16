@@ -44,9 +44,11 @@
 						<f:selectItems value="#{partidaManagedBean.locais}" />
 				</p:selectOneMenu>
 				
-				<p:outputLabel value="Inserir o número da próxima partida:" />
-				<p:inputText value="#{partidaManagedBean.partida.proxPartida}"
-					required="true" />
+				<p:outputLabel value="Próxima partida:" />
+				<p:selectOneMenu value="#{partidaManagedBean.partida.proxPartida}">
+					<f:selectItem itemLabel="Selecione uma partida" />
+					<f:selectItems value="#{partidaManagedBean.partidas}" />
+				</p:selectOneMenu>
 				
 				<p:outputLabel value="Selecionar juízes:" />
 					<p:selectCheckboxMenu id="multipleJuiz" value="#{partidaManagedBean.partida.juizes}" label="Juízes" multiple="true" filter="true" filterMatchMode="startsWith">
@@ -90,7 +92,7 @@
 			</p:column>
 
 			<p:column headerText="Resultado">
-				<p:button outcome="cadastrarResultadoPartida" value="Resultado">
+				<p:button outcome="resultadoPartida" value="Resultado">
 				
 					<f:param name="Partida" value="aux" />
 
