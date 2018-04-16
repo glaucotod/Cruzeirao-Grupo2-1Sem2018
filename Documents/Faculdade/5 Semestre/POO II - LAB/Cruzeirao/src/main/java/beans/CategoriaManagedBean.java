@@ -13,7 +13,7 @@ import service.CategoriaService;
 @ManagedBean(name = "categoriaManagedBean")
 @SessionScoped
 public class CategoriaManagedBean {
-
+//01
 	private Categoria categoria;
 	private CategoriaService service;
 	

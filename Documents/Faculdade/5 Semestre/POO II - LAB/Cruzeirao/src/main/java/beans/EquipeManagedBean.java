@@ -22,7 +22,7 @@ import service.UsuarioService;
 @ManagedBean(name = "equipeMB")
 @SessionScoped
 public class EquipeManagedBean {
-	
+	//01
 	private EquipeService equipeService = new EquipeService();
 	private Equipe equipe = new Equipe();
 	private Usuario usuario = new Usuario();

@@ -2,14 +2,14 @@ package beans;
 
 import java.util.List;
 
-import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 import models.Inscrito;
 import service.InscritoService;
 
 @ManagedBean(eager=true)
-@ApplicationScoped
+@SessionScoped
 
 public class InscritoManagedBean {
 

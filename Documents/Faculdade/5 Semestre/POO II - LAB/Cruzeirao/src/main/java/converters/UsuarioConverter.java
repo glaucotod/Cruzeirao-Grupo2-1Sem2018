@@ -6,7 +6,7 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
 import models.Usuario;
-
+//02
 @FacesConverter(value = "UsuarioConverter")
 public class UsuarioConverter implements Converter {
 	@Override

@@ -9,7 +9,7 @@ import org.primefaces.component.picklist.PickList;
 import org.primefaces.model.DualListModel;
 
 import models.Usuario;
-
+//01
 @FacesConverter(value = "UsuarioConverterPickList")
 public class UsuarioConverterPickList implements Converter {
 		@Override

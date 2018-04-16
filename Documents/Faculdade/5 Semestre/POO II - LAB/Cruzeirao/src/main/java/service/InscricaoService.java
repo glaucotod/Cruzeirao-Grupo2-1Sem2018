@@ -9,7 +9,7 @@ import models.Inscricao;
 public class InscricaoService {
 
 		public ArrayList <Inscricao> inscricoes = Dados.inscricoes;
-				
+				//02
 		public InscricaoService(){
 		}
 		

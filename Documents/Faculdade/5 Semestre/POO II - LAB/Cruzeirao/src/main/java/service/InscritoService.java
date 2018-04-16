@@ -8,7 +8,7 @@ import models.Inscrito;
 public class InscritoService {
 	
 	private ArrayList <Inscrito> inscritos = new ArrayList<Inscrito>();
-	
+	//02
 	public InscritoService()
 	{
 
