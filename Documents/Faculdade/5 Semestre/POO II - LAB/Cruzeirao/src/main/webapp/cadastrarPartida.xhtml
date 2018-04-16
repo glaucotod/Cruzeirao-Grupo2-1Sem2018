@@ -1,0 +1,117 @@
+<ui:composition template="templateMenu.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets">
+
+	<ui:define name="title">
+		<h:outputText value="#{msg['pages.cadastrarPartida.title']}" />
+	</ui:define>
+
+	<ui:define name="principal">
+
+		<h1>
+			<p:outputLabel value="#{msg['pages.cadastrarPartida.menu']}" />
+		</h1>
+
+		<h:form id="formPartida">
+			<p:panelGrid columns="2">
+				<p:outputLabel value="Inserir número da partida:" />
+				<p:inputText value="#{partidaManagedBean.partida.numero}"
+					required="true" />
+
+				<p:outputLabel value="Equipe mandante:" />
+				<p:selectOneMenu value="#{partidaManagedBean.partida.equipeMandante}">
+					<f:selectItem itemLabel="Selecione uma equipe" />
+					<f:selectItems value="#{partidaManagedBean.equipesMandantes}" />
+				</p:selectOneMenu>
+				
+				<p:outputLabel value="Equipe visitante:" />
+				<p:selectOneMenu value="#{partidaManagedBean.partida.equipeVisitante}">
+					<f:selectItem itemLabel="Selecione uma equipe" />
+					<f:selectItems value="#{partidaManagedBean.equipesVisitantes}" />
+				</p:selectOneMenu>
+
+				<p:outputLabel value="Insira a data da partida:" />
+				<p:calendar
+					value="#{partidaManagedBean.partida.data}" />
+					
+				<p:outputLabel value="Selecione o local:" />
+					<p:selectOneMenu value="#{partidaManagedBean.partida.local}">
+						<f:selectItem itemLabel="Selecione um local" />
+						<f:selectItems value="#{partidaManagedBean.locais}" />
+				</p:selectOneMenu>
+				
+				<p:outputLabel value="Inserir o número da próxima partida:" />
+				<p:inputText value="#{partidaManagedBean.partida.proxPartida}"
+					required="true" />
+				
+				<p:outputLabel value="Selecionar juízes:" />
+					<p:selectCheckboxMenu id="multipleJuiz" value="#{partidaManagedBean.partida.juizes}" label="Juízes" multiple="true" filter="true" filterMatchMode="startsWith">
+					<f:selectItems value="#{partidaManagedBean.juizes}" />
+				</p:selectCheckboxMenu>
+				
+				<p:outputLabel value="Selecione grupo:" />
+					<p:selectOneMenu value="#{partidaManagedBean.partida.grupo}">
+						<f:selectItem itemLabel="Selecione um grupo" />
+						<f:selectItems value="#{partidaManagedBean.grupos}" />
+				</p:selectOneMenu>
+				
+				<p:outputLabel value="Relato do juíz:" />	
+				<p:inputTextarea value ="#{partidaManagedBean.partida.relatoJuiz}" rows="6" cols="33" />
+			</p:panelGrid>
+
+			<p:commandButton value="Salvar"
+				action="#{partidaManagedBean.salvar}"
+				update=":formPartida, :tabelaPartida" />
+		</h:form>
+		<p:dataTable value="#{partidaManagedBean.partidas}" var="aux"
+			id="tabelaPartida">
+			<p:column headerText="Número">
+				<p:outputLabel value="#{aux.numero}" />
+			</p:column>
+			<p:column headerText="Equipe Mandante">
+				<p:outputLabel value="#{aux.equipeMandante}" />
+			</p:column>
+			<p:column headerText="Equipe Visitante">
+				<p:outputLabel value="#{aux.equipeVisitante}" />
+			</p:column>
+			<p:column headerText="Data">
+				<p:outputLabel value="#{aux.data}" />
+			</p:column>
+			<p:column headerText="Local">
+				<p:outputLabel value="#{aux.local}" />
+			</p:column>
+			
+			<p:column headerText="Grupo">
+				<p:outputLabel value="#{aux.grupo}" />
+			</p:column>
+
+			<p:column headerText="Resultado">
+				<p:button outcome="cadastrarResultadoPartida" value="Resultado">
+				
+					<f:param name="Partida" value="aux" />
+
+				</p:button>
+			</p:column>
+			
+			<p:column headerText="Gols">
+				<p:button outcome="cadastrarGol" value="Gols">
+				
+					<f:param name="Partida" value="aux" />
+
+				</p:button>
+			</p:column>
+			
+			<p:column headerText="Cartões">
+				<p:button outcome="cadastrarCartão" value="Cartões">
+				
+					<f:param name="Partida" value="aux" />
+
+				</p:button>
+			</p:column>
+		</p:dataTable>
+	</ui:define>
+</ui:composition>
