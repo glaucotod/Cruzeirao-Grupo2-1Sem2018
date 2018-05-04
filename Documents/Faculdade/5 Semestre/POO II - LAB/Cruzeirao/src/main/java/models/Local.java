@@ -1,9 +1,30 @@
 package models;
 
-public class Local {
+import java.io.Serializable;
 
-	private String nome, logradouro, bairro, UF, municipio, CEP;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+
+@Entity
+@Table(name="TBL_Local")
+
+public class Local implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
 	private int numeroLocal;
+	private String nome      ;
+	private String logradouro;
+	private String bairro    ;
+	private String UF        ;
+	private String municipio ;
+	private String CEP;      ;
 	
 	public String getNome() {
 		return nome;
@@ -47,6 +68,61 @@ public class Local {
 	public void setCEP(String cEP) {
 		CEP = cEP;
 	}
-	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((CEP == null) ? 0 : CEP.hashCode());
+		result = prime * result + ((UF == null) ? 0 : UF.hashCode());
+		result = prime * result + ((bairro == null) ? 0 : bairro.hashCode());
+		result = prime * result + ((logradouro == null) ? 0 : logradouro.hashCode());
+		result = prime * result + ((municipio == null) ? 0 : municipio.hashCode());
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + numeroLocal;
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Local other = (Local) obj;
+		if (CEP == null) {
+			if (other.CEP != null)
+				return false;
+		} else if (!CEP.equals(other.CEP))
+			return false;
+		if (UF == null) {
+			if (other.UF != null)
+				return false;
+		} else if (!UF.equals(other.UF))
+			return false;
+		if (bairro == null) {
+			if (other.bairro != null)
+				return false;
+		} else if (!bairro.equals(other.bairro))
+			return false;
+		if (logradouro == null) {
+			if (other.logradouro != null)
+				return false;
+		} else if (!logradouro.equals(other.logradouro))
+			return false;
+		if (municipio == null) {
+			if (other.municipio != null)
+				return false;
+		} else if (!municipio.equals(other.municipio))
+			return false;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		if (numeroLocal != other.numeroLocal)
+			return false;
+		return true;
+	}
 	
 }

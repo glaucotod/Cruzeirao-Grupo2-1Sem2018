@@ -3,7 +3,9 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public enum Tipo {
+	
 	
 	JOGADOR ("Jogador","Jogador"), 
 	TECNICO ("Técnico","Tecnico"),
