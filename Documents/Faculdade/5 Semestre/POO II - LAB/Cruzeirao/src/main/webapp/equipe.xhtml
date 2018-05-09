@@ -10,13 +10,14 @@
 	
 	<ui:define name="title">
 		<h:outputText value="Cadastro de Equipe" />
+		
+<link type="text/css" rel="stylesheet" media="screen" href="estilos.css" />
 	</ui:define>
 	
 
 	<ui:define name="principal">
 	  
 	  <h1><p:outputLabel value="Cadastro de Equipe"/></h1>
-	  
 	  <h:form id="formEquipe">	
 		  <p:panelGrid columns="2">	 
  
@@ -37,16 +38,36 @@
 					itemValue="#{usr.email}" itemLabel="#{usr.nome}" />
 		</p:selectOneMenu>		
 		
-		<p:outputLabel value="Categoria:" />
+		<p:outputLabel value="Campeonato:" />
 		<p:selectOneMenu
-				value="#{equipeMB.categoria}">
-				<f:selectItem itemLabel="Selecione uma categoria" />
-				<f:selectItems value="#{equipeMB.categorias}" var="cat"
-					itemValue="#{usr.nome}" itemLabel="#{cat.nome}" />
+				value="#{equipeMB.campeonato}">
+				<p:ajax listener="#{equipeMB.onCampeonatoChange}" update="tabelaCampeonatoPorCategoria"/>
+				<f:selectItem itemLabel="Selecione um campeonato" />
+				<f:selectItems value="#{campeonatoManagedBean.campeonatos}" var="campeonato"
+					itemValue="#{usr.nome}" itemLabel="#{campeonato.nome}" />
 		</p:selectOneMenu>	
 		 
 		  </p:panelGrid>
 		  <br/>
+		  
+	<p:dataTable value="#{equipeMB.campeonato}" var="campeonato"
+			id="tabelaCampeonatoPorCategoria">
+			<p:column headerText="Nome">
+				<p:outputLabel value="#{aux.nome}" />
+			</p:column>
+			<p:column headerText="Início do campeonato">
+				<p:outputLabel value="#{aux.dataInicioCampeonato}" />
+			</p:column>
+			<p:column headerText="Fim do campeonato">
+				<p:outputLabel value="#{aux.dataFimCampeonato}" />
+			</p:column>
+			<p:column headerText="Valor da taxa">
+				<p:outputLabel value="#{aux.valorTaxa}" />
+			</p:column>
+			<p:commandButton value="Selecionar"/>
+			
+		</p:dataTable>
+	
 		  
 	  
 	

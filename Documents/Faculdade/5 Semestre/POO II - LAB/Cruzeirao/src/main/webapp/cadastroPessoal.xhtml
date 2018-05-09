@@ -38,8 +38,8 @@
 		      
 		      <p:outputLabel id="tipo" size="1" value="Tipo:" />		
 		        <p:selectOneMenu value="#{usuarioManagedBean.usuario.tipo}" style="width:125px" required="true">
-		        	<f:selectItems value="#{usuarioManagedBean.tiposCadastro}" var="t" 
-		itemLabel="#{t.nome}" itemValue="#{t}"/>
+		        	<p:ajax update="out" />
+		        	<f:selectItems value="#{usuarioManagedBean.tiposCadastro}" var="t" itemLabel="#{t.nome}" itemValue="#{t}"/>
 	          	</p:selectOneMenu>
 		      
 		      <p:outputLabel value="Telefone fixo:" />  
@@ -54,13 +54,8 @@
 		      <p:outputLabel value="CPF:" />
 		      <p:inputMask value="#{usuarioManagedBean.usuario.cpf}" mask="999.999.999-99" required="true" requiredMessage="Campo obrigatório" />	      
 		      
-		      <p:outputLabel value="Numero de registro CREF:" enable="#{usuarioManagedBean.isPreparadorFisico}" />
-		      <p:inputText value="#{usuarioManagedBean.usuario.cref}" enable="#{usuarioManagedBean.tiposUsuarios == 'Preparador_Fisico'}" />
-		      
-		      <!--<p:outputLabel value="Foto:"/>	         
-		      <p:fileUpload fileUploadListener="#{fileUploadView.handleFileUpload}" mode="advanced" dragDropSupport="true"
-	           update="messages" sizeLimit="10000000" fileLimit="1" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
-	          <p:growl id="messages" showDetail="true" />   -->  			
+		      <p:outputLabel value="Numero de registro CREF:" />
+		      <p:inputText value="#{usuarioManagedBean.usuario.cref}" id="out" disabled="#{usuarioManagedBean.isPreparadorFisico()}" />	
 	      
 		  </p:panelGrid>
 <br/>

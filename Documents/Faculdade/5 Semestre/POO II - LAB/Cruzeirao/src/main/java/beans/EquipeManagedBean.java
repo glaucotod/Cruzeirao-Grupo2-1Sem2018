@@ -10,6 +10,7 @@ import javax.faces.model.SelectItem;
 import org.primefaces.model.DualListModel;
 
 import dados.Dados;
+import models.Campeonato;
 import models.Categoria;
 import models.Equipe;
 import models.Inscricao;
@@ -32,8 +33,12 @@ public class EquipeManagedBean {
 	private Inscricao inscricao;
 	private Categoria categoria;
 	private InscricaoService inscricoesService = new InscricaoService();
+	private Campeonato campeonato;
+	private List<Categoria> categoriasPorCampeonato = new ArrayList<Categoria>();
+	
 	
 	public EquipeManagedBean() {
+		campeonato = new Campeonato();
 		categoria = new Categoria();
 		inscricao = new Inscricao();
 	}
@@ -171,5 +176,17 @@ public class EquipeManagedBean {
 		return categorias;
 	}
 	
+	public void setCampeonato(Campeonato campeonato) {
+		this.campeonato = campeonato;
+	}
+	public Campeonato getCampeonato() {
+		return campeonato;
+	}
 	
+	public void onCampeonatoChange() {
+        if(campeonato !=null && !campeonato.getNome().equals(""))
+            categoriasPorCampeonato = campeonato.getCategorias();
+        else
+            categoriasPorCampeonato = new ArrayList<Categoria>();
+    }
 }

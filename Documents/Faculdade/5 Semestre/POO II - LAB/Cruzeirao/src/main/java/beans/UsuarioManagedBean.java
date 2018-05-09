@@ -65,8 +65,7 @@ public class UsuarioManagedBean
 		return Sexo.getSexos();
 	}
 	
-	public boolean isPreparadorFisico()
-	{
-		return false;
+	public boolean isPreparadorFisico(){
+		return (usuario.getTipo() == null || !usuario.getTipo().name().equals("PREPARADOR_FISICO"));
 	}
 }

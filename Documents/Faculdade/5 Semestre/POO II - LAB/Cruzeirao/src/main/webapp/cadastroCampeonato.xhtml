@@ -65,16 +65,24 @@
 				<p:outputLabel value="#{aux.nome}" />
 			</p:column>
 			<p:column headerText="Iníco das inscrições">
-				<p:outputLabel value="#{aux.dataInicioInscricao}" />
+				<p:outputLabel value="#{aux.dataInicioInscricao}">
+					<f:convertDateTime pattern="dd/MM/yyyy"/>
+				</p:outputLabel>
 			</p:column>
 			<p:column headerText="Fim das inscrições">
-				<p:outputLabel value="#{aux.dataFimInscricao}" />
+				<p:outputLabel value="#{aux.dataFimInscricao}" >
+					<f:convertDateTime pattern="dd/MM/yyyy"/>
+				</p:outputLabel>
 			</p:column>
 			<p:column headerText="Início do campeonato">
-				<p:outputLabel value="#{aux.dataInicioCampeonato}" />
+				<p:outputLabel value="#{aux.dataInicioCampeonato}" >
+					<f:convertDateTime pattern="dd/MM/yyyy"/>
+				</p:outputLabel>
 			</p:column>
 			<p:column headerText="Fim do campeonato">
-				<p:outputLabel value="#{aux.dataFimCampeonato}" />
+				<p:outputLabel value="#{aux.dataFimCampeonato}">
+					<f:convertDateTime pattern="dd/MM/yyyy"/>
+				</p:outputLabel>
 			</p:column>
 			
 			<p:column headerText="Valor da taxa">

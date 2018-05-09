@@ -24,9 +24,9 @@ public class CampeonatoManagedBean {
 	private CampeonatoService service = new CampeonatoService();
 	private Campeonato campeonato = new Campeonato();
 	private ArrayList<Usuario> listaJuizes = new ArrayList<Usuario>(); 
+	
 	public ArrayList<Usuario> getJuizes()
-	{
-		
+	{	
 		for (Usuario i : UsuarioService.usuarioslist)
 			if (i.getTipo() == Tipo.JUIZ)
 			{
