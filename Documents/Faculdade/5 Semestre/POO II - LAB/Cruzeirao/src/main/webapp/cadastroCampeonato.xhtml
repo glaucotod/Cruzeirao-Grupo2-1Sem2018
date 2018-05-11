@@ -89,25 +89,70 @@
 				<p:outputLabel value="#{aux.valorTaxa}" />
 			</p:column>
 
-			<p:column headerText="Categorias">
-				<p:button outcome="categoria" value="Cadastrar categoria">
-				
-					<f:param name="Campeonato" value="aux" />
-
-				</p:button>
+			<p:column headerText="Categorias">			
+				<p:commandButton value="Cadastrar Categoria" type="button" onclick="PF('dlg1').show();" />
 			</p:column>
 			
 			<p:column headerText="Locais">
-				<p:button outcome="cadastroLocal" value="Cadastrar local">
-				
-					<f:param name="Campeonato" value="aux" />
-
-				</p:button>
+					<p:commandButton value="Cadastrar local" type="button" onclick="PF('dlg2').show();" />				
 			</p:column>
-
-
-
 		</p:dataTable>
-
+		
+		<!-- MODAL CATEGORIA -->
+		<p:dialog header="Informações da categoria" draggable="false" closeOnEscape="true" height="500" width="500" widgetVar="dlg1" modal="false" resizable="false" position="center"  >
+				<h:form id="formCategoria">	
+		  			<p:panelGrid columns="2">
+						<p:outputLabel value="Nome:" />
+						<p:inputText value="#{categoriaManagedBean.categoria.nome}" />
+						<p:outputLabel value="Nascidos a partir de:" />
+						<p:calendar
+							value="#{categoriaManagedBean.categoria.nascidosApartirDe}"
+							effect="folder" 
+						/>
+						<p:outputLabel value="Min. jogadores: " />
+						<p:inputText value="#{categoriaManagedBean.categoria.minJogadores}" />
+						<p:outputLabel value="Max. jogadores:" />
+						<p:inputText value="#{categoriaManagedBean.categoria.maxJogadores}" />
+						<p:outputLabel value="Sexo:" />
+						<p:selectOneMenu value="#{categoriaManagedBean.categoria.sexo}" style="width:125px" required="true">
+			            	<f:selectItems value="#{categoriaManagedBean.tiposSexo}" var="t" itemLabel="#{t.nome}" itemValue="#{t}"/>
+			          	</p:selectOneMenu>					    
+					</p:panelGrid>
+					<br/>
+						<p:commandButton type="button" value="Salvar" 
+		                 action="#{categoriaManagedBean.salvar}"
+		                 update=":formCategoria,, :tabelaCategoria"
+		                 />
+				</h:form>
+			</p:dialog>
+		
+		
+			<!-- MODAL LOCAL -->
+			<p:dialog header="Informações do local" widgetVar="dlg2" draggable="false" closeOnEscape="true" height="100%" width="100%"  modal="false" resizable="false" >
+				<h:form id="formLocal">	
+		  			<p:panelGrid columns="2">
+						<p:outputLabel value="Nome:" />
+		      			<p:inputText value="#{localManagedBean.local.nome}" required = "true"/>
+		      			<p:outputLabel value="Logradouro:" />
+				      	<p:inputText value="#{localManagedBean.local.logradouro}"/>					  	
+					  	<p:outputLabel value="Número:" />
+					  	<p:inputText value="#{localManagedBean.local.numeroLocal}"/>					  	
+					  	<p:outputLabel value="Bairro:" />
+					  	<p:inputText value="#{localManagedBean.local.bairro}"/>					  	
+					  	<p:outputLabel value="UF:" />
+					  	<p:inputText value="#{localManagedBean.local.UF}"/>					  	
+					  	<p:outputLabel value="Município:" />
+					  	<p:inputText value="#{localManagedBean.local.municipio}"/>					  	
+					  	<p:outputLabel value="CEP:" />
+					  	<p:inputMask value="#{localManagedBean.local.CEP}" mask = "99999-999"/>					    					    
+					</p:panelGrid>
+					<br/>
+					<p:commandButton type="button" value="Salvar" 
+		                 action="#{localManagedBean.salvar}"
+		                 update=":formLocal, :tabelaLocal"
+	                 	/>
+				</h:form>
+			</p:dialog>
+			
 	</ui:define>
 </ui:composition>
