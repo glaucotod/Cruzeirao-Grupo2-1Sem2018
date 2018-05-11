@@ -90,7 +90,8 @@
 			</p:column>
 		</p:dataTable>
 		
-		<p:dialog header="Informações da categoria" widgetVar="dlg1" minHeight="120">
+		<!-- MODAL CATEGORIA -->
+		<p:dialog header="Informações da categoria" draggable="false" closeOnEscape="true" height="500" width="500" widgetVar="dlg1" modal="false" resizable="false" position="center"  >
 				<h:form id="formCategoria">	
 		  			<p:panelGrid columns="2">
 						<p:outputLabel value="Nome:" />
@@ -117,7 +118,9 @@
 				</h:form>
 			</p:dialog>
 		
-			<p:dialog header="Informações do local" widgetVar="dlg2" minHeight="120">
+		
+			<!-- MODAL LOCAL -->
+			<p:dialog header="Informações do local" widgetVar="dlg2" draggable="false" closeOnEscape="true" height="100%" width="100%"  modal="false" resizable="false" >
 				<h:form id="formLocal">	
 		  			<p:panelGrid columns="2">
 						<p:outputLabel value="Nome:" />
