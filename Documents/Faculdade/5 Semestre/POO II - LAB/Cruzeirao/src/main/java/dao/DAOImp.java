@@ -1,4 +1,4 @@
-package dal;
+package dao;
 
 import java.io.Serializable;
 import java.util.List;
@@ -8,12 +8,12 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 
-public abstract class DALImp <T, I extends Serializable> {
+public abstract class DAOImp <T, I extends Serializable> {
 
     private static EntityManagerFactory emf;
     private EntityManager em;
     
-     public DALImp() {
+     public DAOImp() {
     	
     	emf = Persistence.createEntityManagerFactory("ProjetoMavenJSFPrimeFaces");
 

@@ -1,10 +1,21 @@
 package models;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class Usuario {
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "TBL_Usuario")
+public class Usuario implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	
+	@Id
+	private int userID;
 	private String email;
 	private String nome;
 	private String userName="";
@@ -128,4 +139,122 @@ public class Usuario {
 	public String toString() {
 		return this.nome;
 	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((campeonatos == null) ? 0 : campeonatos.hashCode());
+		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
+		result = prime * result + ((cref == null) ? 0 : cref.hashCode());
+		result = prime * result + ((dataNascimento == null) ? 0 : dataNascimento.hashCode());
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((endereco == null) ? 0 : endereco.hashCode());
+		result = prime * result + ((equipes == null) ? 0 : equipes.hashCode());
+		result = prime * result + ((foto == null) ? 0 : foto.hashCode());
+		result = prime * result + ((inscricoes == null) ? 0 : inscricoes.hashCode());
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + ((rg == null) ? 0 : rg.hashCode());
+		result = prime * result + ((senha == null) ? 0 : senha.hashCode());
+		result = prime * result + ((sexo == null) ? 0 : sexo.hashCode());
+		result = prime * result + ((telefoneFixo == null) ? 0 : telefoneFixo.hashCode());
+		result = prime * result + ((telefoneMovel == null) ? 0 : telefoneMovel.hashCode());
+		result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
+		result = prime * result + userID;
+		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Usuario other = (Usuario) obj;
+		if (campeonatos == null) {
+			if (other.campeonatos != null)
+				return false;
+		} else if (!campeonatos.equals(other.campeonatos))
+			return false;
+		if (cpf == null) {
+			if (other.cpf != null)
+				return false;
+		} else if (!cpf.equals(other.cpf))
+			return false;
+		if (cref == null) {
+			if (other.cref != null)
+				return false;
+		} else if (!cref.equals(other.cref))
+			return false;
+		if (dataNascimento == null) {
+			if (other.dataNascimento != null)
+				return false;
+		} else if (!dataNascimento.equals(other.dataNascimento))
+			return false;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
+		if (endereco == null) {
+			if (other.endereco != null)
+				return false;
+		} else if (!endereco.equals(other.endereco))
+			return false;
+		if (equipes == null) {
+			if (other.equipes != null)
+				return false;
+		} else if (!equipes.equals(other.equipes))
+			return false;
+		if (foto == null) {
+			if (other.foto != null)
+				return false;
+		} else if (!foto.equals(other.foto))
+			return false;
+		if (inscricoes == null) {
+			if (other.inscricoes != null)
+				return false;
+		} else if (!inscricoes.equals(other.inscricoes))
+			return false;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		if (rg == null) {
+			if (other.rg != null)
+				return false;
+		} else if (!rg.equals(other.rg))
+			return false;
+		if (senha == null) {
+			if (other.senha != null)
+				return false;
+		} else if (!senha.equals(other.senha))
+			return false;
+		if (sexo != other.sexo)
+			return false;
+		if (telefoneFixo == null) {
+			if (other.telefoneFixo != null)
+				return false;
+		} else if (!telefoneFixo.equals(other.telefoneFixo))
+			return false;
+		if (telefoneMovel == null) {
+			if (other.telefoneMovel != null)
+				return false;
+		} else if (!telefoneMovel.equals(other.telefoneMovel))
+			return false;
+		if (tipo != other.tipo)
+			return false;
+		if (userID != other.userID)
+			return false;
+		if (userName == null) {
+			if (other.userName != null)
+				return false;
+		} else if (!userName.equals(other.userName))
+			return false;
+		return true;
+	}
+	
 }

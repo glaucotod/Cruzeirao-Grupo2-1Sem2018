@@ -45,14 +45,6 @@ public class UsuarioManagedBean
 		return tipos;
 	}
 	
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
 	public List<Usuario> getUsuarios() {
 		return service.getUsuarios();
 	}
@@ -63,6 +55,14 @@ public class UsuarioManagedBean
 	
 	public List<Sexo> getSexos(){
 		return Sexo.getSexos();
+	}
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 	
 	public boolean isPreparadorFisico(){

@@ -19,12 +19,12 @@ public class Local implements Serializable{
 
 	@Id
 	private int numeroLocal;
-	private String nome      ;
+	private String nome;
 	private String logradouro;
-	private String bairro    ;
-	private String UF        ;
+	private String bairro;
+	private String UF;
 	private String municipio ;
-	private String CEP;      ;
+	private String CEP;
 	
 	public String getNome() {
 		return nome;
