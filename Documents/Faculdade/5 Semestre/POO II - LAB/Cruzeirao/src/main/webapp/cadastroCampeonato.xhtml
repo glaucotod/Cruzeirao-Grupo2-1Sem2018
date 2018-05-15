@@ -94,8 +94,11 @@
 			</p:column>
 			
 			<p:column headerText="Locais">
-					<p:commandButton value="Cadastrar local" type="button" onclick="PF('dlg2').show();" />				
+					<p:commandButton update=":formLocal:carDetail" value="Cadastrar local" icon="ui-icon-search" title="View" onclick="PF('dlg2').show();">
+                		<f:setPropertyActionListener target="#{campeonatoManagedBean.campeonatoTemp}" value="#{aux}" />
+					</p:commandButton>				
 			</p:column>
+			
 		</p:dataTable>
 		
 		<!-- MODAL CATEGORIA -->
@@ -131,6 +134,7 @@
 			<p:dialog header="Informações do local" widgetVar="dlg2" draggable="false" closeOnEscape="true" height="500" width="100%"  modal="false" resizable="false" >
 				<h:form id="formLocal">	
 		  			<p:panelGrid columns="2">
+		  				<p:outputLabel value=""/>
 						<p:outputLabel value="Nome:" />
 		      			<p:inputText value="#{localManagedBean.local.nome}" required = "true"/>
 		      			<p:outputLabel value="Logradouro:" />
@@ -146,6 +150,14 @@
 					  	<p:outputLabel value="CEP:" />
 					  	<p:inputMask value="#{localManagedBean.local.CEP}" mask = "99999-999"/>					    					    
 					</p:panelGrid>
+					
+					<p:outputPanel id="carDetail" style="text-align:center;">
+            <p:panelGrid  columns="2" rendered="#{not empty campeonatoManagedBean.campeonatoTemp}" columnClasses="label,value">
+                <h:outputLabel value="Ano:" />
+                <h:outputLabel value="#{campeonatoManagedBean.campeonatoTemp.nome}" />
+            </p:panelGrid>
+        </p:outputPanel>
+					
 					<br/>
 					<p:commandButton type="button" value="Salvar" 
 		                 action="#{localManagedBean.salvar}"

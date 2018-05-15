@@ -24,6 +24,7 @@ public class CampeonatoManagedBean {
 	private CampeonatoService service = new CampeonatoService();
 	private Campeonato campeonato = new Campeonato();
 	private ArrayList<Usuario> listaJuizes = new ArrayList<Usuario>(); 
+	private Campeonato campeonatoTemp = new Campeonato();
 	
 	public ArrayList<Usuario> getJuizes()
 	{	
@@ -82,6 +83,13 @@ public class CampeonatoManagedBean {
 	public List<Campeonato> getCampeonatos() {
 		return service.getCampeonatos();
 	}
-	
-	
+
+	public Campeonato getCampeonatoTemp() {
+		return campeonatoTemp;
+	}
+
+	public void setCampeonatoTemp(Campeonato campeonatoTemp) {
+		this.campeonatoTemp = campeonatoTemp;
+	}
+
 }
