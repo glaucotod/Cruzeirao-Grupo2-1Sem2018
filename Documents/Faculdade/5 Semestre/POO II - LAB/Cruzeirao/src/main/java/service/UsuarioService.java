@@ -28,6 +28,10 @@ public class UsuarioService
 	}
 	
 	public void remove(Usuario usuario) {
+		if(usuarioslist.remove(usuario))
+			System.out.println("Removeu");
+		else
+			System.out.println("Nao removeu");
 		usuarioDAO.remove(usuario);
 	}
 }

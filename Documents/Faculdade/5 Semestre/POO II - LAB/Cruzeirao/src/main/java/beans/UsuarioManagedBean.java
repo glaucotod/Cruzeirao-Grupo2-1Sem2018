@@ -18,6 +18,11 @@ public class UsuarioManagedBean
 {
 	private Usuario usuario = new Usuario();
 	private UsuarioService service = new UsuarioService();	
+	private Usuario usuarioTemp;
+	
+	public UsuarioManagedBean() {
+		this.usuarioTemp = new Usuario();
+	}
 	
 	public void salvar()
 	{
@@ -65,7 +70,19 @@ public class UsuarioManagedBean
 		this.usuario = usuario;
 	}
 	
+	public void remove(Usuario usuario) {
+		service.remove(usuario);
+	}
+	
 	public boolean isPreparadorFisico(){
 		return (usuario.getTipo() == null || !usuario.getTipo().name().equals("PREPARADOR_FISICO"));
+	}
+
+	public Usuario getUsuarioTemp() {
+		return usuarioTemp;
+	}
+
+	public void setUsuarioTemp(Usuario usuarioTemp) {
+		this.usuarioTemp = usuarioTemp;
 	}
 }
