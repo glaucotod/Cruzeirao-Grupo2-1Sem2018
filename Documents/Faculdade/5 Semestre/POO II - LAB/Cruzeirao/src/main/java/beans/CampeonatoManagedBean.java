@@ -25,6 +25,13 @@ public class CampeonatoManagedBean {
 	private Campeonato campeonato = new Campeonato();
 	private ArrayList<Usuario> listaJuizes = new ArrayList<Usuario>(); 
 	private Campeonato campeonatoTemp = new Campeonato();
+	private Categoria categoriaTemp = null;
+	private List<Categoria> categoriasTemp = null;
+	
+	public CampeonatoManagedBean() {
+		this.categoriaTemp = new Categoria();
+		this.categoriasTemp = new ArrayList<Categoria>();
+	}
 	
 	public ArrayList<Usuario> getJuizes()
 	{	
@@ -92,4 +99,24 @@ public class CampeonatoManagedBean {
 		this.campeonatoTemp = campeonatoTemp;
 	}
 
+	public Categoria getCategoriaTemp() {
+		return categoriaTemp;
+	}
+
+	public void setCategoriaTemp(Categoria categoriaTemp) {
+		this.categoriaTemp = categoriaTemp;
+		if(!categoriasTemp.contains(categoriaTemp))
+			this.categoriasTemp.add(categoriaTemp);
+	}
+	
+	public List<Categoria> getCategoriasTemp(){
+		return categoriasTemp;
+	}
+	
+	public void removeCategoria(Categoria categoriaTemp) {
+		if(categoriasTemp.remove(categoriaTemp))
+			System.out.println("Sucesso");
+		else
+			System.out.println("Falha");
+	}
 }

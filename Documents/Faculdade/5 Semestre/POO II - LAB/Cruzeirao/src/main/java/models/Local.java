@@ -9,7 +9,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="TBL_Local")
-
 public class Local implements Serializable{
 	
 	/**
