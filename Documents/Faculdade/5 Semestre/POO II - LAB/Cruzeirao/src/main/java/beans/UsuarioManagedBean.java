@@ -21,8 +21,13 @@ public class UsuarioManagedBean
 	
 	public void salvar()
 	{
-		service.salvar(usuario);
+		service.salvar(usuario); //Com clud
 		usuario = new Usuario();		
+	}
+	
+	public void remover()
+	{
+		service.remove(usuario);
 	}
 	
 	public SelectItem[] getTiposSexo()
@@ -45,7 +50,7 @@ public class UsuarioManagedBean
 		return tipos;
 	}
 	
-	public List<Usuario> getUsuarios() {
+	public List<Usuario> getUsuarios() { //Com CLUD
 		return service.getUsuarios();
 	}
 	

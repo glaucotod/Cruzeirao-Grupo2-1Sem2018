@@ -103,8 +103,68 @@
             <p:column headerText="CREF">
         <p:outputLabel value="#{aux.cref}" />
       </p:column>
+      <p:column headerText="Editar e excluir">
+        <p:commandButton value="Editar" type="button" onclick="PF('dlg1').show();" />
+        <br/>	
+        <br/>
+        <p:commandButton value="Excluir" type="button" onclick="PF('dlg2').show();" />
+      </p:column>
       
    </p:dataTable>	
+	   
+	   <!-- MODAL Editar Cadastro -->
+		<p:dialog header="Informações do cadastro" draggable="false" closeOnEscape="true" height="500" width="500" widgetVar="dlg1" modal="false" resizable="false" position="center"  >
+				<h:form id="formUsuarioDial">	
+		  			<p:panelGrid columns="2">	 
+						<p:outputLabel value="Nome:"/>
+				        <p:inputText value="#{usuarioManagedBean.usuario.nome}" required="true" requiredMessage="Campo obrigatório" />
+				        <p:outputLabel id="sexo" size="1" value="Sexo:" />	
+				        <p:selectOneMenu value="#{usuarioManagedBean.usuario.sexo}" style="width:125px" required="true">
+			            	<f:selectItems value="#{usuarioManagedBean.tiposSexo}" var="t" 
+								itemLabel="#{t.nome}" itemValue="#{t}"/>
+			          	</p:selectOneMenu> 
+				        <p:outputLabel value="Email:" />
+				        <p:inputText value="#{usuarioManagedBean.usuario.email}" required="true" requiredMessage="Campo obrigatório" />
+				        <p:outputLabel value="Data de nascimento:" />
+			            <p:calendar value="#{usuarioManagedBean.usuario.dataNascimento}" effect="fold" required="true" requiredMessage="Campo obrigatório"  />
+			            <p:outputLabel value="Endereço:" />
+				        <p:inputText value="#{usuarioManagedBean.usuario.endereco}" required="true" requiredMessage="Campo obrigatório" />
+				        <p:outputLabel id="tipo" size="1" value="Tipo:" />		
+				        <p:selectOneMenu value="#{usuarioManagedBean.usuario.tipo}" style="width:125px" required="true">
+				        	<p:ajax update="out" />
+				        	<f:selectItems value="#{usuarioManagedBean.tiposCadastro}" var="t" itemLabel="#{t.nome}" itemValue="#{t}"/>
+			            </p:selectOneMenu>		      
+				        <p:outputLabel value="Telefone fixo:" />  
+			            <p:inputMask value="#{usuarioManagedBean.usuario.telefoneFixo}" mask="(99) 9999-9999"/>
+				        <p:outputLabel value="Telefone celular:" />
+				        <p:inputMask value="#{usuarioManagedBean.usuario.telefoneMovel}" mask="(99) 99999-9999"/>
+				        <p:outputLabel value="RG:" />
+				        <p:inputMask value="#{usuarioManagedBean.usuario.rg}" mask="99.999.999-9" required="true" requiredMessage="Campo obrigatório" />
+				        <p:outputLabel value="CPF:" />
+				        <p:inputMask value="#{usuarioManagedBean.usuario.cpf}" mask="999.999.999-99" required="true" requiredMessage="Campo obrigatório" />	      
+				        <p:outputLabel value="Numero de registro CREF:" />
+				        <p:inputText value="#{usuarioManagedBean.usuario.cref}" id="out" disabled="#{usuarioManagedBean.isPreparadorFisico()}" />	
+							<br/>				
+					</p:panelGrid>				
+				 </h:form>
+				 <p:commandButton value="Salvar" 
+	                 action="#{usuarioManagedBean.salvar}"
+	                 update=":formUsuario, :tabelaUsuario"
+	                 />    
+			</p:dialog>
+			
+			<!-- MODAL Excluir Cadastro -->
+		<p:dialog header="Informações do cadastro" draggable="false" closeOnEscape="true" height="150" width="150" widgetVar="dlg2" modal="false" resizable="false" position="center"  >
+				<h:form id="formUsuarioDialDel">
+					<p:outputLabel value="Tem certeza que deseja remover o cadastro?" />
+					<br/>
+					<br/>
+					<p:commandButton value="Remover" 
+		                 action="#{usuarioManagedBean.remover}"
+		                 update=":formUsuario, :tabelaUsuario"
+		                 />
+				</h:form>
+	   </p:dialog>
 	   
 	</ui:define>
 </ui:composition>
