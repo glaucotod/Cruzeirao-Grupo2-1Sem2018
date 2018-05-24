@@ -3,12 +3,8 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:ui2="http://java.sun.com/jsf/facelets">
+	xmlns:p="http://primefaces.org/ui">
 
-	<ui:define name="title">
-		<h:outputText value="#{msg['pages.cadastroCampeonato.title']}" />
-	</ui:define>
 
 	<ui:define name="principal">
 
@@ -58,13 +54,16 @@
 
 			<p:commandButton value="Salvar"
 				action="#{campeonatoManagedBean.salvar}"
-				update=":formCampeonato, :tabelaCampeonato" />
+				update=":formCampeonato, :base1" />
 		</h:form>
-		<p:dataTable value="#{campeonatoManagedBean.campeonatos}" var="aux"
-			id="tabelaCampeonato">
+		
+		<h:form id="base1">
+		
+		<p:dataTable value="#{campeonatoManagedBean.campeonatos}" var="aux" >
 			<p:column headerText="Nome">
 				<p:outputLabel value="#{aux.nome}" />
 			</p:column>
+			
 			<p:column headerText="Iníco das inscrições">
 				<p:outputLabel value="#{aux.dataInicioInscricao}">
 					<f:convertDateTime pattern="dd/MM/yyyy" />
@@ -89,31 +88,31 @@
 			<p:column headerText="Valor da taxa">
 				<p:outputLabel value="#{aux.valorTaxa}" />
 			</p:column>
-
+			
+			
 			<p:column headerText="Categorias">
-				<p:commandButton value="Selecionar Categorias" update=":formCategoria" type="button"
-					onclick="PF('dlg1').show();" >
-					<f:setPropertyActionListener value="aux" target="#{campeonatoManagedBean.campeonatoTemp}"/>
-				</p:commandButton>
+				<p:commandLink action="#{campeonatoManagedBean.passarCampeonatoTemporario(aux)}" oncomplete="PF('dlg1').show()" update=":base1" value="Cadastrar Categoria">
+				</p:commandLink>
 			</p:column>
-
+			
 			<p:column headerText="Locais">
-				<p:commandButton update=":formLocal:carDetail"
-					value="Cadastrar local" icon="ui-icon-search" title="View"
-					onclick="PF('dlg2').show();">
-					<f:setPropertyActionListener
-						target="#{campeonatoManagedBean.campeonatoTemp}" value="#{aux}" />
-				</p:commandButton>
+				<p:commandLink action="#{campeonatoManagedBean.passarCampeonatoTemporario(aux)}" oncomplete="PF('dlg2').show()" update=":base1" value="Cadastrar local">
+				</p:commandLink>
 			</p:column>
 
 		</p:dataTable>
-
+		
+		
+		
 		<!-- MODAL CATEGORIA -->
 		<p:dialog header="Selecionar categorias" draggable="false"
 			closeOnEscape="true" height="500" width="500" widgetVar="dlg1"
 			modal="false" resizable="false" position="center">
+			
 			<h:form id="formCategoria">
-				<p:outputLabel value="#{campeonatoManagedBean.campeonatoTemp}"></p:outputLabel>
+				<p:outputLabel value="Teste"/>
+				<p:outputLabel value="#{campeonatoManagedBean.campeonatoTemp.nome}"/>
+			
 				<p:dataList value="#{categoriaManagedBean.categorias}" var="cat"
 					type="unordered" itemType="none" paginator="true" rows="10"
 					styleClass="paginated">
@@ -130,10 +129,9 @@
 					<h:outputText value="#{cat.nome}" style="display:inline-block" />
 				</p:dataList>
 			</h:form>
+			
 			<h:form id="formCategorias">
-
 			<br/>
-
 				<p:dataTable value="#{campeonatoManagedBean.categoriasTemp}"
 					var="catTemp" id="categorias">
 					
@@ -146,22 +144,21 @@
 						<p:outputLabel headerText="Opção">
 							<p:commandLink value="Remover" action="#{campeonatoManagedBean.removeCategoria(catTemp)}" update=":formCategorias"></p:commandLink>
 						 </p:outputLabel>
-					</p:column>
-					
+					</p:column>	
 				</p:dataTable>
-
 			</h:form>
+			
+			
 		</p:dialog>
-
 
 		<!-- MODAL LOCAL -->
 		<p:dialog header="Informações do local" widgetVar="dlg2"
 			draggable="false" closeOnEscape="true" height="500" width="100%"
-			modal="false" resizable="false">
+			modal="false" resizable="false" id="teste">
 			<h:form id="formLocal">
 				<p:panelGrid columns="2">
-					<p:outputLabel value="" />
 					<p:outputLabel value="Nome:" />
+					<p:outputLabel value="#{campeonatoManagedBean.campeonatoTemp.nome}" />
 					<p:inputText value="#{localManagedBean.local.nome}" required="true" />
 					<p:outputLabel value="Logradouro:" />
 					<p:inputText value="#{localManagedBean.local.logradouro}" />
@@ -190,9 +187,11 @@
 				<br />
 				<p:commandButton type="button" value="Salvar"
 					action="#{localManagedBean.salvar}"
-					update=":formLocal, :tabelaLocal" />
+					update=":formLocal" />
 			</h:form>
 		</p:dialog>
+		
+	</h:form>
 
 	</ui:define>
 </ui:composition>

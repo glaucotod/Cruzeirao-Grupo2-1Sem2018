@@ -17,7 +17,7 @@ import models.Usuario;
 import service.CampeonatoService;
 import service.UsuarioService;
 
-@ManagedBean(eager=true, name = "campeonatoManagedBean")
+@ManagedBean(name = "campeonatoManagedBean")
 @SessionScoped
 public class CampeonatoManagedBean {
 
@@ -31,6 +31,11 @@ public class CampeonatoManagedBean {
 	public CampeonatoManagedBean() {
 		this.categoriaTemp = new Categoria();
 		this.categoriasTemp = new ArrayList<Categoria>();
+	}
+	
+	public void passarCampeonatoTemporario(Campeonato c) {
+		System.out.println("Chamou");
+		this.campeonatoTemp = c;
 	}
 	
 	public ArrayList<Usuario> getJuizes()
