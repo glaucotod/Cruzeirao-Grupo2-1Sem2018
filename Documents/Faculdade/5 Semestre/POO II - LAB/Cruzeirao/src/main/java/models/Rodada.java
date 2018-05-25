@@ -20,6 +20,7 @@ public class Rodada {
 	public void setGrupo(Grupo grupo) {
 		this.grupo = grupo;
 	}
+	
 	public List<Partida> getPartidas() {
 		return partidas;
 	}

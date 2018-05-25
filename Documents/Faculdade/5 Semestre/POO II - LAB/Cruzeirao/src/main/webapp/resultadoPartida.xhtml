@@ -16,55 +16,14 @@
 			<p:outputLabel value="#{msg['pages.resultadoPartida.menu']}" />
 		</h1>
 
-		<h:form id="formResultadoPartida">
-			<p:panelGrid columns="2">
-				<p:outputLabel value="Gols equipe mandante:" />
-				<p:selectCheckboxMenu id="golsMandante"
-					value="#{partidaFutebolManagedBean.partidaFutebol.golsMandantes}" label="Gols"
-					multiple="true" filter="true" filterMatchMode="startsWith">
-					<f:selectItems value="#{partidaFutebolManagedBean.gols}" />
-				</p:selectCheckboxMenu>
-				
-				<p:outputLabel value="Gols equipe visitante:" />
-				<p:selectCheckboxMenu id="golsVisitante"
-					value="#{partidaFutebolManagedBean.partidaFutebol.golsVisitantes}" label="Gols"
-					multiple="true" filter="true" filterMatchMode="startsWith">
-					<f:selectItems value="#{partidaFutebolManagedBean.gols}" />
-				</p:selectCheckboxMenu>
-				
-				<p:outputLabel value="Gols de penalty equipe mandante:" />
-				<p:selectCheckboxMenu id="golsMandantePenalty"
-					value="#{partidaFutebolManagedBean.partidaFutebol.golsPenaltesMandantes}" label="Gols"
-					multiple="true" filter="true" filterMatchMode="startsWith">
-					<f:selectItems value="#{partidaFutebolManagedBean.gols}" />
-				</p:selectCheckboxMenu>
-				
-				<p:outputLabel value="Gols de penalty equipe visitante:" />
-				<p:selectCheckboxMenu id="golsVisitantePenalty"
-					value="#{partidaFutebolManagedBean.partidaFutebol.golsPenaltesVisitantes}" label="Gols"
-					multiple="true" filter="true" filterMatchMode="startsWith">
-					<f:selectItems value="#{partidaFutebolManagedBean.gols}" />
-				</p:selectCheckboxMenu>
-				
-				<p:outputLabel value="Cartões equipe mandante:" />
-				<p:selectCheckboxMenu id="cartoesMandante"
-					value="#{partidaFutebolManagedBean.partidaFutebol.cartaoVisitante}" label="Cartões"
-					multiple="true" filter="true" filterMatchMode="startsWith">
-					<f:selectItems value="#{partidaFutebolManagedBean.cartoes}" />
-				</p:selectCheckboxMenu>
-				
-				<p:outputLabel value="Cartões equipe visitante:" />
-				<p:selectCheckboxMenu id="cartoesVisitante"
-					value="#{partidaFutebolManagedBean.partidaFutebol.cartaoVisitante}" label="Cartões"
-					multiple="true" filter="true" filterMatchMode="startsWith">
-					<f:selectItems value="#{partidaFutebolManagedBean.cartoes}" />
-				</p:selectCheckboxMenu>
-
-			</p:panelGrid>
-
-			<p:commandButton value="Salvar"
-				action="#{partidaFutebolManagedBean.salvar}" />
-		</h:form>
+		<h:form>
+		    <h3 style="margin-top:0">Client</h3>
+		    <p:tree value="#{partidaFutebolMB.root}" var="node" orientation="horizontal">
+		        <p:treeNode>
+		            <h:outputText value="#{node}" />
+		        </p:treeNode>
+		    </p:tree>
+	</h:form>
 
 	</ui:define>
 </ui:composition>

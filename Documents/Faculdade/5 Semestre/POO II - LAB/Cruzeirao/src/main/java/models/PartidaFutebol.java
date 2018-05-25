@@ -11,6 +11,8 @@ public class PartidaFutebol {
 	private List<Cartao> cartoesMandante;
 	private List<Cartao> cartaoVisitante;
 	
+	
+	
 	public List<Gol> getGolsMandantes() {
 		return golsMandantes;
 	}

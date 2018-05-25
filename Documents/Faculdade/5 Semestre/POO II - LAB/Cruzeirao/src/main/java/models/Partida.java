@@ -15,6 +15,29 @@ public class Partida {
 	private Grupo grupo;
 	private String relatoJuiz;
 	
+	public Partida(int n) {
+		Equipe e1 = new Equipe();
+		e1.setNome("PRIMEIRA");
+		Equipe e2 = new Equipe();
+		e2.setNome("SEGUNDA");
+		Equipe e3 = new Equipe();
+		e3.setNome("TERCEIRA");
+		
+		Inscricao i1 = new Inscricao();
+		Inscricao i2 = new Inscricao();
+		Inscricao i3 = new Inscricao();
+		
+		i1.setEquipe(e1);
+		i2.setEquipe(e2);
+		i3.setEquipe(e3);
+		
+		
+		this.numero = n;
+		this.equipeMandante = i1;
+		this.equipeVisitante = i2;
+		
+	}
+	
 	public int getNumero() {
 		return numero;
 	}

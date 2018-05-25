@@ -11,7 +11,8 @@ public class PartidaService
 	
 	public PartidaService()
 	{
-
+		this.partidas.add(new Partida(1));
+		this.partidas.add(new Partida(2));
 	}
 	
 	public void salvar(Partida partida)
