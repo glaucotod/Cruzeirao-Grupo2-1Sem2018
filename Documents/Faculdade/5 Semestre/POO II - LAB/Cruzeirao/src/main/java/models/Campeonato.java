@@ -3,8 +3,23 @@ package models;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "TBL_Campeonato")
 public class Campeonato {
 
+	
+	
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	private int numeroCampeonato;
+	
+	@Lob
 	private String nome;
 	private List<Local> locais;
 	private List<Juiz> juizes;

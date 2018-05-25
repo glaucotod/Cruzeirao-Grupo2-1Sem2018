@@ -5,7 +5,7 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
+import javax.persistence.Lob;
 
 @Entity
 @Table(name="TBL_Local")
@@ -18,6 +18,8 @@ public class Local implements Serializable{
 
 	@Id
 	private int numeroLocal;
+	
+	@Lob
 	private String nome;
 	private String logradouro;
 	private String bairro;

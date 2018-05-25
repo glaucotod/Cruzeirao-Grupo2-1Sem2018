@@ -3,6 +3,7 @@
 	<persistence-unit name="ProjetoMavenJSFPrimeFaces" transaction-type="RESOURCE_LOCAL">
 		<class>models.Local</class>
 		<class>models.Usuario</class>
+		<class>models.Campeonato</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/DBTeste;create=true"/>
 			<property name="javax.persistence.jdbc.user" value="app"/>
