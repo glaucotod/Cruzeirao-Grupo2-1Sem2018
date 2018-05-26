@@ -1,7 +1,18 @@
 package models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="TBL_GOL")
 public class Gol {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int numeroGol;
 	private Inscrito inscrito;
 	private int tempo;
 	private boolean penalty;

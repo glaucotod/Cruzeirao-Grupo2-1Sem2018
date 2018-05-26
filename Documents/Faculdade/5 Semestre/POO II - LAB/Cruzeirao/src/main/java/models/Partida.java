@@ -3,11 +3,27 @@ package models;
 import java.util.Date;
 import java.util.List;
 
-public class Partida {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
+@Entity
+@Table (name="TBL_Partida")
+public class Partida {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int numero;
+	@ManyToOne
 	private Inscricao equipeMandante;
+	@ManyToOne
 	private Inscricao equipeVisitante;
+	@Temporal(TemporalType.DATE)
 	private Date data;
 	private Local local;
 	private Partida proxPartida;

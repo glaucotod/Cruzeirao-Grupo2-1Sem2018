@@ -2,8 +2,18 @@ package models;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+@Entity
+@Table(name="TBL_PartidaFutebol")
 public class PartidaFutebol {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int numeroPartidaFutebol;
 	private List<Gol> golsMandantes;
 	private List<Gol> golsVisitantes;
 	private List<Gol> golsPenaltesMandantes;

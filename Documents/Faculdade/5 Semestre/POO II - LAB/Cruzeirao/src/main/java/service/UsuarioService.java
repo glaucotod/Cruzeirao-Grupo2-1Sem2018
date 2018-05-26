@@ -28,6 +28,7 @@ public class UsuarioService
 	}
 	
 	public void remove(Usuario usuario) {
+		usuarios.remove(usuario);
 		usuarioDAO.remove(usuario);
 	}
 }

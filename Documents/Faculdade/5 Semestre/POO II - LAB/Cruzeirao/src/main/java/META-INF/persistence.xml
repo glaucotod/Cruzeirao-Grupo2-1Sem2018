@@ -4,6 +4,18 @@
 		<class>models.Local</class>
 		<class>models.Usuario</class>
 		<class>models.Campeonato</class>
+		<class>models.Grupo</class>
+		<class>models.Inscricao</class>
+		<class>models.Juiz</class>
+		<class>models.Partida</class>
+		<class>models.Rodada</class>
+		<class>models.Cartao</class>
+		<class>models.Categoria</class>
+		<class>models.Equipe</class>
+		<class>models.Fase</class>
+		<class>models.Gol</class>
+		<class>models.Inscrito</class>
+		<class>models.PartidaFutebol</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/DBTeste;create=true"/>
 			<property name="javax.persistence.jdbc.user" value="app"/>

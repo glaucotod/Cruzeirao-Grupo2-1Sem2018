@@ -2,8 +2,18 @@ package models;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="TBL_Inscricao")
 public class Inscricao {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long numero;
 	private boolean pagamento;
 	private boolean validada;
