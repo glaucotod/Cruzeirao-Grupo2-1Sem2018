@@ -13,7 +13,7 @@ import service.InscricaoService;
 @ManagedBean(name = "inscricoesMB")
 @SessionScoped
 public class InscricoesMB {
-//02
+
 	private InscricaoService inscricoesService = new InscricaoService();
 	private List<Inscricao> inscricoes = inscricoesService.getInscricoes();
 	private Inscricao selectecInscricao;

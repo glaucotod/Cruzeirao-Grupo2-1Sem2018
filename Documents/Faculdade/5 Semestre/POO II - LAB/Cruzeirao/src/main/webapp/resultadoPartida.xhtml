@@ -44,13 +44,49 @@
 			<p:dialog header="Partida" widgetVar="partidaDialog" modal="false" closeOnEscape="true"
 				showEffect="fade" hideEffect="fade" resizable="false">
 				<p:outputPanel id="partidaDetail" style="text-align:center;">
-					<p:panelGrid columns="2"
+					<p:panelGrid columns="4"
 						rendered="#{not empty partidaMB.partidaSelected}"
 						columnClasses="label,value">
-
+						
 						<h:outputText value="Id:" />
 						<h:outputText value="#{partidaMB.partidaSelected.numero}" />
+						<h:outputLabel value=""/>
+						<h:outputLabel value=""/>
+						
+						<!-- GOLS DA EQUIPE MANDANTE -->
 
+						<h:outputText value="Gol da Equipe Mandante:" />
+						<p:columnGroup>
+							<p:outputLabel value="Tempo: "/>
+							<p:inputMask mask="99:99" />
+						</p:columnGroup>
+						
+						<p:columnGroup>
+							<p:outputLabel value="Foi Penalty ?  "/> 
+							<p:selectBooleanButton onLabel="Sim" offLabel="Não"/>
+						</p:columnGroup>
+						
+						<p:commandButton value="Inserir"/>
+						
+						<!-- GOLS DA EQUIPE VISITANTE -->					
+						
+						<h:outputText value="Gol da Equipe Visitante:" />
+						
+						<p:columnGroup>
+							<p:outputLabel value="Tempo: "/>
+							<p:inputMask mask="99:99" />
+						</p:columnGroup>
+						
+						<p:columnGroup>
+							<p:outputLabel value="Foi Penalty ?  "/> 
+							<p:selectBooleanButton onLabel="Sim" offLabel="Não"/>
+						</p:columnGroup>
+						
+						<p:commandButton value="Inserir"/>
+						
+						
+						
+						
 					</p:panelGrid>
 				</p:outputPanel>
 			</p:dialog>

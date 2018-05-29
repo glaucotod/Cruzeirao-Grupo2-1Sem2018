@@ -1,6 +1,5 @@
 package service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import dados.Dados;
@@ -8,8 +7,8 @@ import models.Inscricao;
 
 public class InscricaoService {
 
-		public ArrayList <Inscricao> inscricoes = Dados.inscricoes;
-				//02
+		public List <Inscricao> inscricoes = Dados.inscricoes;
+				
 		public InscricaoService(){
 		}
 		
@@ -24,4 +23,10 @@ public class InscricaoService {
 		public List <Inscricao> getInscricoes(){
 			return inscricoes;
 		}
+		
+		public int getQuantidaInscritos(){
+			return inscricoes.size();
+		}
+		
 }
+

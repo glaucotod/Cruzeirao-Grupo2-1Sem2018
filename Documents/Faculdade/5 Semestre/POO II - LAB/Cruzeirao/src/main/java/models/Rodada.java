@@ -8,6 +8,14 @@ public class Rodada {
 	private Grupo grupo;
 	private List<Partida> partidas;
 	
+	public Rodada() {
+		
+	}
+	
+	public Rodada(int numero) {
+		this.numero = numero;
+	}
+	
 	public int getNumero() {
 		return numero;
 	}
@@ -26,5 +34,8 @@ public class Rodada {
 	}
 	public void setPartidas(List<Partida> partidas) {
 		this.partidas = partidas;
-	}	
+	}
+	public void addPartida(Partida partida) {
+		this.partidas.add(partida);
+	}
 }
