@@ -16,14 +16,45 @@
 			<p:outputLabel value="#{msg['pages.resultadoPartida.menu']}" />
 		</h1>
 
-		<h:form>
-		    <h3 style="margin-top:0">Client</h3>
-		    <p:tree value="#{partidaFutebolMB.root}" var="node" orientation="horizontal">
-		        <p:treeNode>
-		            <h:outputText value="#{node}" />
-		        </p:treeNode>
-		    </p:tree>
-	</h:form>
+		<h:form id="form">
+			<p:dataGrid var="partida" value="#{partidaMB.partidas}" columns="3"
+				layout="grid" rows="12" paginator="true" id="cars"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="6,12,16">
+
+				<f:facet name="header">
+            Partidas
+        </f:facet>
+
+				<p:panel header="#{partida.numero}" style="text-align:center">
+					<h:panelGrid columns="1" style="width:100%">
+						<h:outputText value="#{partida.data}" />
+
+						<p:commandLink action="#{partidaMB.addPartidaSelected(partida)}" update=":form:partidaDetail"
+							onclick="PF('partidaDialog').show()" title="View Detail">
+							<h:outputText styleClass="ui-icon ui-icon-search"
+								style="margin:0 auto;" />
+															
+						</p:commandLink>
+					</h:panelGrid>
+				</p:panel>
+
+			</p:dataGrid>
+
+			<p:dialog header="Partida" widgetVar="partidaDialog" modal="false" closeOnEscape="true"
+				showEffect="fade" hideEffect="fade" resizable="false">
+				<p:outputPanel id="partidaDetail" style="text-align:center;">
+					<p:panelGrid columns="2"
+						rendered="#{not empty partidaMB.partidaSelected}"
+						columnClasses="label,value">
+
+						<h:outputText value="Id:" />
+						<h:outputText value="#{partidaMB.partidaSelected.numero}" />
+
+					</p:panelGrid>
+				</p:outputPanel>
+			</p:dialog>
+		</h:form>
 
 	</ui:define>
 </ui:composition>

@@ -7,7 +7,7 @@ import models.Partida;
 
 public class PartidaService
 {
-	private ArrayList <Partida> partidas = new ArrayList<Partida>();	
+	private List <Partida> partidas = new ArrayList<Partida>();	
 	
 	public PartidaService()
 	{

@@ -20,6 +20,7 @@ import service.UsuarioService;
 @SessionScoped
 public class PartidaManagedBean
 {
+	/*
 	private Partida partida = new Partida();
 	private PartidaService service = new PartidaService();	
 	private ArrayList<Inscrito> equipesMandantes =  new ArrayList<Inscrito>(); 
@@ -77,5 +78,5 @@ public class PartidaManagedBean
 		service.salvar(partida);
 		partida = new Partida();		
 	}
-
+	*/
 }
