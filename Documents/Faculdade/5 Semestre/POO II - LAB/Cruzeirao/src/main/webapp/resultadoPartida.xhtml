@@ -65,7 +65,26 @@
 							<p:selectBooleanButton onLabel="Sim" offLabel="Não"/>
 						</p:columnGroup>
 						
-						<p:outputLabel value=""/>
+						<!-- SELECIONAR INSCRITO -->
+						<p:columnGroup>
+							<!-- <p:outputLabel value="Selecionar Inscrito: "/>  -->
+						
+							<p:selectOneMenu id="selecionarInscrito01"
+								value="#{partidaMB.inscritoSelected}"
+								converter="InscritoConverter" panelStyle="width:180px"
+								effect="fade" var="ins" style="width:160px" filter="true"
+								filterMatchMode="startsWith">
+
+								<f:selectItems
+									value="#{partidaMB.todosOsInscritosDasDuasEquipes}"
+									var="inscrito" itemLabel="#{inscrito.usuario.nome}"
+									itemValue="#{inscrito}" />
+
+								<p:column>
+									<h:outputText value="#{ins.nome}" />
+								</p:column>
+							</p:selectOneMenu>
+						</p:columnGroup>
 						
 						<p:commandButton value="Inserir Gol da Equipe Mandante"/>
 						
@@ -81,7 +100,26 @@
 							<p:selectBooleanButton onLabel="Sim" offLabel="Não"/>
 						</p:columnGroup>
 						
-						<p:outputLabel value=""/>
+						<!-- SELECIONAR INSCRITO -->
+						<p:columnGroup>
+							<!-- <p:outputLabel value="Selecionar Inscrito: "/>  -->
+						
+							<p:selectOneMenu id="selecionarInscrito02"
+								value="#{partidaMB.inscritoSelected}"
+								converter="InscritoConverter" panelStyle="width:180px"
+								effect="fade" var="ins" style="width:160px" filter="true"
+								filterMatchMode="startsWith">
+
+								<f:selectItems
+									value="#{partidaMB.todosOsInscritosDasDuasEquipes}"
+									var="inscrito" itemLabel="#{inscrito.usuario.nome}"
+									itemValue="#{inscrito}" />
+
+								<p:column>
+									<h:outputText value="#{ins.nome}" />
+								</p:column>
+							</p:selectOneMenu>
+						</p:columnGroup>
 						
 						<p:commandButton value="Inserir Gol da Equipe Visitante"/>
 						
@@ -106,7 +144,7 @@
 						<p:columnGroup>
 							<!-- <p:outputLabel value="Selecionar Inscrito: "/>  -->
 						
-							<p:selectOneMenu id="selecionarInscrito"
+							<p:selectOneMenu id="selecionarInscrito03"
 								value="#{partidaMB.inscritoSelected}"
 								converter="InscritoConverter" panelStyle="width:180px"
 								effect="fade" var="ins" style="width:160px" filter="true"
