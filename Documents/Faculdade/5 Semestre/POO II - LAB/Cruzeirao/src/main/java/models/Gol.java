@@ -6,6 +6,15 @@ public class Gol {
 	private int tempo;
 	private boolean penalty;
 	
+	public Gol(){
+	}
+	
+	public Gol(Inscrito inscrito, int tempo, boolean penalty) {
+		this.inscrito = inscrito;
+		this.tempo = tempo;
+		this.penalty = penalty;
+	}
+	
 	public Inscrito getInscrito() {
 		return inscrito;
 	}

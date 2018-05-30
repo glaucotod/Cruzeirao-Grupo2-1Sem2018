@@ -53,51 +53,16 @@
 						<h:outputLabel value=""/>
 						<h:outputLabel value=""/>
 						
-						<!-- GOLS DA EQUIPE MANDANTE -->
+						<!-- INSERCAO DE GOLS -->					
 						
 						<p:columnGroup>
 							<p:outputLabel value="Tempo: "/>
-							<p:inputNumber minValue="0" />
+							<p:inputMask mask="99:99" value="#{partidaMB.tempoGol}"/>
 						</p:columnGroup>
 						
 						<p:columnGroup>
 							<p:outputLabel value="Foi Penalty ?  "/> 
-							<p:selectBooleanButton onLabel="Sim" offLabel="Não"/>
-						</p:columnGroup>
-						
-						<!-- SELECIONAR INSCRITO -->
-						<p:columnGroup>
-							<!-- <p:outputLabel value="Selecionar Inscrito: "/>  -->
-						
-							<p:selectOneMenu id="selecionarInscrito01"
-								value="#{partidaMB.inscritoSelected}"
-								converter="InscritoConverter" panelStyle="width:180px"
-								effect="fade" var="ins" style="width:160px" filter="true"
-								filterMatchMode="startsWith">
-
-								<f:selectItems
-									value="#{partidaMB.todosOsInscritosDasDuasEquipes}"
-									var="inscrito" itemLabel="#{inscrito.usuario.nome}"
-									itemValue="#{inscrito}" />
-
-								<p:column>
-									<h:outputText value="#{ins.nome}" />
-								</p:column>
-							</p:selectOneMenu>
-						</p:columnGroup>
-						
-						<p:commandButton value="Inserir Gol da Equipe Mandante"/>
-						
-						<!-- GOLS DA EQUIPE VISITANTE -->					
-						
-						<p:columnGroup>
-							<p:outputLabel value="Tempo: "/>
-							<p:inputMask mask="99:99" />
-						</p:columnGroup>
-						
-						<p:columnGroup>
-							<p:outputLabel value="Foi Penalty ?  "/> 
-							<p:selectBooleanButton onLabel="Sim" offLabel="Não"/>
+							<p:selectBooleanButton onLabel="Sim" offLabel="Não" value="#{partidaMB.foiPenaltyGol}"/>
 						</p:columnGroup>
 						
 						<!-- SELECIONAR INSCRITO -->
@@ -105,7 +70,7 @@
 							<!-- <p:outputLabel value="Selecionar Inscrito: "/>  -->
 						
 							<p:selectOneMenu id="selecionarInscrito02"
-								value="#{partidaMB.inscritoSelected}"
+								value="#{partidaMB.inscritoGol}"
 								converter="InscritoConverter" panelStyle="width:180px"
 								effect="fade" var="ins" style="width:160px" filter="true"
 								filterMatchMode="startsWith">
@@ -121,22 +86,19 @@
 							</p:selectOneMenu>
 						</p:columnGroup>
 						
-						<p:commandButton value="Inserir Gol da Equipe Visitante"/>
+						<p:commandButton value="Inserir Gol" action="#{partidaMB.addGol()}"/>
 						
 						<!--  CARTOES  -->
 						
-						<!-- <h:outputText value="Cartões:"/> -->
-						
 						<p:columnGroup>
 							<p:outputLabel value="Tempo: "/>
-							<p:inputMask mask="99:99" />
+							<p:inputMask mask="99:99" value="#{partidaMB.tempoCartao}"/>
 						</p:columnGroup>
 						
 						<p:columnGroup>
 							<p:outputLabel value="Tipo: "/>
-							<p:selectOneMenu >
-								<f:selectItem itemLabel="Vermelho" itemValue="Vermelho"/>
-								<f:selectItem itemLabel="Amarelo" itemValue="Amarelo"/>
+							<p:selectOneMenu value="#{partidaMB.tipoCartao}">
+								<f:selectItems value="#{partidaMB.tiposCartao}" var="tiposCartao" itemLabel="#{tiposCartao.nome}" itemValue="#{tiposCartao}" />
 							</p:selectOneMenu>
 						</p:columnGroup>
 						
@@ -145,7 +107,7 @@
 							<!-- <p:outputLabel value="Selecionar Inscrito: "/>  -->
 						
 							<p:selectOneMenu id="selecionarInscrito03"
-								value="#{partidaMB.inscritoSelected}"
+								value="#{partidaMB.inscritoCartao}"
 								converter="InscritoConverter" panelStyle="width:180px"
 								effect="fade" var="ins" style="width:160px" filter="true"
 								filterMatchMode="startsWith">
@@ -161,7 +123,7 @@
 							</p:selectOneMenu>
 						</p:columnGroup>
 						
-						<p:commandButton value="Inserir Cartão"></p:commandButton>
+						<p:commandButton value="Inserir Cartão" action="#{partidaMB.addCartao()}"/>
 
 
 					</p:panelGrid>
@@ -180,10 +142,11 @@
 						rendered="#{not empty partidaMB.partidaSelected}"
 						columnClasses="label,value"> 
 						
-						
-						<h:outputLabel value="#{partidaMB.partidaSelected.numero}"/>
-						<h:outputLabel value=""/>
-						
+						<p:dataTable value="#{partidaMB.partidaSelected.detalhes.cartoesMandante}" var="car" >
+							<p:column headerText="Tempo">
+								<p:outputLabel value="#{car.tempo}" />
+							</p:column>
+						</p:dataTable>
 
 
 					</p:panelGrid>

@@ -14,8 +14,11 @@ public class Partida {
 	private List<Juiz> juizes;
 	private Grupo grupo;
 	private String relatoJuiz;
+	private PartidaFutebol detalhes;
 	
 	public Partida(int n) {
+		detalhes = new PartidaFutebol();
+		
 		Equipe e1 = new Equipe();
 		e1.setNome("PRIMEIRA");
 		Equipe e2 = new Equipe();
@@ -91,5 +94,11 @@ public class Partida {
 	}
 	public void setRelatoJuiz(String relatoJuiz) {
 		this.relatoJuiz = relatoJuiz;
+	}
+	public void setDetalhes(PartidaFutebol detalhes){
+		this.detalhes = detalhes;
+	}
+	public PartidaFutebol getDetalhes() {
+		return detalhes;
 	}
 }

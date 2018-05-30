@@ -16,38 +16,38 @@ public class PartidaFutebol {
 	public List<Gol> getGolsMandantes() {
 		return golsMandantes;
 	}
-	public void setGolsMandantes(List<Gol> golsMandantes) {
-		this.golsMandantes = golsMandantes;
+	public void addGolMandante(Gol golMandante) {
+		this.golsMandantes.add(golMandante);
 	}
 	public List<Gol> getGolsVisitantes() {
 		return golsVisitantes;
 	}
-	public void setGolsVisitantes(List<Gol> golsVisitantes) {
-		this.golsVisitantes = golsVisitantes;
+	public void addGolVisitante(Gol golVisitante) {
+		this.golsVisitantes.add(golVisitante);
 	}
 	public List<Gol> getGolsPenaltesMandantes() {
 		return golsPenaltesMandantes;
 	}
-	public void setGolsPenaltesMandantes(List<Gol> golsPenaltesMandantes) {
-		this.golsPenaltesMandantes = golsPenaltesMandantes;
+	public void addGolPenaltyMandante(Gol golPenaltyMandante) {
+		this.golsPenaltesMandantes.add(golPenaltyMandante);
 	}
 	public List<Gol> getGolsPenaltesVisitantes() {
 		return golsPenaltesVisitantes;
 	}
-	public void setGolsPenaltesVisitantes(List<Gol> golsPenaltesVisitantes) {
-		this.golsPenaltesVisitantes = golsPenaltesVisitantes;
+	public void addGolPenaltyVisitante(Gol golPenaltyVisitante) {
+		this.golsPenaltesVisitantes.add(golPenaltyVisitante);
 	}
 	public List<Cartao> getCartoesMandante() {
 		return cartoesMandante;
 	}
-	public void setCartoesMandante(List<Cartao> cartoesMandante) {
-		this.cartoesMandante = cartoesMandante;
+	public void addCartaoMandante(Cartao cartaoMandante) {
+		this.cartoesMandante.add(cartaoMandante);
 	}
 	public List<Cartao> getCartaoVisitante() {
 		return cartaoVisitante;
 	}
-	public void setCartaoVisitante(List<Cartao> cartaoVisitante) {
-		this.cartaoVisitante = cartaoVisitante;
+	public void addCartaoVisitante(Cartao cartaoVisitante) {
+		this.cartaoVisitante.add(cartaoVisitante);
 	}
 	
 }
