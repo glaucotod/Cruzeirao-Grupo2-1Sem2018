@@ -77,7 +77,7 @@
 			<br />
 			
 			<p:commandButton value="Salvar" action="#{usuarioManagedBean.salvar}"
-				update=":formCampeonato, :base1" />
+				update=":base1" />
 		</h:form>
 		
 		<br />
@@ -129,7 +129,7 @@
         <p:commandButton value="Excluir" type="button" onclick="PF('dlg2').show();">
 			<f:setPropertyActionListener value="#{aux}" target="#{usuarioManagedBean.usuarioTemp}" />
 		</p:commandButton>
-      </p:column>
+      
 		</p:dataTable>
 
 		<!-- MODAL Editar Cadastro -->
