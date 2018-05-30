@@ -41,12 +41,12 @@
 
 			</p:dataGrid>
 
-			<p:dialog header="Partida" widgetVar="partidaDialog" modal="false" closeOnEscape="true"
-				showEffect="fade" hideEffect="fade" resizable="false">
+			<p:dialog header="Detalhes da partida" widgetVar="partidaDialog" modal="false" closeOnEscape="true"
+				showEffect="fade" hideEffect="fade" style="width:100%" resizable="false">
 				<p:outputPanel id="partidaDetail" style="text-align:center;">
 					<p:panelGrid columns="4"
 						rendered="#{not empty partidaMB.partidaSelected}"
-						columnClasses="label,value">
+						columnClasses="label,value"> 
 						
 						<h:outputText value="Id:" />
 						<h:outputText value="#{partidaMB.partidaSelected.numero}" />
@@ -54,11 +54,10 @@
 						<h:outputLabel value=""/>
 						
 						<!-- GOLS DA EQUIPE MANDANTE -->
-
-						<h:outputText value="Gol da Equipe Mandante:" />
+						
 						<p:columnGroup>
 							<p:outputLabel value="Tempo: "/>
-							<p:inputMask mask="99:99" />
+							<p:inputNumber minValue="0" />
 						</p:columnGroup>
 						
 						<p:columnGroup>
@@ -66,12 +65,12 @@
 							<p:selectBooleanButton onLabel="Sim" offLabel="Não"/>
 						</p:columnGroup>
 						
-						<p:commandButton value="Inserir"/>
+						<p:outputLabel value=""/>
+						
+						<p:commandButton value="Inserir Gol da Equipe Mandante"/>
 						
 						<!-- GOLS DA EQUIPE VISITANTE -->					
 						
-						<h:outputText value="Gol da Equipe Visitante:" />
-						
 						<p:columnGroup>
 							<p:outputLabel value="Tempo: "/>
 							<p:inputMask mask="99:99" />
@@ -82,14 +81,79 @@
 							<p:selectBooleanButton onLabel="Sim" offLabel="Não"/>
 						</p:columnGroup>
 						
-						<p:commandButton value="Inserir"/>
+						<p:outputLabel value=""/>
+						
+						<p:commandButton value="Inserir Gol da Equipe Visitante"/>
+						
+						<!--  CARTOES  -->
+						
+						<!-- <h:outputText value="Cartões:"/> -->
+						
+						<p:columnGroup>
+							<p:outputLabel value="Tempo: "/>
+							<p:inputMask mask="99:99" />
+						</p:columnGroup>
+						
+						<p:columnGroup>
+							<p:outputLabel value="Tipo: "/>
+							<p:selectOneMenu >
+								<f:selectItem itemLabel="Vermelho" itemValue="Vermelho"/>
+								<f:selectItem itemLabel="Amarelo" itemValue="Amarelo"/>
+							</p:selectOneMenu>
+						</p:columnGroup>
+						
+						<!-- SELECIONAR INSCRITO -->
+						<p:columnGroup>
+							<!-- <p:outputLabel value="Selecionar Inscrito: "/>  -->
+						
+							<p:selectOneMenu id="selecionarInscrito"
+								value="#{partidaMB.inscritoSelected}"
+								converter="InscritoConverter" panelStyle="width:180px"
+								effect="fade" var="ins" style="width:160px" filter="true"
+								filterMatchMode="startsWith">
+
+								<f:selectItems
+									value="#{partidaMB.todosOsInscritosDasDuasEquipes}"
+									var="inscrito" itemLabel="#{inscrito.usuario.nome}"
+									itemValue="#{inscrito}" />
+
+								<p:column>
+									<h:outputText value="#{ins.nome}" />
+								</p:column>
+							</p:selectOneMenu>
+						</p:columnGroup>
+						
+						<p:commandButton value="Inserir Cartão"></p:commandButton>
+
+
+					</p:panelGrid>
+					
+					
+					<p:commandButton value="Exibir informações sobre a Equipe Mandante" onclick="PF('infoMandanteDialog').show()"/>
+					<br/>
+					<p:commandButton value="Exibir informações sobre a Equipe Visitante" />
+				</p:outputPanel>
+			</p:dialog>
+			
+			<p:dialog header="Detalhes da partida" widgetVar="infoMandanteDialog" modal="false" closeOnEscape="true"
+				showEffect="fade" hideEffect="fade" style="width:100%" resizable="false">
+				<p:outputPanel id="infoMandanteID" style="text-align:center;">
+					<p:panelGrid columns="4"
+						rendered="#{not empty partidaMB.partidaSelected}"
+						columnClasses="label,value"> 
 						
 						
+						<h:outputLabel value="#{partidaMB.partidaSelected.numero}"/>
+						<h:outputLabel value=""/>
 						
-						
+
+
 					</p:panelGrid>
 				</p:outputPanel>
 			</p:dialog>
+			
+			
+			
 		</h:form>
 
 	</ui:define>
