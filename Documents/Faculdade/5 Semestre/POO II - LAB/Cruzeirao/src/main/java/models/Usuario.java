@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "TBL_Usuario")
+@Table(name = "TBL_USUARIO")
 public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -21,6 +21,7 @@ public class Usuario implements Serializable {
 	private String userName="";
 	private String senha;
 	private Date dataNascimento;
+	private Usuario usuario;
 	private List<Equipe> equipes;
 	private List<Inscrito> inscricoes;
 	private List<Campeonato> campeonatos;
@@ -256,5 +257,10 @@ public class Usuario implements Serializable {
 			return false;
 		return true;
 	}
-	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}	
 }
