@@ -40,6 +40,9 @@ public class Campeonato {
 	public void setCategorias(List<Categoria> categorias) {
 		this.categorias = categorias;
 	}
+	public void setCategoria(Categoria categoria) {
+		this.categorias.add(categoria);
+	}
 	public Date getDataInicioInscricao() {
 		return dataInicioInscricao;
 	}
