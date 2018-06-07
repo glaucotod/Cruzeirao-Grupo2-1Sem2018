@@ -3,6 +3,7 @@ package service;
 import java.util.ArrayList;
 import java.util.List;
 
+import dao.CampeonatoDAO;
 import models.Campeonato;
 import models.Categoria;
 
@@ -10,6 +11,7 @@ import models.Categoria;
 public class CampeonatoService {
 
 	private List <Campeonato> campeonatos = new ArrayList<Campeonato>();
+	private CampeonatoDAO dao = new CampeonatoDAO();
 	
 	public CampeonatoService()
 	{
@@ -39,6 +41,9 @@ public class CampeonatoService {
 	public void salvar(Campeonato campeonato)
 	{
 		campeonatos.add(campeonato);
+		campeonato = dao.save(campeonato);
+		dao.closeEntityManager();
+		
 	}
 
 	public void remove(Campeonato campeonato)

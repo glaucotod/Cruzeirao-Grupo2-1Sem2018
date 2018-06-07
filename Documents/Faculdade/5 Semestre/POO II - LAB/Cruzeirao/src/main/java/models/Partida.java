@@ -1,9 +1,30 @@
 package models;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class Partida {
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="TBL_Partida")
+public class Partida implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@OneToMany(cascade = CascadeType.ALL)
+	private int id;
 
 	private int numero;
 	private Inscricao equipeMandante;
@@ -15,32 +36,7 @@ public class Partida {
 	private Grupo grupo;
 	private String relatoJuiz;
 	private PartidaFutebol detalhes;
-	
-	public Partida(int n) {
-		detalhes = new PartidaFutebol();
-		
-		Equipe e1 = new Equipe();
-		e1.setNome("PRIMEIRA");
-		Equipe e2 = new Equipe();
-		e2.setNome("SEGUNDA");
-		Equipe e3 = new Equipe();
-		e3.setNome("TERCEIRA");
-		
-		Inscricao i1 = new Inscricao();
-		Inscricao i2 = new Inscricao();
-		Inscricao i3 = new Inscricao();
-		
-		i1.setEquipe(e1);
-		i2.setEquipe(e2);
-		i3.setEquipe(e3);
-		
-		
-		this.numero = n;
-		this.equipeMandante = i1;
-		this.equipeVisitante = i2;
-		
-	}
-	
+
 	public int getNumero() {
 		return numero;
 	}
@@ -101,4 +97,5 @@ public class Partida {
 	public PartidaFutebol getDetalhes() {
 		return detalhes;
 	}
+	
 }

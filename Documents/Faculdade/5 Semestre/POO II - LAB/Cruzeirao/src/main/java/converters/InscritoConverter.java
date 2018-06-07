@@ -10,15 +10,13 @@ import models.Inscrito;
 @FacesConverter(value = "InscritoConverter")
 public class InscritoConverter implements Converter {
 	
-		@Override
-	    public Object getAsObject(FacesContext facesContext, UIComponent uiComponent, String value) {
+		public Object getAsObject(FacesContext facesContext, UIComponent uiComponent, String value) {
 	        if (value != null && !value.isEmpty()) {
 	            return (Inscrito) uiComponent.getAttributes().get(value);
 	        }
 	        return null;
 	    }
 
-	    @Override
 	    public String getAsString(FacesContext facesContext, UIComponent uiComponent, Object value) {
 	        if (value instanceof Inscrito) {
 	            Inscrito entity= (Inscrito) value;

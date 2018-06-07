@@ -1,8 +1,10 @@
 package beans;
 
+import java.security.Provider.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.model.SelectItem;
@@ -14,7 +16,7 @@ import models.Partida;
 import models.TipoCartao;
 import service.PartidaService;
 
-@ManagedBean(name = "partidaMB")
+@ManagedBean(eager=true, name = "partidaMB")
 @SessionScoped
 public class PartidaMB {
 
@@ -31,9 +33,15 @@ public class PartidaMB {
 	//INSCRITOS
 	private Inscrito inscritoGol;
 	private Inscrito inscritoCartao;
-	
+
+	@PostConstruct
+    public void init() {
+		service = new PartidaService();
+		partidaSelected = new Partida();
+    }
 	public PartidaMB() {
-		this.partidaSelected = new Partida(20);
+		PartidaService service = new PartidaService();
+		this.partidaSelected = service.CriaPartida(20);
 		this.service = new PartidaService();
 		this.inscritoSelected = new Inscrito();
 	}
@@ -82,7 +90,12 @@ public class PartidaMB {
 	}
 	
 	public boolean isMandante(Inscrito inscrito) {
-		return partidaSelected.getEquipeMandante().getInscritos().stream().anyMatch(i -> i.equals(inscrito));
+		
+		for (Inscrito i : partidaSelected.getEquipeMandante().getInscritos()) 
+			if (i== inscrito)
+				return true;
+		return false;
+//		return partidaSelected.getEquipeMandante().getInscritos().stream().anyMatch(i -> i.equals(inscrito));
 	}
 	
 	public SelectItem[] getTiposCartao(){

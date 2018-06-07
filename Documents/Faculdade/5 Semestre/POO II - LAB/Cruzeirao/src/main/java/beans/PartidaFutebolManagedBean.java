@@ -15,7 +15,7 @@ import org.primefaces.model.TreeNode;
 import models.Partida;
 
 @SessionScoped
-@ManagedBean(name = "partidaFutebolMB")
+@ManagedBean(eager=true, name = "partidaFutebolMB")
 public class PartidaFutebolManagedBean{
      
     private TreeNode root;

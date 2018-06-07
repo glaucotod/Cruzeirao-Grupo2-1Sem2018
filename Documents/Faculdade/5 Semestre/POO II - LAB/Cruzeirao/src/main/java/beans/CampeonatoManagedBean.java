@@ -4,6 +4,7 @@ package beans;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 //import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -18,17 +19,25 @@ import models.Usuario;
 import service.CampeonatoService;
 import service.UsuarioService;
 
-@ManagedBean(name = "campeonatoManagedBean")
+@ManagedBean(eager=true, name = "campeonatoManagedBean")
 @SessionScoped
 public class CampeonatoManagedBean {
 
-	private CampeonatoService service = new CampeonatoService();
-	private Campeonato campeonato = new Campeonato();
-	private Campeonato campeonatoTemp = new Campeonato();
+	private CampeonatoService service;
+	private Campeonato campeonato;
+	private Campeonato campeonatoTemp;
 	private Categoria categoriaTemp = null;
 	private List<Categoria> categoriasTemp = null;
 	private Local localTemp = null;
 	private List<Local> locaisTemp = null;
+	
+
+	@PostConstruct
+    public void init() {
+		service = new CampeonatoService();
+		campeonato = new Campeonato();
+		campeonatoTemp = new Campeonato();
+    }
 	
 	public CampeonatoManagedBean() {
 		this.localTemp = new Local();

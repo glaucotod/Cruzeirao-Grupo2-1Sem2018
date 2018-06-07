@@ -3,6 +3,7 @@ package beans;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.model.SelectItem;
@@ -16,16 +17,17 @@ import models.Equipe;
 import models.Inscricao;
 import models.Inscrito;
 import models.Usuario;
+import service.CategoriaService;
 import service.EquipeService;
 import service.InscricaoService;
 import service.UsuarioService;
 
-@ManagedBean(name = "equipeMB")
+@ManagedBean(eager=true, name = "equipeMB")
 @SessionScoped
 public class EquipeManagedBean {
 	//01
-	private EquipeService equipeService = new EquipeService();
-	private Equipe equipe = new Equipe();
+	private EquipeService equipeService;
+	private Equipe equipe;
 	private Usuario usuario = new Usuario();
 	private Equipe selectedEquipe = new Equipe();
 	private DualListModel<Usuario> usuarioModel;
@@ -36,6 +38,12 @@ public class EquipeManagedBean {
 	private Campeonato campeonato;
 	private List<Categoria> categoriasPorCampeonato = new ArrayList<Categoria>();
 	
+
+	@PostConstruct
+    public void init() {
+		equipeService = new EquipeService();
+		equipe = new Equipe();
+    }
 	
 	public EquipeManagedBean() {
 		campeonato = new Campeonato();

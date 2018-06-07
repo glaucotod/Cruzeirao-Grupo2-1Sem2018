@@ -3,6 +3,7 @@ package beans;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -16,11 +17,11 @@ import service.PartidaService;
 import service.UsuarioService;
 
 
-@ManagedBean(name = "partidaManagedBean")
+@ManagedBean(eager=true, name = "partidaManagedBean")
 @SessionScoped
 public class PartidaManagedBean
 {
-	/*
+	
 	private Partida partida = new Partida();
 	private PartidaService service = new PartidaService();	
 	private ArrayList<Inscrito> equipesMandantes =  new ArrayList<Inscrito>(); 
@@ -29,7 +30,12 @@ public class PartidaManagedBean
 	private ArrayList<Grupo> grupos = new ArrayList<Grupo>();
 	private ArrayList<Usuario> listaJuizes = new ArrayList<Usuario>(); 
 	private ArrayList<Partida> partidas = new ArrayList<Partida>(); 
-	
+
+	@PostConstruct
+    public void init() {
+		service = new PartidaService();
+		partida = new Partida();
+    }
 	public ArrayList<Inscrito> getEquipesMandantes() {
 		return equipesMandantes;
 	}
@@ -78,5 +84,5 @@ public class PartidaManagedBean
 		service.salvar(partida);
 		partida = new Partida();		
 	}
-	*/
+	
 }

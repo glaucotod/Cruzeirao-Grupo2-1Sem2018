@@ -2,19 +2,24 @@ package beans;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import models.Local;
 import service.LocalService;
 
-@ManagedBean (name ="localManagedBean")
+@ManagedBean (eager=true, name ="localManagedBean")
 @SessionScoped
 public class LocalManagedBean {
 	
 	private LocalService service = new LocalService();
 	private Local local = new Local();
-	
+	@PostConstruct
+    public void init() {
+		service = new LocalService();
+		local = new Local();
+    }
 	public void salvar ()
 	{
 		service.salvar(getLocal());

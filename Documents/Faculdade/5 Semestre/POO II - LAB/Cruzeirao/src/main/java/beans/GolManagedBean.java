@@ -3,6 +3,7 @@ package beans;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -11,7 +12,7 @@ import models.Inscrito;
 import service.GolService;
 
 
-@ManagedBean(name = "golManagedBean")
+@ManagedBean(eager=true, name = "golManagedBean")
 @SessionScoped
 public class GolManagedBean
 {
@@ -20,6 +21,13 @@ public class GolManagedBean
 	private Gol gol = new Gol();
 	private GolService service = new GolService();
 	private ArrayList<Boolean> penalties =  new ArrayList<Boolean>();
+
+	
+	@PostConstruct
+    public void init() {
+		service = new GolService();
+		gol = new Gol();
+    }
 	
 	public ArrayList<Boolean> getPenalties() {
 		return penalties;
