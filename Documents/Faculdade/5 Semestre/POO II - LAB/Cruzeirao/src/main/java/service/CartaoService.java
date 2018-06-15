@@ -3,6 +3,7 @@ package service;
 import java.util.ArrayList;
 import java.util.List;
 
+import dao.CampeonatoDAO;
 import dao.CartaoDAO;
 import models.Cartao;
 
@@ -20,15 +21,9 @@ public class CartaoService
 	public void salvar(Cartao cartao)
 	{
 		cartoes.add(cartao);
-		dao.save(cartao);
-	}
-	
-	public void remove(Cartao cartao)
-	{
-		cartoes.remove(cartao);
-		dao.remove(cartao);
-	}
-
+		cartao = dao.save(cartao);
+		dao.closeEntityManager();
+	}	
 
 	public List <Cartao> getCartoes()
 	{		

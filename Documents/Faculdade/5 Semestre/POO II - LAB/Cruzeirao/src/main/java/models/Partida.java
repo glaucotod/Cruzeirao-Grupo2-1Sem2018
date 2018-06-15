@@ -1,36 +1,42 @@
 package models;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
-@Table (name="TBL_Partida")
-public class Partida {
+@Table(name="TBL_Partida")
+public class Partida implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@OneToMany(cascade = CascadeType.ALL)
+	private int id;
+
 	private int numero;
-	@ManyToOne
 	private Inscricao equipeMandante;
-	@ManyToOne
 	private Inscricao equipeVisitante;
-	@Temporal(TemporalType.DATE)
 	private Date data;
 	private Local local;
 	private Partida proxPartida;
 	private List<Juiz> juizes;
 	private Grupo grupo;
 	private String relatoJuiz;
-	
+	private PartidaFutebol detalhes;
+
 	public int getNumero() {
 		return numero;
 	}
@@ -85,4 +91,11 @@ public class Partida {
 	public void setRelatoJuiz(String relatoJuiz) {
 		this.relatoJuiz = relatoJuiz;
 	}
+	public void setDetalhes(PartidaFutebol detalhes){
+		this.detalhes = detalhes;
+	}
+	public PartidaFutebol getDetalhes() {
+		return detalhes;
+	}
+	
 }

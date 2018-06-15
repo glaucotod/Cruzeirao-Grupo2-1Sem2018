@@ -2,12 +2,14 @@ package models;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Lob;
+
 
 @Entity
 @Table(name="TBL_Local")
@@ -19,10 +21,11 @@ public class Local implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int numeroLocal;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@OneToMany(cascade = CascadeType.ALL)
+	private int id;
 	
-	@Lob
+	private int numeroLocal;
 	private String nome;
 	private String logradouro;
 	private String bairro;

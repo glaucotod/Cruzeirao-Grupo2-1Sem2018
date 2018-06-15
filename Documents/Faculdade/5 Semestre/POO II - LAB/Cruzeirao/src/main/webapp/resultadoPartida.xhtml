@@ -16,54 +16,146 @@
 			<p:outputLabel value="#{msg['pages.resultadoPartida.menu']}" />
 		</h1>
 
-		<h:form id="formResultadoPartida">
-			<p:panelGrid columns="2">
-				<p:outputLabel value="Gols equipe mandante:" />
-				<p:selectCheckboxMenu id="golsMandante"
-					value="#{partidaFutebolManagedBean.partidaFutebol.golsMandantes}" label="Gols"
-					multiple="true" filter="true" filterMatchMode="startsWith">
-					<f:selectItems value="#{partidaFutebolManagedBean.gols}" />
-				</p:selectCheckboxMenu>
-				
-				<p:outputLabel value="Gols equipe visitante:" />
-				<p:selectCheckboxMenu id="golsVisitante"
-					value="#{partidaFutebolManagedBean.partidaFutebol.golsVisitantes}" label="Gols"
-					multiple="true" filter="true" filterMatchMode="startsWith">
-					<f:selectItems value="#{partidaFutebolManagedBean.gols}" />
-				</p:selectCheckboxMenu>
-				
-				<p:outputLabel value="Gols de penalty equipe mandante:" />
-				<p:selectCheckboxMenu id="golsMandantePenalty"
-					value="#{partidaFutebolManagedBean.partidaFutebol.golsPenaltesMandantes}" label="Gols"
-					multiple="true" filter="true" filterMatchMode="startsWith">
-					<f:selectItems value="#{partidaFutebolManagedBean.gols}" />
-				</p:selectCheckboxMenu>
-				
-				<p:outputLabel value="Gols de penalty equipe visitante:" />
-				<p:selectCheckboxMenu id="golsVisitantePenalty"
-					value="#{partidaFutebolManagedBean.partidaFutebol.golsPenaltesVisitantes}" label="Gols"
-					multiple="true" filter="true" filterMatchMode="startsWith">
-					<f:selectItems value="#{partidaFutebolManagedBean.gols}" />
-				</p:selectCheckboxMenu>
-				
-				<p:outputLabel value="Cartões equipe mandante:" />
-				<p:selectCheckboxMenu id="cartoesMandante"
-					value="#{partidaFutebolManagedBean.partidaFutebol.cartaoVisitante}" label="Cartões"
-					multiple="true" filter="true" filterMatchMode="startsWith">
-					<f:selectItems value="#{partidaFutebolManagedBean.cartoes}" />
-				</p:selectCheckboxMenu>
-				
-				<p:outputLabel value="Cartões equipe visitante:" />
-				<p:selectCheckboxMenu id="cartoesVisitante"
-					value="#{partidaFutebolManagedBean.partidaFutebol.cartaoVisitante}" label="Cartões"
-					multiple="true" filter="true" filterMatchMode="startsWith">
-					<f:selectItems value="#{partidaFutebolManagedBean.cartoes}" />
-				</p:selectCheckboxMenu>
+		<h:form id="form">
+			<p:dataGrid var="partida" value="#{partidaMB.partidas}" columns="3"
+				layout="grid" rows="12" paginator="true" id="cars"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="6,12,16">
 
-			</p:panelGrid>
+				<f:facet name="header">
+            Partidas
+        </f:facet>
 
-			<p:commandButton value="Salvar"
-				action="#{partidaFutebolManagedBean.salvar}" />
+				<p:panel header="#{partida.numero}" style="text-align:center">
+					<h:panelGrid columns="1" style="width:100%">
+						<h:outputText value="#{partida.data}" />
+
+						<p:commandLink action="#{partidaMB.addPartidaSelected(partida)}" update=":form:partidaDetail"
+							onclick="PF('partidaDialog').show()" title="View Detail">
+							<h:outputText styleClass="ui-icon ui-icon-search"
+								style="margin:0 auto;" />
+															
+						</p:commandLink>
+					</h:panelGrid>
+				</p:panel>
+
+			</p:dataGrid>
+
+			<p:dialog header="Detalhes da partida" widgetVar="partidaDialog" modal="false" closeOnEscape="true"
+				showEffect="fade" hideEffect="fade" style="width:100%" resizable="false">
+				<p:outputPanel id="partidaDetail" style="text-align:center;">
+					<p:panelGrid columns="4"
+						rendered="#{not empty partidaMB.partidaSelected}"
+						columnClasses="label,value"> 
+						
+						<h:outputText value="Id:" />
+						<h:outputText value="#{partidaMB.partidaSelected.numero}" />
+						<h:outputLabel value=""/>
+						<h:outputLabel value=""/>
+						
+						<!-- INSERCAO DE GOLS -->					
+						
+						<p:columnGroup>
+							<p:outputLabel value="Tempo: "/>
+							<p:inputMask mask="99:99" value="#{partidaMB.tempoGol}"/>
+						</p:columnGroup>
+						
+						<p:columnGroup>
+							<p:outputLabel value="Foi Penalty ?  "/> 
+							<p:selectBooleanButton onLabel="Sim" offLabel="Não" value="#{partidaMB.foiPenaltyGol}"/>
+						</p:columnGroup>
+						
+						<!-- SELECIONAR INSCRITO -->
+						<p:columnGroup>
+							<!-- <p:outputLabel value="Selecionar Inscrito: "/>  -->
+						
+							<p:selectOneMenu id="selecionarInscrito02"
+								value="#{partidaMB.inscritoGol}"
+								converter="InscritoConverter" panelStyle="width:180px"
+								effect="fade" var="ins" style="width:160px" filter="true"
+								filterMatchMode="startsWith">
+
+								<f:selectItems
+									value="#{partidaMB.todosOsInscritosDasDuasEquipes}"
+									var="inscrito" itemLabel="#{inscrito.usuario.nome}"
+									itemValue="#{inscrito}" />
+
+								<p:column>
+									<h:outputText value="#{ins.nome}" />
+								</p:column>
+							</p:selectOneMenu>
+						</p:columnGroup>
+						
+						<p:commandButton value="Inserir Gol" action="#{partidaMB.addGol()}"/>
+						
+						<!--  CARTOES  -->
+						
+						<p:columnGroup>
+							<p:outputLabel value="Tempo: "/>
+							<p:inputMask mask="99:99" value="#{partidaMB.tempoCartao}"/>
+						</p:columnGroup>
+						
+						<p:columnGroup>
+							<p:outputLabel value="Tipo: "/>
+							<p:selectOneMenu value="#{partidaMB.tipoCartao}">
+								<f:selectItems value="#{partidaMB.tiposCartao}" var="tiposCartao" itemLabel="#{tiposCartao.nome}" itemValue="#{tiposCartao}" />
+							</p:selectOneMenu>
+						</p:columnGroup>
+						
+						<!-- SELECIONAR INSCRITO -->
+						<p:columnGroup>
+							<!-- <p:outputLabel value="Selecionar Inscrito: "/>  -->
+						
+							<p:selectOneMenu id="selecionarInscrito03"
+								value="#{partidaMB.inscritoCartao}"
+								converter="InscritoConverter" panelStyle="width:180px"
+								effect="fade" var="ins" style="width:160px" filter="true"
+								filterMatchMode="startsWith">
+
+								<f:selectItems
+									value="#{partidaMB.todosOsInscritosDasDuasEquipes}"
+									var="inscrito" itemLabel="#{inscrito.usuario.nome}"
+									itemValue="#{inscrito}" />
+
+								<p:column>
+									<h:outputText value="#{ins.nome}" />
+								</p:column>
+							</p:selectOneMenu>
+						</p:columnGroup>
+						
+						<p:commandButton value="Inserir Cartão" action="#{partidaMB.addCartao()}"/>
+
+
+					</p:panelGrid>
+					
+					
+					<p:commandButton value="Exibir informações sobre a Equipe Mandante" onclick="PF('infoMandanteDialog').show()"/>
+					<br/>
+					<br/>
+					<p:commandButton value="Exibir informações sobre a Equipe Visitante" />
+				</p:outputPanel>
+			</p:dialog>
+			
+			<p:dialog header="Detalhes da partida" widgetVar="infoMandanteDialog" modal="false" closeOnEscape="true"
+				showEffect="fade" hideEffect="fade" style="width:100%" resizable="false">
+				<p:outputPanel id="infoMandanteID" style="text-align:center;">
+					<p:panelGrid columns="4"
+						rendered="#{not empty partidaMB.partidaSelected}"
+						columnClasses="label,value"> 
+						
+						<p:dataTable value="#{partidaMB.partidaSelected.detalhes.cartoesMandante}" var="car" >
+							<p:column headerText="Tempo">
+								<p:outputLabel value="#{car.tempo}" />
+							</p:column>
+						</p:dataTable>
+
+
+					</p:panelGrid>
+				</p:outputPanel>
+			</p:dialog>
+			
+			
+			
 		</h:form>
 
 	</ui:define>

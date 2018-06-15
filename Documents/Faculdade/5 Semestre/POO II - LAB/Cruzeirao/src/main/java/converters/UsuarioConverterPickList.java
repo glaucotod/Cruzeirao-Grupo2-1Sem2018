@@ -12,7 +12,7 @@ import models.Usuario;
 //01
 @FacesConverter(value = "UsuarioConverterPickList")
 public class UsuarioConverterPickList implements Converter {
-		@Override
+
 		public Object getAsObject(FacesContext arg0, UIComponent arg1, String arg2) {
 		    Object ret = null;
 		    if (arg1 instanceof PickList) {
@@ -36,7 +36,7 @@ public class UsuarioConverterPickList implements Converter {
 		    }
 		    return ret;
 		}
-		@Override
+
 		public String getAsString(FacesContext arg0, UIComponent arg1, Object arg2) {
 		    String str = "";
 		    if (arg2 instanceof Usuario) {

@@ -2,19 +2,25 @@ package beans;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import models.Juiz;
 import service.JuizService;
 
-@ManagedBean (name = "juizManagedBean")
+@ManagedBean (eager=true, name = "juizManagedBean")
 @SessionScoped
 public class JuizManagedBean {
 
 	private Juiz juiz;
 	private JuizService service;
-	
+
+	@PostConstruct
+    public void init() {
+		service = new JuizService();
+		juiz = new Juiz();
+    }
 	public JuizManagedBean()
 	{
 		setJuiz(new Juiz());

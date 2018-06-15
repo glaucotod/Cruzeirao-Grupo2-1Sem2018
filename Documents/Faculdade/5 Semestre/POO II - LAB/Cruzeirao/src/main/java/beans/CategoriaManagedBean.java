@@ -2,6 +2,7 @@ package beans;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.model.SelectItem;
@@ -10,13 +11,17 @@ import models.Categoria;
 import models.Sexo;
 import service.CategoriaService;
 
-@ManagedBean(name = "categoriaManagedBean")
+@ManagedBean(eager=true, name = "categoriaManagedBean")
 @SessionScoped
 public class CategoriaManagedBean {
 //01
 	private Categoria categoria;
 	private CategoriaService service;
-	
+	@PostConstruct
+    public void init() {
+		service = new CategoriaService();
+		categoria = new Categoria();
+    }
 	public CategoriaManagedBean() {
 		categoria = new Categoria();
 		service = new CategoriaService();

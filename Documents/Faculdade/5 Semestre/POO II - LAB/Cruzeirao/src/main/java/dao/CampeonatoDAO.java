@@ -7,4 +7,3 @@ public class CampeonatoDAO extends DAOImp<Campeonato, Integer> {
 	
 	
 }
-

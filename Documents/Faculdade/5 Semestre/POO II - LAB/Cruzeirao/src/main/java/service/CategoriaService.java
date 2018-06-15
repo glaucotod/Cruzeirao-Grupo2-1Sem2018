@@ -3,6 +3,7 @@ package service;
 import java.util.List;
 
 import dados.Dados;
+import dao.CartaoDAO;
 import dao.CategoriaDAO;
 import models.Categoria;
 
@@ -12,6 +13,7 @@ public class CategoriaService {
 	private List<Categoria> categorias = Dados.categorias;
 	private CategoriaDAO dao = new CategoriaDAO();
 	
+	
 	public CategoriaService(){
 
 	}
@@ -19,15 +21,10 @@ public class CategoriaService {
 	public void salvar(Categoria categoria)
 	{
 	    categorias.add(categoria);
-	    dao.save(categoria);
+	    categoria = dao.save(categoria);
+		dao.closeEntityManager();
 	}	
 
-	public void remove(Categoria categoria)
-	{
-		categorias.remove(categoria);
-		dao.save(categoria);
-	}
-	
 	public List <Categoria> getCategorias(){		
 		return categorias;		
 	}

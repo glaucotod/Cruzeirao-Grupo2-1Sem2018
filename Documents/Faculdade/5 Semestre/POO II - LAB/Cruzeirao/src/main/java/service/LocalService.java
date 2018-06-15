@@ -19,7 +19,8 @@ public class LocalService {
 	public void salvar (Local local)
 	{
 		locais.add(local);
-		dao.save(local);
+		local= dao.save(local);
+		dao.closeEntityManager();
 		
 	}
 	

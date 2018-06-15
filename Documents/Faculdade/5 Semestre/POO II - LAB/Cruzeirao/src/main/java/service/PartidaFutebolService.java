@@ -1,14 +1,15 @@
 package service;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import dao.InscritoDAO;
 import dao.PartidaFutebolDAO;
 import models.PartidaFutebol;
 
 public class PartidaFutebolService
 {
-	private ArrayList <PartidaFutebol> partidasFutebol = new ArrayList<PartidaFutebol>();	
-	
+	private List <PartidaFutebol> partidasFutebol = new ArrayList<PartidaFutebol>();	
 	private PartidaFutebolDAO dao = new PartidaFutebolDAO();
 	
 	public PartidaFutebolService()
@@ -20,15 +21,10 @@ public class PartidaFutebolService
 	{
 		partidasFutebol.add(partidaFutebol);
 		dao.save(partidaFutebol);
-	}
-	
-	public void remove(PartidaFutebol partidaFutebol)
-	{
-		partidasFutebol.remove(partidaFutebol);
-		dao.remove(partidaFutebol);
+		dao.closeEntityManager();
 	}
 
-	public ArrayList<PartidaFutebol> getPartidasFutebol() {
+	public List<PartidaFutebol> getPartidasFutebol() {
 		return partidasFutebol;
 	}	
 }

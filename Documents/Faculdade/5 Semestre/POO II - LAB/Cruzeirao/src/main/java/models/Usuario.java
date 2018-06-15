@@ -4,10 +4,13 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -17,8 +20,10 @@ public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int userID;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@OneToMany(cascade = CascadeType.ALL)
+	private int id;
+	
 	private String email;
 	private String nome;
 	private String userName="";
@@ -34,6 +39,7 @@ public class Usuario implements Serializable {
 	private String rg;
 	private String cpf;
 	private String cref;
+	@Enumerated
 	private Sexo sexo;
 	private String foto;
 
@@ -163,7 +169,7 @@ public class Usuario implements Serializable {
 		result = prime * result + ((telefoneFixo == null) ? 0 : telefoneFixo.hashCode());
 		result = prime * result + ((telefoneMovel == null) ? 0 : telefoneMovel.hashCode());
 		result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
-		result = prime * result + userID;
+		result = prime * result + id;
 		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
 		return result;
 	}
@@ -250,7 +256,7 @@ public class Usuario implements Serializable {
 			return false;
 		if (tipo != other.tipo)
 			return false;
-		if (userID != other.userID)
+		if (id != other.id)
 			return false;
 		if (userName == null) {
 			if (other.userName != null)

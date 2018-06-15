@@ -2,6 +2,7 @@ package beans;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -16,6 +17,11 @@ public class InscritoManagedBean {
 	private InscritoService service = new InscritoService();
 	private Inscrito Inscrito = new Inscrito();
 
+	@PostConstruct
+    public void init() {
+		service = new InscritoService();
+		Inscrito = new Inscrito();
+    }
 	public void salvar()
 	{
 		service.salvar(Inscrito);

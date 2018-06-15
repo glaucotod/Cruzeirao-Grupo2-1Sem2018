@@ -1,24 +1,37 @@
 package models;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="TBL_Fase")
-public class Fase {
+public class Fase implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int numeroFase;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@OneToMany(cascade = CascadeType.ALL)
+	private int id;
+	
 	private Date dataInicio;
 	private Date dataFim;
-	private Enum formato;
+	@Enumerated(EnumType.STRING)
+	private TipoFase formato;
 	private Categoria categoria;
 	private List<Grupo> grupos;
 	private int numero;
@@ -35,10 +48,10 @@ public class Fase {
 	public void setDataFim(Date dataFim) {
 		this.dataFim = dataFim;
 	}
-	public Enum getFormato() {
+	public TipoFase getFormato() {
 		return formato;
 	}
-	public void setFormato(Enum formato) {
+	public void setFormato(TipoFase formato) {
 		this.formato = formato;
 	}
 	public Categoria getCategoria() {
